@@ -1,0 +1,113 @@
+==================== 2026-03-10T08:48:20.597132Z | 019cd6ee-ce54-7a10-b0f1-9cc6b16e2dc6 ====================
+==================== 2026-03-10T08:48:41.033646Z | 019cd6ef-1e48-7760-81f6-5c4895306136 ====================
+08:48:41.035657 [info ]: Installing dbt project and profile setup
+08:48:41.062766 [info ]: Warning A dbt_project.yml already exists in this directory; skipping sample project creation.
+08:48:41.063066 [info ]: Info Created .vscode/extensions.json with dbt extension recommendation
+08:48:41.063388 [info ]: Info Setting up your profile...
+08:48:41.065082 [info ]: Info Creating new profile...
+08:48:43.462578 [info ]: Found dbt_cloud.yml configuration
+08:48:43.464535 [info ]: Found active project: Analytics (ID: 70471823560073)
+08:48:49.456970 [warn ]: dbt1001: Failed to fetch cloud config: Failed to fetch user credentials: error in response: status code 404 Not Found
+08:48:49.457960 [info ]: No cloud config found for this adapter/project
+08:51:57.970878 [info ]: Success Profile written to /home/almaruf67/.dbt/profiles.yml
+08:51:57.971552 [info ]: Validating profile inputs, adapters, and connection
+
+08:51:57.973271 [info ]: dbt-fusion 2.0.0-preview.145
+08:51:57.977089 [info ]: Started loading project
+08:51:57.991891 [info ]: Loading ~/.dbt/profiles.yml
+08:51:58.011810 [info ]: Finished loading project [  0.03s]
+08:51:58.013279 [info ]: Started debugging
+08:51:58.013335 [info ]: Debugging profile: dev
+08:51:58.013409 [info ]: Debugging dbt version: 2.0.0-preview.145
+08:51:58.013420 [info ]: Debugging platform: linux x86_64 (unix)
+08:51:58.013434 [info ]: Debugging adapter type: bigquery (remote)
+08:51:58.014891 [info ]: Debugging dependencies:
+  git: OK
+08:51:58.020741 [info ]: Debugging connection:
+  "database": "bigquery-testing-489807",
+  "schema": "dbt_test",
+  "method": "service-account",
+  "dataproc_batch": null
+08:52:03.081296 [debug]: Query executed on node unknown:
+select 1 as id
+08:52:04.087518 [info ]: Finished debugging [  6.07s]
+08:52:04.091419 [error]: dbt1011: [BigQuery] googleapi: Error 403: Access Denied: Project bigquery-testing-489807: User does not have bigquery.jobs.create permission in project bigquery-testing-489807., accessDenied
+08:52:04.779975 [info ]: New version available 2.0.0-preview.148 (run `dbt system update`)
+08:52:05.479385 [info ]: 
+==================== Execution Summary =====================
+Finished 'init' with 1 warning and 1 error for target 'dev' [3m 24s]
+08:52:06.159528 [info ]: 
+==================== Execution Summary =====================
+Finished 'init' successfully [3m 46s]
+==================== 2026-03-10T08:52:45.657899Z | 019cd6f2-d9d8-7960-825a-c9cb18253e01 ====================
+08:52:55.964158 [info ]: 
+==================== Execution Summary =====================
+Finished 'system' successfully [10.3s]
+==================== 2026-03-10T08:53:19.037448Z | 019cd6f3-5c3c-7a80-9a9a-1bd7bed62fd0 ====================
+==================== 2026-03-10T08:53:24.227117Z | 019cd6f3-7081-7b71-ada3-233f29383205 ====================
+08:53:24.227252 [info ]: dbt-fusion 2.0.0-preview.148
+08:53:24.227455 [info ]: Started loading project
+08:53:24.229685 [info ]: Loading ~/.dbt/profiles.yml
+08:53:24.230093 [info ]: Finished loading project [  0.00s]
+08:53:24.230146 [info ]: Started debugging
+08:53:24.230188 [info ]: Debugging profile: dev
+08:53:24.230211 [info ]: Debugging dbt version: 2.0.0-preview.148
+08:53:24.230235 [info ]: Debugging platform: linux x86_64 (unix)
+08:53:24.230254 [info ]: Debugging adapter type: bigquery (remote)
+08:53:24.231600 [info ]: Debugging dependencies:
+  git: OK
+08:53:24.231658 [info ]: Debugging connection:
+  "database": "bigquery-testing-489807",
+  "schema": "dbt_test",
+  "method": "service-account",
+  "dataproc_batch": null
+08:53:25.208923 [debug]: Query executed on node unknown:
+select 1 as id
+08:53:26.209424 [info ]: Finished debugging [  1.98s]
+08:53:26.209677 [error]: dbt1011: dbt was able to connect, but failed to execute a debug query.
+The following error was returned:
+
+[BigQuery] googleapi: Error 403: Access Denied: Project bigquery-testing-489807: User does not have bigquery.jobs.create permission in project bigquery-testing-489807., accessDenied
+08:53:27.277917 [info ]: 
+==================== Execution Summary =====================
+Finished 'debug' with 1 error for target 'dev' [3.1s]
+08:53:27.499982 [info ]: 
+==================== Execution Summary =====================
+Finished 'init' successfully [8.5s]
+==================== 2026-03-11T03:51:50.005510Z | 019cdb05-b3e2-75c1-8aaf-aa6ebce31c85 ====================
+03:51:50.009383 [info ]: dbt-fusion 2.0.0-preview.148
+03:51:50.015905 [info ]: Started loading project
+03:51:50.047292 [info ]: Loading ~/.dbt/profiles.yml
+03:51:50.103345 [debug]:    Started loading packages
+03:51:50.117619 [debug]:     Loaded [  0.01s] packages
+03:51:50.125160 [info ]: Finished loading project [  0.11s]
+03:51:50.129572 [info ]: Started parsing
+03:51:50.204575 [debug]: Finished parsing models/marts/fct_campaign_performance.yml [  0.01s]
+03:51:50.205374 [debug]: Finished parsing models/staging/src_marketing.yml [  0.00s]
+03:51:50.205540 [debug]: Finished parsing models/staging/stg_campaigns.yml [  0.00s]
+03:51:50.205622 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+03:51:50.231208 [debug]: Finished parsing target/snapshots/snap_campaign_budget.sql [  0.01s]
+03:51:50.233230 [debug]: Finished parsing models/marts/fct_campaign_performance.sql [  0.00s]
+03:51:50.233873 [debug]: Finished parsing models/staging/stg_campaigns.sql [  0.00s]
+03:51:50.238266 [debug]: Finished parsing analyses/campaign_efficiency.sql [  0.00s]
+03:51:50.240108 [debug]: Finished parsing tests/assert_non_negative_metrics.sql [  0.00s]
+03:51:50.241060 [debug]: Finished parsing target/generic_tests/source_not_null_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:51:50.241520 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:51:50.241848 [debug]: Finished parsing target/generic_tests/unique_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:51:50.242210 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_cpc.sql [  0.00s]
+03:51:50.242542 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_ctr.sql [  0.00s]
+03:51:50.242907 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_campaign_id.sql [  0.00s]
+03:51:50.243237 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_event_date.sql [  0.00s]
+03:51:50.243713 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_spend.sql [  0.00s]
+03:51:50.244059 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_id.sql [  0.00s]
+03:51:50.244522 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_name.sql [  0.00s]
+03:51:50.244889 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_channel.sql [  0.00s]
+03:51:50.245317 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_clicks.sql [  0.00s]
+03:51:50.245684 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_event_date.sql [  0.00s]
+03:51:50.246032 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_impressions.sql [  0.00s]
+03:51:50.246391 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_spend.sql [  0.00s]
+03:51:50.254515 [info ]: Finished parsing [  0.12s]
+03:51:51.215760 [info ]: New version available 2.0.0-preview.149 (run `dbt system update`)
+03:51:51.425943 [info ]: 
+==================== Execution Summary =====================
+Finished 'parse' successfully for target 'dev' [1.4s]

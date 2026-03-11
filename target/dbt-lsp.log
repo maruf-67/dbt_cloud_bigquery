@@ -1,0 +1,601 @@
+==================== 2026-03-10T08:48:17.341325Z | 1c6e4d6f-ca5f-4a0f-835b-a920ac933b97 ====================
+08:48:17.344532 [info ]: Starting dbt LSP server
+08:48:17.344699 [info ]: Connecting to LSP client on port 8001
+08:48:17.345393 [info ]: Successfully connected to LSP client
+08:48:17.345410 [info ]: Creating LSP service...
+08:48:17.457453 [info ]: Creating LSP server...
+08:48:17.457469 [info ]: Starting LSP server...
+08:48:19.948212 [info ]: Started loading project
+08:48:19.980057 [info ]: Finished loading project [  0.03s]
+08:52:03.415925 [info ]: Loading ~/.dbt/profiles.yml
+==================== 2026-03-11T03:47:40.599519Z | 493eb327-970c-4640-b333-f73cc56afc2d ====================
+03:47:40.599579 [info ]: Starting dbt LSP server
+03:47:40.599596 [info ]: Connecting to LSP client on port 8000
+03:47:40.599742 [info ]: Successfully connected to LSP client
+03:47:40.599752 [info ]: Creating LSP service...
+03:47:40.715485 [info ]: Creating LSP server...
+03:47:40.715507 [info ]: Starting LSP server...
+03:47:40.777329 [info ]: Loading ~/.dbt/profiles.yml
+03:47:43.027980 [info ]: Started loading project
+03:47:43.028369 [info ]: Loading ~/.dbt/profiles.yml
+03:47:43.037109 [debug]:    Started loading packages
+03:47:43.038055 [debug]:     Loaded [  0.00s] packages
+03:47:43.039103 [info ]: Started parsing
+03:47:43.087698 [info ]: Finished loading project [  0.06s]
+03:47:43.103886 [info ]: Finished parsing [  0.06s]
+03:47:43.104158 [info ]: Cached model count updated: 0 models (estimate)
+03:47:43.104429 [info ]: Cached model count updated: 0 models (accurate)
+03:47:43.104592 [info ]: Started scheduling
+03:47:43.104754 [info ]: Finished scheduling [  0.00s]
+03:47:43.104887 [warn ]: dbt1601: Nothing to do. Try checking your model configs and model specification args
+03:47:43.105026 [info ]: Started scheduling
+03:47:43.105145 [info ]: Finished scheduling [  0.00s]
+03:47:43.106269 [info ]: Started deferring state
+03:47:43.106292 [info ]: Finished deferring state [  0.00s]
+03:47:43.372511 [info ]: Started building task graph
+03:47:43.372590 [info ]: Finished building task graph [  0.00s]
+03:47:43.376498 [info ]: Cached model count updated: 0 models (accurate)
+03:50:30.686614 [info ]: Cached model count updated: 0 models (accurate)
+03:50:30.878097 [info ]: Waiting for lease on 'target' directory
+03:50:31.053805 [info ]: Cached model count updated: 0 models (accurate)
+03:50:31.219981 [info ]: Waiting for lease on 'target' directory
+03:50:31.598280 [info ]: Started loading project
+03:50:31.598852 [info ]: Loading ~/.dbt/profiles.yml
+03:50:31.603518 [info ]: Started loading project
+03:50:31.604178 [info ]: Loading ~/.dbt/profiles.yml
+03:50:31.604295 [info ]: Finished loading project [  0.01s]
+03:50:31.618131 [debug]:    Started loading packages
+03:50:31.619376 [debug]:     Loaded [  0.00s] packages
+03:50:31.620958 [info ]: Started parsing
+03:50:31.682672 [info ]: Finished loading project [  0.08s]
+03:50:31.683780 [debug]: Finished parsing models/marts/fct_campaign_performance.yml [  0.00s]
+03:50:31.684292 [debug]: Finished parsing models/staging/src_marketing.yml [  0.00s]
+03:50:31.684598 [debug]: Finished parsing models/staging/stg_campaigns.yml [  0.00s]
+03:50:31.687944 [error]: dbt1501: Failed to render SQL unknown function: Jinja macro or function `safe_divide` is unknown
+(in models/marts/fct_campaign_performance.sql:9:5)
+  --> models/marts/fct_campaign_performance.sql:9:5
+03:50:31.688251 [debug]: Finished parsing models/marts/fct_campaign_performance.sql [  0.00s]
+03:50:31.691675 [debug]: Finished parsing models/staging/stg_campaigns.sql [  0.00s]
+03:50:31.692425 [debug]: Finished parsing target/generic_tests/source_not_null_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:50:31.692961 [debug]: Finished parsing target/generic_tests/source_unique_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:50:31.693446 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_id.sql [  0.00s]
+03:50:31.694056 [debug]: Finished parsing target/generic_tests/unique_stg_campaigns_campaign_id.sql [  0.00s]
+03:50:31.694591 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_name.sql [  0.00s]
+03:50:31.695220 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_channel.sql [  0.00s]
+03:50:31.695814 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_clicks.sql [  0.00s]
+03:50:31.696361 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_event_date.sql [  0.00s]
+03:50:31.696870 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_impressions.sql [  0.00s]
+03:50:31.702259 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_spend.sql [  0.01s]
+03:50:31.703005 [info ]: Finished parsing [  0.08s]
+03:50:31.703183 [info ]: Cached model count updated: 2 models (estimate)
+03:50:31.703202 [info ]: Cached model count updated: 1 models (accurate)
+03:50:31.703245 [info ]: Started scheduling
+03:50:31.703349 [info ]: Finished scheduling [  0.00s]
+03:50:31.703370 [info ]: Started scheduling
+03:50:31.703401 [info ]: Finished scheduling [  0.00s]
+03:50:31.703464 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "raw_marketing", table: "campaigns" }) and interval: None
+03:50:31.704758 [info ]: Started deferring state
+03:50:31.704797 [info ]: Finished deferring state [  0.00s]
+03:50:31.705479 [info ]: Started downloading schemas
+03:50:33.145183 [warn ]: dbt1014: Failed to download source schema for 'source.nextgen_marketing_ssot.raw_marketing.campaigns'. Setting 'static_analysis' to off. Skipping analysis for 'model.nextgen_marketing_ssot.stg_campaigns', 'test.nextgen_marketing_ssot.source_not_null_raw_marketing_campaigns_campaign_id.2a14dfa5e5' and 1 others: [BigQuery] googleapi: Error 404: Not found: Dataset bigquery-testing-489807:raw_marketing, notFound
+03:50:33.290136 [info ]: Started building task graph
+03:50:33.290211 [info ]: Finished building task graph [  0.00s]
+03:50:33.290506 [info ]: Started rendering (1 nodes)
+03:50:33.290564 [info ]: Started model dbt_test.stg_campaigns
+03:50:33.290588 [debug]: Started rendering model dbt_test.stg_campaigns
+03:50:33.290729 [info ]: Finished downloading schemas [  1.59s]
+03:50:33.292125 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.stg_campaigns at target/.lsp/compiled/models/staging/stg_campaigns.sql
+03:50:33.292392 [info ]:  Succeeded [  0.00s] model dbt_test.stg_campaigns (view)
+03:50:33.292435 [debug]: Finished rendering [  0.00s] model dbt_test.stg_campaigns [success]
+03:50:33.292447 [info ]: Finished rendering [  0.00s] (1 nodes, 0 skipped, 0 errors)
+03:50:33.297949 [info ]: Cached model count updated: 1 models (accurate)
+03:50:40.189183 [info ]: Started loading project
+03:50:40.189648 [info ]: Loading ~/.dbt/profiles.yml
+03:50:40.193367 [info ]: Started loading project
+03:50:40.193947 [info ]: Loading ~/.dbt/profiles.yml
+03:50:40.194001 [info ]: Finished loading project [  0.00s]
+03:50:40.208277 [debug]:    Started loading packages
+03:50:40.210034 [debug]:     Loaded [  0.00s] packages
+03:50:40.211891 [info ]: Finished loading project [  0.02s]
+03:50:40.214126 [info ]: Waiting for lease on 'target' directory
+03:50:40.805006 [info ]: Waiting for lease on 'target' directory
+03:50:41.320305 [info ]: Started loading project
+03:50:41.320643 [info ]: Loading ~/.dbt/profiles.yml
+03:50:41.330114 [debug]:    Started loading packages
+03:50:41.330868 [debug]:     Loaded [  0.00s] packages
+03:50:41.331704 [info ]: Started parsing
+03:50:41.367911 [info ]: Finished loading project [  0.05s]
+03:50:41.368454 [debug]: Finished parsing models/marts/fct_campaign_performance.yml [  0.00s]
+03:50:41.368649 [debug]: Finished parsing models/staging/src_marketing.yml [  0.00s]
+03:50:41.368808 [debug]: Finished parsing models/staging/stg_campaigns.yml [  0.00s]
+03:50:41.368932 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+03:50:41.371890 [debug]: Finished parsing target/snapshots/snap_campaign_budget.sql [  0.00s]
+03:50:41.373776 [debug]: Finished parsing models/marts/fct_campaign_performance.sql [  0.00s]
+03:50:41.378648 [debug]: Finished parsing models/staging/stg_campaigns.sql [  0.01s]
+03:50:41.379256 [debug]: Finished parsing tests/assert_non_negative_metrics.sql [  0.00s]
+03:50:41.379842 [debug]: Finished parsing target/generic_tests/source_not_null_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:50:41.380398 [debug]: Finished parsing target/generic_tests/source_unique_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:50:41.380958 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:50:41.381495 [debug]: Finished parsing target/generic_tests/unique_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:50:41.381976 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_cpc.sql [  0.00s]
+03:50:41.382452 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_ctr.sql [  0.00s]
+03:50:41.382938 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_campaign_id.sql [  0.00s]
+03:50:41.383407 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_event_date.sql [  0.00s]
+03:50:41.383921 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_spend.sql [  0.00s]
+03:50:41.384387 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_id.sql [  0.00s]
+03:50:41.384920 [debug]: Finished parsing target/generic_tests/unique_stg_campaigns_campaign_id.sql [  0.00s]
+03:50:41.385569 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_name.sql [  0.00s]
+03:50:41.386032 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_channel.sql [  0.00s]
+03:50:41.386448 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_clicks.sql [  0.00s]
+03:50:41.386917 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_event_date.sql [  0.00s]
+03:50:41.387427 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_impressions.sql [  0.00s]
+03:50:41.395398 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_spend.sql [  0.01s]
+03:50:41.396020 [info ]: Finished parsing [  0.06s]
+03:50:41.396115 [info ]: Cached model count updated: 2 models (estimate)
+03:50:41.396124 [info ]: Cached model count updated: 2 models (accurate)
+03:50:41.396156 [info ]: Started scheduling
+03:50:41.396238 [info ]: Finished scheduling [  0.00s]
+03:50:41.396253 [info ]: Started scheduling
+03:50:41.396303 [info ]: Finished scheduling [  0.00s]
+03:50:41.396332 [debug]: Initializing schema store with entry: Selected("snapshot.nextgen_marketing_ssot.snap_campaign_budget") and interval: None
+03:50:41.396343 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "raw_marketing", table: "campaigns" }) and interval: None
+03:50:41.396879 [info ]: Started deferring state
+03:50:41.396892 [info ]: Finished deferring state [  0.00s]
+03:50:41.397368 [info ]: Started downloading schemas
+03:50:42.538695 [warn ]: dbt1014: Failed to download source schema for 'source.nextgen_marketing_ssot.raw_marketing.campaigns'. Setting 'static_analysis' to off. Skipping analysis for 'model.nextgen_marketing_ssot.stg_campaigns', 'test.nextgen_marketing_ssot.source_not_null_raw_marketing_campaigns_campaign_id.2a14dfa5e5' and 1 others: [BigQuery] googleapi: Error 404: Not found: Dataset bigquery-testing-489807:raw_marketing, notFound
+03:50:42.697829 [info ]: Started building task graph
+03:50:42.697927 [info ]: Finished building task graph [  0.00s]
+03:50:42.698040 [info ]: Started rendering (4 nodes)
+03:50:42.698055 [info ]: Started snapshot dbt_test_snapshots.snap_campaign_budget
+03:50:42.698064 [debug]: Started rendering snapshot dbt_test_snapshots.snap_campaign_budget
+03:50:42.698084 [info ]: Started seed dbt_test.seed_campaign_targets
+03:50:42.698089 [debug]: Started rendering seed dbt_test.seed_campaign_targets
+03:50:42.698104 [info ]: Started model dbt_test.fct_campaign_performance
+03:50:42.698111 [debug]: Started rendering model dbt_test.fct_campaign_performance
+03:50:42.698119 [info ]: Started model dbt_test.stg_campaigns
+03:50:42.698123 [debug]: Started rendering model dbt_test.stg_campaigns
+03:50:42.698158 [info ]: Finished downloading schemas [  1.30s]
+03:50:42.698803 [debug]: Compiled SQL for node snapshot.nextgen_marketing_ssot.snap_campaign_budget at target/.lsp/compiled/snapshots/snap_campaign_budget.sql
+03:50:42.698817 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.fct_campaign_performance at target/.lsp/compiled/models/marts/fct_campaign_performance.sql
+03:50:42.698863 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.stg_campaigns at target/.lsp/compiled/models/staging/stg_campaigns.sql
+03:50:42.698863 [info ]:  Succeeded [-------] model dbt_test.fct_campaign_performance (mat_view)
+03:50:42.698882 [debug]: Finished rendering [  0.00s] model dbt_test.fct_campaign_performance [success]
+03:50:42.698920 [info ]:  Succeeded [-------] snapshot dbt_test_snapshots.snap_campaign_budget (table)
+03:50:42.698930 [debug]: Finished rendering [  0.00s] snapshot dbt_test_snapshots.snap_campaign_budget [success]
+03:50:42.698939 [info ]:  Succeeded [-------] model dbt_test.stg_campaigns (view)
+03:50:42.698946 [debug]: Finished rendering [  0.00s] model dbt_test.stg_campaigns [success]
+03:50:42.703225 [debug]: Finished rendering [  0.01s] seed dbt_test.seed_campaign_targets [success]
+03:50:42.703248 [info ]: Finished rendering [  0.01s] (4 nodes, 0 skipped, 0 errors)
+03:50:42.703268 [info ]: Started analyzing (1 nodes)
+03:50:42.703275 [debug]: Started analyzing seed dbt_test.seed_campaign_targets
+03:50:42.703320 [info ]:  Succeeded [  0.01s] seed  dbt_test.seed_campaign_targets (table)
+03:50:42.703337 [debug]: Finished analyzing [  0.00s] seed dbt_test.seed_campaign_targets [success]
+03:50:42.703342 [info ]: Finished analyzing [  0.00s] (1 nodes, 0 skipped, 0 errors)
+03:50:42.708212 [info ]: Cached model count updated: 2 models (accurate)
+03:50:53.629758 [info ]: Started loading project
+03:50:53.630139 [info ]: Loading ~/.dbt/profiles.yml
+03:50:53.632743 [info ]: Started loading project
+03:50:53.632980 [info ]: Loading ~/.dbt/profiles.yml
+03:50:53.633050 [info ]: Finished loading project [  0.00s]
+03:50:53.641387 [debug]:    Started loading packages
+03:50:53.642613 [debug]:     Loaded [  0.00s] packages
+03:50:53.643940 [info ]: Started parsing
+03:50:53.679034 [info ]: Finished loading project [  0.05s]
+03:50:53.679570 [debug]: Finished parsing models/marts/fct_campaign_performance.yml [  0.00s]
+03:50:53.679845 [debug]: Finished parsing models/staging/src_marketing.yml [  0.00s]
+03:50:53.680039 [debug]: Finished parsing models/staging/stg_campaigns.yml [  0.00s]
+03:50:53.680179 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+03:50:53.683327 [debug]: Finished parsing target/snapshots/snap_campaign_budget.sql [  0.00s]
+03:50:53.684762 [debug]: Finished parsing models/marts/fct_campaign_performance.sql [  0.00s]
+03:50:53.687933 [debug]: Finished parsing models/staging/stg_campaigns.sql [  0.00s]
+03:50:53.689250 [debug]: Finished parsing analyses/campaign_efficiency.sql [  0.00s]
+03:50:53.689769 [debug]: Finished parsing tests/assert_non_negative_metrics.sql [  0.00s]
+03:50:53.690858 [debug]: Finished parsing target/generic_tests/source_not_null_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:50:53.691825 [debug]: Finished parsing target/generic_tests/source_unique_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:50:53.692727 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:50:53.693810 [debug]: Finished parsing target/generic_tests/unique_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:50:53.694895 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_cpc.sql [  0.00s]
+03:50:53.695685 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_ctr.sql [  0.00s]
+03:50:53.696371 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_campaign_id.sql [  0.00s]
+03:50:53.697054 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_event_date.sql [  0.00s]
+03:50:53.697576 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_spend.sql [  0.00s]
+03:50:53.698079 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_id.sql [  0.00s]
+03:50:53.698523 [debug]: Finished parsing target/generic_tests/unique_stg_campaigns_campaign_id.sql [  0.00s]
+03:50:53.698985 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_name.sql [  0.00s]
+03:50:53.699468 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_channel.sql [  0.00s]
+03:50:53.699994 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_clicks.sql [  0.00s]
+03:50:53.700475 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_event_date.sql [  0.00s]
+03:50:53.700943 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_impressions.sql [  0.00s]
+03:50:53.708969 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_spend.sql [  0.01s]
+03:50:53.710039 [info ]: Finished parsing [  0.07s]
+03:50:53.710347 [info ]: Cached model count updated: 2 models (estimate)
+03:50:53.710363 [info ]: Cached model count updated: 2 models (accurate)
+03:50:53.710456 [info ]: Started scheduling
+03:50:53.710616 [info ]: Finished scheduling [  0.00s]
+03:50:53.710702 [info ]: Started scheduling
+03:50:53.710782 [info ]: Finished scheduling [  0.00s]
+03:50:53.710833 [debug]: Initializing schema store with entry: Selected("snapshot.nextgen_marketing_ssot.snap_campaign_budget") and interval: None
+03:50:53.710871 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "raw_marketing", table: "campaigns" }) and interval: None
+03:50:53.711746 [info ]: Started deferring state
+03:50:53.711772 [info ]: Finished deferring state [  0.00s]
+03:50:53.712402 [info ]: Started downloading schemas
+03:50:54.868798 [info ]: Waiting for lease on 'target' directory
+03:50:54.878059 [info ]: Finished downloading schemas [  1.17s]
+03:50:55.123151 [info ]: Started loading project
+03:50:55.123716 [info ]: Loading ~/.dbt/profiles.yml
+03:50:55.139390 [debug]:    Started loading packages
+03:50:55.140871 [debug]:     Loaded [  0.00s] packages
+03:50:55.142547 [info ]: Started parsing
+03:50:55.174156 [info ]: Finished loading project [  0.05s]
+03:50:55.174954 [debug]: Finished parsing models/marts/fct_campaign_performance.yml [  0.00s]
+03:50:55.175221 [debug]: Finished parsing models/staging/src_marketing.yml [  0.00s]
+03:50:55.175398 [debug]: Finished parsing models/staging/stg_campaigns.yml [  0.00s]
+03:50:55.175505 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+03:50:55.179189 [debug]: Finished parsing target/snapshots/snap_campaign_budget.sql [  0.00s]
+03:50:55.180489 [debug]: Finished parsing models/marts/fct_campaign_performance.sql [  0.00s]
+03:50:55.183203 [debug]: Finished parsing models/staging/stg_campaigns.sql [  0.00s]
+03:50:55.184474 [debug]: Finished parsing analyses/campaign_efficiency.sql [  0.00s]
+03:50:55.185232 [debug]: Finished parsing tests/assert_non_negative_metrics.sql [  0.00s]
+03:50:55.185851 [debug]: Finished parsing target/generic_tests/source_not_null_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:50:55.186345 [debug]: Finished parsing target/generic_tests/source_unique_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:50:55.186808 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:50:55.187231 [debug]: Finished parsing target/generic_tests/unique_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:50:55.188061 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_cpc.sql [  0.00s]
+03:50:55.188510 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_ctr.sql [  0.00s]
+03:50:55.188960 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_campaign_id.sql [  0.00s]
+03:50:55.189379 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_event_date.sql [  0.00s]
+03:50:55.189847 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_spend.sql [  0.00s]
+03:50:55.190463 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_id.sql [  0.00s]
+03:50:55.191053 [debug]: Finished parsing target/generic_tests/unique_stg_campaigns_campaign_id.sql [  0.00s]
+03:50:55.191614 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_name.sql [  0.00s]
+03:50:55.192323 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_channel.sql [  0.00s]
+03:50:55.193406 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_clicks.sql [  0.00s]
+03:50:55.194193 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_event_date.sql [  0.00s]
+03:50:55.194690 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_impressions.sql [  0.00s]
+03:50:55.201389 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_spend.sql [  0.01s]
+03:50:55.202074 [info ]: Finished parsing [  0.06s]
+03:50:55.202192 [info ]: Cached model count updated: 2 models (estimate)
+03:50:55.202201 [info ]: Cached model count updated: 2 models (accurate)
+03:50:55.202234 [info ]: Started scheduling
+03:50:55.202310 [info ]: Finished scheduling [  0.00s]
+03:50:55.202326 [info ]: Started scheduling
+03:50:55.202372 [info ]: Finished scheduling [  0.00s]
+03:50:55.202401 [debug]: Initializing schema store with entry: Selected("snapshot.nextgen_marketing_ssot.snap_campaign_budget") and interval: None
+03:50:55.202413 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "raw_marketing", table: "campaigns" }) and interval: None
+03:50:55.202924 [info ]: Started deferring state
+03:50:55.202937 [info ]: Finished deferring state [  0.00s]
+03:50:55.203372 [info ]: Started downloading schemas
+03:50:56.431860 [warn ]: dbt1014: Failed to download source schema for 'source.nextgen_marketing_ssot.raw_marketing.campaigns'. Setting 'static_analysis' to off. Skipping analysis for 'model.nextgen_marketing_ssot.stg_campaigns', 'test.nextgen_marketing_ssot.source_not_null_raw_marketing_campaigns_campaign_id.2a14dfa5e5' and 1 others: [BigQuery] googleapi: Error 404: Not found: Dataset bigquery-testing-489807:raw_marketing, notFound
+03:50:56.596161 [info ]: Started building task graph
+03:50:56.596251 [info ]: Finished building task graph [  0.00s]
+03:50:56.596359 [info ]: Started rendering (5 nodes)
+03:50:56.596374 [info ]: Started snapshot dbt_test_snapshots.snap_campaign_budget
+03:50:56.596383 [debug]: Started rendering snapshot dbt_test_snapshots.snap_campaign_budget
+03:50:56.596402 [info ]: Started seed dbt_test.seed_campaign_targets
+03:50:56.596408 [debug]: Started rendering seed dbt_test.seed_campaign_targets
+03:50:56.596418 [info ]: Started analysis dbt_test.campaign_efficiency
+03:50:56.596423 [debug]: Started rendering analysis dbt_test.campaign_efficiency
+03:50:56.596435 [info ]: Started model dbt_test.fct_campaign_performance
+03:50:56.596442 [debug]: Started rendering model dbt_test.fct_campaign_performance
+03:50:56.596450 [info ]: Started model dbt_test.stg_campaigns
+03:50:56.596456 [debug]: Started rendering model dbt_test.stg_campaigns
+03:50:56.596720 [info ]: Finished downloading schemas [  1.39s]
+03:50:56.597154 [debug]: Compiled SQL for node analysis.nextgen_marketing_ssot.campaign_efficiency at target/.lsp/compiled/analyses/campaign_efficiency.sql
+03:50:56.597210 [info ]:  Succeeded [-------] analysis dbt_test.campaign_efficiency (analysis)
+03:50:56.597232 [debug]: Finished rendering [  0.00s] analysis dbt_test.campaign_efficiency [success]
+03:50:56.597286 [debug]: Compiled SQL for node snapshot.nextgen_marketing_ssot.snap_campaign_budget at target/.lsp/compiled/snapshots/snap_campaign_budget.sql
+03:50:56.597329 [info ]:  Succeeded [-------] snapshot dbt_test_snapshots.snap_campaign_budget (table)
+03:50:56.597348 [debug]: Finished rendering [  0.00s] snapshot dbt_test_snapshots.snap_campaign_budget [success]
+03:50:56.597403 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.fct_campaign_performance at target/.lsp/compiled/models/marts/fct_campaign_performance.sql
+03:50:56.597451 [info ]:  Succeeded [  0.00s] model dbt_test.fct_campaign_performance (mat_view)
+03:50:56.597478 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.stg_campaigns at target/.lsp/compiled/models/staging/stg_campaigns.sql
+03:50:56.597524 [info ]:  Succeeded [  0.00s] model dbt_test.stg_campaigns (view)
+03:50:56.597554 [debug]: Finished rendering [  0.00s] model dbt_test.fct_campaign_performance [success]
+03:50:56.597574 [debug]: Finished rendering [  0.00s] model dbt_test.stg_campaigns [success]
+03:50:56.597618 [debug]: Finished rendering [  0.00s] seed dbt_test.seed_campaign_targets [success]
+03:50:56.597640 [info ]: Finished rendering [  0.00s] (5 nodes, 0 skipped, 0 errors)
+03:50:56.597660 [info ]: Started analyzing (1 nodes)
+03:50:56.597669 [debug]: Started analyzing seed dbt_test.seed_campaign_targets
+03:50:56.597707 [info ]:  Succeeded [  0.00s] seed  dbt_test.seed_campaign_targets (table)
+03:50:56.597724 [debug]: Finished analyzing [  0.00s] seed dbt_test.seed_campaign_targets [success]
+03:50:56.597731 [info ]: Finished analyzing [  0.00s] (1 nodes, 0 skipped, 0 errors)
+03:50:56.602586 [info ]: Cached model count updated: 2 models (accurate)
+03:51:12.775417 [info ]: Started loading project
+03:51:12.775696 [info ]: Loading ~/.dbt/profiles.yml
+03:51:12.778956 [info ]: Started parsing
+03:51:12.798929 [info ]: Finished loading project [  0.02s]
+03:51:12.799593 [debug]: Finished parsing models/staging/src_marketing.yml [  0.00s]
+03:51:12.799761 [debug]: Finished parsing models/staging/stg_campaigns.yml [  0.00s]
+03:51:12.801681 [debug]: Finished parsing target/snapshots/snap_campaign_budget.sql [  0.00s]
+03:51:12.806351 [debug]: Finished parsing models/staging/stg_campaigns.sql [  0.00s]
+03:51:12.807258 [debug]: Finished parsing target/generic_tests/source_not_null_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:51:12.808058 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_id.sql [  0.00s]
+03:51:12.809435 [debug]: Finished parsing target/generic_tests/unique_stg_campaigns_campaign_id.sql [  0.00s]
+03:51:12.811105 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_name.sql [  0.00s]
+03:51:12.812466 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_channel.sql [  0.00s]
+03:51:12.813447 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_clicks.sql [  0.00s]
+03:51:12.814193 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_event_date.sql [  0.00s]
+03:51:12.815552 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_impressions.sql [  0.00s]
+03:51:12.822227 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_spend.sql [  0.01s]
+03:51:12.822784 [info ]: Finished parsing [  0.04s]
+03:51:12.823830 [info ]: Cached model count updated: 2 models (estimate)
+03:51:12.823843 [info ]: Cached model count updated: 2 models (accurate)
+03:51:12.823891 [info ]: Started scheduling
+03:51:12.824045 [info ]: Finished scheduling [  0.00s]
+03:51:12.824060 [debug]: Incremental compilation - 4 nodes selected: {"analysis.nextgen_marketing_ssot.campaign_efficiency", "model.nextgen_marketing_ssot.fct_campaign_performance", "model.nextgen_marketing_ssot.stg_campaigns", "snapshot.nextgen_marketing_ssot.snap_campaign_budget"}
+03:51:12.824639 [info ]: Started deferring state
+03:51:12.824657 [info ]: Finished deferring state [  0.00s]
+03:51:12.825188 [warn ]: dbt1014: Failed to download source schema for 'source.nextgen_marketing_ssot.raw_marketing.campaigns'. Setting 'static_analysis' to off. Skipping analysis for 'model.nextgen_marketing_ssot.stg_campaigns', 'test.nextgen_marketing_ssot.source_not_null_raw_marketing_campaigns_campaign_id.2a14dfa5e5' and 1 others: [BigQuery] googleapi: Error 404: Not found: Dataset bigquery-testing-489807:raw_marketing, notFound
+03:51:13.018553 [info ]: Started building task graph
+03:51:13.018630 [info ]: Finished building task graph [  0.00s]
+03:51:13.018725 [info ]: Started rendering (4 nodes)
+03:51:13.018739 [info ]: Started snapshot dbt_test_snapshots.snap_campaign_budget
+03:51:13.018748 [debug]: Started rendering snapshot dbt_test_snapshots.snap_campaign_budget
+03:51:13.018767 [info ]: Started analysis dbt_test.campaign_efficiency
+03:51:13.018772 [debug]: Started rendering analysis dbt_test.campaign_efficiency
+03:51:13.018783 [info ]: Started model dbt_test.fct_campaign_performance
+03:51:13.018788 [debug]: Started rendering model dbt_test.fct_campaign_performance
+03:51:13.018796 [info ]: Started model dbt_test.stg_campaigns
+03:51:13.018802 [debug]: Started rendering model dbt_test.stg_campaigns
+03:51:13.019037 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.fct_campaign_performance at target/.lsp/compiled/models/marts/fct_campaign_performance.sql
+03:51:13.019079 [info ]:  Succeeded [-------] model dbt_test.fct_campaign_performance (mat_view)
+03:51:13.019086 [debug]: Compiled SQL for node analysis.nextgen_marketing_ssot.campaign_efficiency at target/.lsp/compiled/analyses/campaign_efficiency.sql
+03:51:13.019099 [debug]: Finished rendering [  0.00s] model dbt_test.fct_campaign_performance [success]
+03:51:13.019116 [info ]:  Succeeded [-------] analysis dbt_test.campaign_efficiency (analysis)
+03:51:13.019125 [debug]: Finished rendering [  0.00s] analysis dbt_test.campaign_efficiency [success]
+03:51:13.019173 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.stg_campaigns at target/.lsp/compiled/models/staging/stg_campaigns.sql
+03:51:13.019196 [info ]:  Succeeded [-------] model dbt_test.stg_campaigns (view)
+03:51:13.019206 [debug]: Finished rendering [  0.00s] model dbt_test.stg_campaigns [success]
+03:51:13.019233 [debug]: Compiled SQL for node snapshot.nextgen_marketing_ssot.snap_campaign_budget at target/.lsp/compiled/snapshots/snap_campaign_budget.sql
+03:51:13.019269 [info ]:  Succeeded [-------] snapshot dbt_test_snapshots.snap_campaign_budget (table)
+03:51:13.019287 [debug]: Finished rendering [  0.00s] snapshot dbt_test_snapshots.snap_campaign_budget [success]
+03:51:13.019295 [info ]: Finished rendering [  0.00s] (4 nodes, 0 skipped, 0 errors)
+03:51:13.024143 [info ]: Cached model count updated: 2 models (accurate)
+03:51:20.332868 [info ]: Cached model count updated: 2 models (accurate)
+03:51:20.500434 [info ]: Waiting for lease on 'target' directory
+03:51:20.905364 [info ]: Started loading project
+03:51:20.905603 [info ]: Loading ~/.dbt/profiles.yml
+03:51:20.907263 [info ]: Started loading project
+03:51:20.907454 [info ]: Loading ~/.dbt/profiles.yml
+03:51:20.907509 [info ]: Finished loading project [  0.00s]
+03:51:20.913652 [debug]:    Started loading packages
+03:51:20.914276 [debug]:     Loaded [  0.00s] packages
+03:51:20.914924 [info ]: Started parsing
+03:51:20.943018 [info ]: Finished loading project [  0.04s]
+03:51:20.943721 [debug]: Finished parsing models/marts/fct_campaign_performance.yml [  0.00s]
+03:51:20.943870 [debug]: Finished parsing models/staging/src_marketing.yml [  0.00s]
+03:51:20.943982 [debug]: Finished parsing models/staging/stg_campaigns.yml [  0.00s]
+03:51:20.944063 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+03:51:20.946731 [debug]: Finished parsing target/snapshots/snap_campaign_budget.sql [  0.00s]
+03:51:20.947970 [debug]: Finished parsing models/marts/fct_campaign_performance.sql [  0.00s]
+03:51:20.950320 [debug]: Finished parsing models/staging/stg_campaigns.sql [  0.00s]
+03:51:20.951382 [debug]: Finished parsing analyses/campaign_efficiency.sql [  0.00s]
+03:51:20.951888 [debug]: Finished parsing tests/assert_non_negative_metrics.sql [  0.00s]
+03:51:20.952379 [debug]: Finished parsing target/generic_tests/source_not_null_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:51:20.952843 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:51:20.953476 [debug]: Finished parsing target/generic_tests/unique_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:51:20.954601 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_cpc.sql [  0.00s]
+03:51:20.955378 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_ctr.sql [  0.00s]
+03:51:20.956272 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_campaign_id.sql [  0.00s]
+03:51:20.957199 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_event_date.sql [  0.00s]
+03:51:20.957776 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_spend.sql [  0.00s]
+03:51:20.958173 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_id.sql [  0.00s]
+03:51:20.958550 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_name.sql [  0.00s]
+03:51:20.958932 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_channel.sql [  0.00s]
+03:51:20.959346 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_clicks.sql [  0.00s]
+03:51:20.959761 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_event_date.sql [  0.00s]
+03:51:20.960195 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_impressions.sql [  0.00s]
+03:51:20.965589 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_spend.sql [  0.01s]
+03:51:20.966099 [info ]: Finished parsing [  0.05s]
+03:51:20.966214 [info ]: Cached model count updated: 2 models (estimate)
+03:51:20.966224 [info ]: Cached model count updated: 2 models (accurate)
+03:51:20.966254 [info ]: Started scheduling
+03:51:20.966341 [info ]: Finished scheduling [  0.00s]
+03:51:20.966357 [info ]: Started scheduling
+03:51:20.966409 [info ]: Finished scheduling [  0.00s]
+03:51:20.966447 [debug]: Initializing schema store with entry: Selected("snapshot.nextgen_marketing_ssot.snap_campaign_budget") and interval: None
+03:51:20.966459 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "raw_marketing", table: "campaigns" }) and interval: None
+03:51:20.967008 [info ]: Started deferring state
+03:51:20.967022 [info ]: Finished deferring state [  0.00s]
+03:51:20.967481 [info ]: Started downloading schemas
+03:51:22.385225 [warn ]: dbt1014: Failed to download source schema for 'source.nextgen_marketing_ssot.raw_marketing.campaigns'. Setting 'static_analysis' to off. Skipping analysis for 'model.nextgen_marketing_ssot.stg_campaigns', 'test.nextgen_marketing_ssot.source_not_null_raw_marketing_campaigns_campaign_id.2a14dfa5e5': [BigQuery] googleapi: Error 404: Not found: Dataset bigquery-testing-489807:raw_marketing, notFound
+03:51:22.534532 [info ]: Started building task graph
+03:51:22.534636 [info ]: Finished building task graph [  0.00s]
+03:51:22.534778 [info ]: Started rendering (5 nodes)
+03:51:22.534791 [info ]: Started snapshot dbt_test_snapshots.snap_campaign_budget
+03:51:22.534800 [debug]: Started rendering snapshot dbt_test_snapshots.snap_campaign_budget
+03:51:22.534817 [info ]: Started seed dbt_test.seed_campaign_targets
+03:51:22.534822 [debug]: Started rendering seed dbt_test.seed_campaign_targets
+03:51:22.534830 [info ]: Started analysis dbt_test.campaign_efficiency
+03:51:22.534835 [debug]: Started rendering analysis dbt_test.campaign_efficiency
+03:51:22.534846 [info ]: Started model dbt_test.fct_campaign_performance
+03:51:22.534851 [debug]: Started rendering model dbt_test.fct_campaign_performance
+03:51:22.534881 [info ]: Started model dbt_test.stg_campaigns
+03:51:22.534886 [debug]: Started rendering model dbt_test.stg_campaigns
+03:51:22.534892 [info ]: Finished downloading schemas [  1.57s]
+03:51:22.535548 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.stg_campaigns at target/.lsp/compiled/models/staging/stg_campaigns.sql
+03:51:22.535543 [debug]: Compiled SQL for node analysis.nextgen_marketing_ssot.campaign_efficiency at target/.lsp/compiled/analyses/campaign_efficiency.sql
+03:51:22.535554 [debug]: Compiled SQL for node snapshot.nextgen_marketing_ssot.snap_campaign_budget at target/.lsp/compiled/snapshots/snap_campaign_budget.sql
+03:51:22.535590 [info ]:  Succeeded [-------] analysis dbt_test.campaign_efficiency (analysis)
+03:51:22.535612 [debug]: Finished rendering [  0.00s] analysis dbt_test.campaign_efficiency [success]
+03:51:22.535631 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.fct_campaign_performance at target/.lsp/compiled/models/marts/fct_campaign_performance.sql
+03:51:22.535638 [info ]:  Succeeded [-------] model dbt_test.stg_campaigns (view)
+03:51:22.535649 [debug]: Finished rendering [  0.00s] model dbt_test.stg_campaigns [success]
+03:51:22.535662 [info ]:  Succeeded [-------] snapshot dbt_test_snapshots.snap_campaign_budget (table)
+03:51:22.535672 [debug]: Finished rendering [  0.00s] snapshot dbt_test_snapshots.snap_campaign_budget [success]
+03:51:22.535686 [info ]:  Succeeded [-------] model dbt_test.fct_campaign_performance (mat_view)
+03:51:22.535695 [debug]: Finished rendering [  0.00s] model dbt_test.fct_campaign_performance [success]
+03:51:22.535829 [debug]: Finished rendering [  0.00s] seed dbt_test.seed_campaign_targets [success]
+03:51:22.535839 [info ]: Finished rendering [  0.00s] (5 nodes, 0 skipped, 0 errors)
+03:51:22.535853 [info ]: Started analyzing (1 nodes)
+03:51:22.535860 [debug]: Started analyzing seed dbt_test.seed_campaign_targets
+03:51:22.535889 [info ]:  Succeeded [  0.00s] seed  dbt_test.seed_campaign_targets (table)
+03:51:22.535902 [debug]: Finished analyzing [  0.00s] seed dbt_test.seed_campaign_targets [success]
+03:51:22.535908 [info ]: Finished analyzing [  0.00s] (1 nodes, 0 skipped, 0 errors)
+03:51:22.542208 [info ]: Cached model count updated: 2 models (accurate)
+03:51:32.322677 [info ]: Loading ~/.dbt/profiles.yml
+03:51:32.449042 [info ]: Started loading project
+03:51:32.449309 [info ]: Loading ~/.dbt/profiles.yml
+03:51:32.451768 [info ]: Started loading project
+03:51:32.452206 [info ]: Loading ~/.dbt/profiles.yml
+03:51:32.452280 [info ]: Finished loading project [  0.00s]
+03:51:32.459600 [debug]:    Started loading packages
+03:51:32.460328 [debug]:     Loaded [  0.00s] packages
+03:51:32.461185 [info ]: Started parsing
+03:51:32.490977 [info ]: Finished loading project [  0.04s]
+03:51:32.491487 [debug]: Finished parsing models/marts/fct_campaign_performance.yml [  0.00s]
+03:51:32.491683 [debug]: Finished parsing models/staging/src_marketing.yml [  0.00s]
+03:51:32.491857 [debug]: Finished parsing models/staging/stg_campaigns.yml [  0.00s]
+03:51:32.491988 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+03:51:32.494999 [debug]: Finished parsing target/snapshots/snap_campaign_budget.sql [  0.00s]
+03:51:32.496287 [debug]: Finished parsing models/marts/fct_campaign_performance.sql [  0.00s]
+03:51:32.498581 [debug]: Finished parsing models/staging/stg_campaigns.sql [  0.00s]
+03:51:32.499527 [debug]: Finished parsing analyses/campaign_efficiency.sql [  0.00s]
+03:51:32.499816 [debug]: Finished parsing tests/assert_non_negative_metrics.sql [  0.00s]
+03:51:32.500246 [debug]: Finished parsing target/generic_tests/source_not_null_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:51:32.500620 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:51:32.501051 [debug]: Finished parsing target/generic_tests/unique_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:51:32.501478 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_cpc.sql [  0.00s]
+03:51:32.501939 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_ctr.sql [  0.00s]
+03:51:32.502348 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_campaign_id.sql [  0.00s]
+03:51:32.502766 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_event_date.sql [  0.00s]
+03:51:32.503153 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_spend.sql [  0.00s]
+03:51:32.503553 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_id.sql [  0.00s]
+03:51:32.503956 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_name.sql [  0.00s]
+03:51:32.504341 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_channel.sql [  0.00s]
+03:51:32.504734 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_clicks.sql [  0.00s]
+03:51:32.505108 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_event_date.sql [  0.00s]
+03:51:32.505456 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_impressions.sql [  0.00s]
+03:51:32.510324 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_spend.sql [  0.00s]
+03:51:32.510808 [info ]: Finished parsing [  0.05s]
+03:51:32.510920 [info ]: Cached model count updated: 2 models (estimate)
+03:51:32.510930 [info ]: Cached model count updated: 2 models (accurate)
+03:51:32.510958 [info ]: Started scheduling
+03:51:32.511039 [info ]: Finished scheduling [  0.00s]
+03:51:32.511054 [info ]: Started scheduling
+03:51:32.511097 [info ]: Finished scheduling [  0.00s]
+03:51:32.511130 [debug]: Initializing schema store with entry: Selected("snapshot.nextgen_marketing_ssot.snap_campaign_budget") and interval: None
+03:51:32.511143 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "raw_marketing", table: "campaigns" }) and interval: None
+03:51:32.511677 [info ]: Started deferring state
+03:51:32.511691 [info ]: Finished deferring state [  0.00s]
+03:51:32.512091 [info ]: Started downloading schemas
+03:51:33.731654 [warn ]: dbt1014: Failed to download source schema for 'source.nextgen_marketing_ssot.raw_marketing.campaigns'. Setting 'static_analysis' to off. Skipping analysis for 'model.nextgen_marketing_ssot.stg_campaigns', 'test.nextgen_marketing_ssot.source_not_null_raw_marketing_campaigns_campaign_id.2a14dfa5e5': [BigQuery] googleapi: Error 404: Not found: Dataset bigquery-testing-489807:raw_marketing, notFound
+03:51:33.877106 [info ]: Started building task graph
+03:51:33.877192 [info ]: Finished building task graph [  0.00s]
+03:51:33.877300 [info ]: Started rendering (5 nodes)
+03:51:33.877316 [info ]: Started snapshot dbt_test_snapshots.snap_campaign_budget
+03:51:33.877325 [debug]: Started rendering snapshot dbt_test_snapshots.snap_campaign_budget
+03:51:33.877345 [info ]: Started seed dbt_test.seed_campaign_targets
+03:51:33.877350 [debug]: Started rendering seed dbt_test.seed_campaign_targets
+03:51:33.877361 [info ]: Started analysis dbt_test.campaign_efficiency
+03:51:33.877368 [debug]: Started rendering analysis dbt_test.campaign_efficiency
+03:51:33.877378 [info ]: Started model dbt_test.fct_campaign_performance
+03:51:33.877404 [debug]: Started rendering model dbt_test.fct_campaign_performance
+03:51:33.877428 [info ]: Started model dbt_test.stg_campaigns
+03:51:33.877432 [debug]: Started rendering model dbt_test.stg_campaigns
+03:51:33.877479 [info ]: Finished downloading schemas [  1.37s]
+03:51:33.878555 [debug]: Compiled SQL for node analysis.nextgen_marketing_ssot.campaign_efficiency at target/.lsp/compiled/analyses/campaign_efficiency.sql
+03:51:33.878568 [debug]: Finished rendering [  0.00s] seed dbt_test.seed_campaign_targets [success]
+03:51:33.878597 [info ]: Started analyzing (1 nodes)
+03:51:33.878611 [debug]: Started analyzing seed dbt_test.seed_campaign_targets
+03:51:33.878617 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.fct_campaign_performance at target/.lsp/compiled/models/marts/fct_campaign_performance.sql
+03:51:33.878633 [debug]: Compiled SQL for node snapshot.nextgen_marketing_ssot.snap_campaign_budget at target/.lsp/compiled/snapshots/snap_campaign_budget.sql
+03:51:33.878678 [info ]:  Succeeded [  0.00s] seed  dbt_test.seed_campaign_targets (table)
+03:51:33.878692 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.stg_campaigns at target/.lsp/compiled/models/staging/stg_campaigns.sql
+03:51:33.878700 [debug]: Finished analyzing [  0.00s] seed dbt_test.seed_campaign_targets [success]
+03:51:33.878708 [info ]: Finished analyzing [  0.00s] (1 nodes, 0 skipped, 0 errors)
+03:51:33.878726 [info ]:  Succeeded [  0.00s] model dbt_test.fct_campaign_performance (mat_view)
+03:51:33.878745 [info ]:  Succeeded [  0.00s] snapshot dbt_test_snapshots.snap_campaign_budget (table)
+03:51:33.878763 [info ]:  Succeeded [  0.00s] analysis dbt_test.campaign_efficiency (analysis)
+03:51:33.878757 [debug]: Finished rendering [  0.00s] model dbt_test.fct_campaign_performance [success]
+03:51:33.878773 [debug]: Finished rendering [  0.00s] analysis dbt_test.campaign_efficiency [success]
+03:51:33.878788 [info ]:  Succeeded [  0.00s] model dbt_test.stg_campaigns (view)
+03:51:33.878803 [debug]: Finished rendering [  0.00s] snapshot dbt_test_snapshots.snap_campaign_budget [success]
+03:51:33.878840 [debug]: Finished rendering [  0.00s] model dbt_test.stg_campaigns [success]
+03:51:33.878850 [info ]: Finished rendering [  0.00s] (5 nodes, 0 skipped, 0 errors)
+03:51:33.883480 [info ]: Cached model count updated: 2 models (accurate)
+03:52:36.175488 [info ]: Cached model count updated: 2 models (accurate)
+03:52:36.201871 [info ]: Loading ~/.dbt/profiles.yml
+03:52:36.203609 [info ]: Waiting for lease on 'target' directory
+03:52:36.713147 [info ]: Cached model count updated: 2 models (accurate)
+03:52:36.879912 [info ]: Waiting for lease on 'target' directory
+03:52:37.231662 [info ]: Started loading project
+03:52:37.231942 [info ]: Loading ~/.dbt/profiles.yml
+03:52:37.234358 [info ]: Started loading project
+03:52:37.234592 [info ]: Loading ~/.dbt/profiles.yml
+03:52:37.234634 [info ]: Finished loading project [  0.00s]
+03:52:37.243957 [debug]:    Started loading packages
+03:52:37.244968 [debug]:     Loaded [  0.00s] packages
+03:52:37.246101 [info ]: Started parsing
+03:52:37.281878 [info ]: Finished loading project [  0.05s]
+03:52:37.282545 [debug]: Finished parsing models/marts/fct_campaign_performance.yml [  0.00s]
+03:52:37.282753 [debug]: Finished parsing models/staging/src_marketing.yml [  0.00s]
+03:52:37.282892 [debug]: Finished parsing models/staging/stg_campaigns.yml [  0.00s]
+03:52:37.282989 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+03:52:37.285815 [debug]: Finished parsing target/snapshots/snap_campaign_budget.sql [  0.00s]
+03:52:37.287555 [debug]: Finished parsing models/marts/fct_campaign_performance.sql [  0.00s]
+03:52:37.290575 [debug]: Finished parsing models/staging/stg_campaigns.sql [  0.00s]
+03:52:37.291929 [debug]: Finished parsing analyses/campaign_efficiency.sql [  0.00s]
+03:52:37.292372 [debug]: Finished parsing tests/assert_non_negative_metrics.sql [  0.00s]
+03:52:37.292937 [debug]: Finished parsing target/generic_tests/source_not_null_raw_marketing_campaigns_campaign_id.sql [  0.00s]
+03:52:37.293373 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:52:37.293799 [debug]: Finished parsing target/generic_tests/unique_seed_campaign_targets_campaign_id.sql [  0.00s]
+03:52:37.294259 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_cpc.sql [  0.00s]
+03:52:37.294791 [debug]: Finished parsing target/generic_tests/not_null_seed_campaign_targets_target_ctr.sql [  0.00s]
+03:52:37.295247 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_campaign_id.sql [  0.00s]
+03:52:37.295702 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_event_date.sql [  0.00s]
+03:52:37.296134 [debug]: Finished parsing target/generic_tests/not_null_fct_campaign_performance_spend.sql [  0.00s]
+03:52:37.296586 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_id.sql [  0.00s]
+03:52:37.297037 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_campaign_name.sql [  0.00s]
+03:52:37.297479 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_channel.sql [  0.00s]
+03:52:37.297934 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_clicks.sql [  0.00s]
+03:52:37.298380 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_event_date.sql [  0.00s]
+03:52:37.298833 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_impressions.sql [  0.00s]
+03:52:37.304791 [debug]: Finished parsing target/generic_tests/not_null_stg_campaigns_spend.sql [  0.01s]
+03:52:37.305261 [info ]: Finished parsing [  0.06s]
+03:52:37.305380 [info ]: Cached model count updated: 2 models (estimate)
+03:52:37.305391 [info ]: Cached model count updated: 2 models (accurate)
+03:52:37.305422 [info ]: Started scheduling
+03:52:37.305521 [info ]: Finished scheduling [  0.00s]
+03:52:37.305537 [info ]: Started scheduling
+03:52:37.305615 [info ]: Finished scheduling [  0.00s]
+03:52:37.305662 [debug]: Initializing schema store with entry: Selected("snapshot.nextgen_marketing_ssot.snap_campaign_budget") and interval: None
+03:52:37.305678 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "raw_marketing", table: "campaigns" }) and interval: None
+03:52:37.306320 [info ]: Started deferring state
+03:52:37.306335 [info ]: Finished deferring state [  0.00s]
+03:52:37.306840 [info ]: Started downloading schemas
+03:52:38.426053 [warn ]: dbt1014: Failed to download source schema for 'source.nextgen_marketing_ssot.raw_marketing.campaigns'. Setting 'static_analysis' to off. Skipping analysis for 'model.nextgen_marketing_ssot.stg_campaigns', 'test.nextgen_marketing_ssot.source_not_null_raw_marketing_campaigns_campaign_id.2a14dfa5e5': [BigQuery] googleapi: Error 404: Not found: Dataset bigquery-testing-489807:raw_marketing, notFound
+03:52:38.607803 [info ]: Started building task graph
+03:52:38.607883 [info ]: Finished building task graph [  0.00s]
+03:52:38.607978 [info ]: Started rendering (5 nodes)
+03:52:38.607996 [info ]: Started snapshot dbt_test_snapshots.snap_campaign_budget
+03:52:38.608004 [debug]: Started rendering snapshot dbt_test_snapshots.snap_campaign_budget
+03:52:38.608024 [info ]: Started seed dbt_test.seed_campaign_targets
+03:52:38.608029 [debug]: Started rendering seed dbt_test.seed_campaign_targets
+03:52:38.608039 [info ]: Started analysis dbt_test.campaign_efficiency
+03:52:38.608044 [debug]: Started rendering analysis dbt_test.campaign_efficiency
+03:52:38.608052 [info ]: Started model dbt_test.fct_campaign_performance
+03:52:38.608058 [debug]: Started rendering model dbt_test.fct_campaign_performance
+03:52:38.608065 [info ]: Started model dbt_test.stg_campaigns
+03:52:38.608070 [debug]: Started rendering model dbt_test.stg_campaigns
+03:52:38.608081 [info ]: Finished downloading schemas [  1.30s]
+03:52:38.608894 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.fct_campaign_performance at target/.lsp/compiled/models/marts/fct_campaign_performance.sql
+03:52:38.608990 [debug]: Compiled SQL for node analysis.nextgen_marketing_ssot.campaign_efficiency at target/.lsp/compiled/analyses/campaign_efficiency.sql
+03:52:38.608985 [info ]:  Succeeded [-------] model dbt_test.fct_campaign_performance (mat_view)
+03:52:38.609014 [debug]: Finished rendering [  0.00s] seed dbt_test.seed_campaign_targets [success]
+03:52:38.609019 [debug]: Compiled SQL for node snapshot.nextgen_marketing_ssot.snap_campaign_budget at target/.lsp/compiled/snapshots/snap_campaign_budget.sql
+03:52:38.609035 [info ]: Started analyzing (1 nodes)
+03:52:38.609054 [debug]: Compiled SQL for node model.nextgen_marketing_ssot.stg_campaigns at target/.lsp/compiled/models/staging/stg_campaigns.sql
+03:52:38.609052 [debug]: Started analyzing seed dbt_test.seed_campaign_targets
+03:52:38.609099 [debug]: Finished rendering [  0.00s] model dbt_test.fct_campaign_performance [success]
+03:52:38.609109 [info ]:  Succeeded [  0.00s] analysis dbt_test.campaign_efficiency (analysis)
+03:52:38.609124 [debug]: Finished rendering [  0.00s] analysis dbt_test.campaign_efficiency [success]
+03:52:38.609141 [info ]:  Succeeded [  0.00s] snapshot dbt_test_snapshots.snap_campaign_budget (table)
+03:52:38.609153 [debug]: Finished rendering [  0.00s] snapshot dbt_test_snapshots.snap_campaign_budget [success]
+03:52:38.609167 [info ]:  Succeeded [  0.00s] model dbt_test.stg_campaigns (view)
+03:52:38.609178 [debug]: Finished rendering [  0.00s] model dbt_test.stg_campaigns [success]
+03:52:38.609184 [info ]: Finished rendering [  0.00s] (5 nodes, 0 skipped, 0 errors)
+03:52:38.609203 [info ]:  Succeeded [-------] seed  dbt_test.seed_campaign_targets (table)
+03:52:38.609216 [debug]: Finished analyzing [  0.00s] seed dbt_test.seed_campaign_targets [success]
+03:52:38.609223 [info ]: Finished analyzing [  0.00s] (1 nodes, 0 skipped, 0 errors)
+03:52:38.614831 [info ]: Cached model count updated: 2 models (accurate)

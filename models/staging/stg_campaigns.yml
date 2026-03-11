@@ -1,0 +1,27 @@
+version: 2
+
+models:
+    - name: stg_campaigns
+      description: Cleaned campaign dataset for downstream marts.
+      columns:
+          - name: campaign_id
+            tests:
+                - not_null
+          - name: campaign_name
+            tests:
+                - not_null
+          - name: channel
+            tests:
+                - not_null
+          - name: spend
+            tests:
+                - not_null
+          - name: clicks
+            tests:
+                - not_null
+          - name: impressions
+            tests:
+                - not_null
+          - name: event_date
+            tests:
+                - not_null

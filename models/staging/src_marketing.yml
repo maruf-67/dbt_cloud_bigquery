@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+    - name: raw_marketing
+      description: Raw marketing data loaded into BigQuery.
+      database: "{{ target.project }}"
+      schema: "{{ var('raw_marketing_schema', 'raw_marketing') }}"
+      tables:
+          - name: campaigns
+            description: Campaign-level daily performance feed.
+            columns:
+                - name: campaign_id
+                  tests:
+                      - not_null
+                - name: campaign_name
+                - name: channel
+                - name: spend
+                - name: clicks
+                - name: impressions
+                - name: event_date

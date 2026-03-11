@@ -1,8 +1,8 @@
-name: 'nextgen_marketing_ssot'
-version: '1.0.0'
+name: "nextgen_marketing_ssot"
+version: "1.0.0"
 config-version: 2
 
-profile: 'default'
+profile: "default"
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -13,14 +13,17 @@ snapshot-paths: ["snapshots"]
 
 target-path: "target"
 clean-targets:
-  - "target"
-  - "dbt_packages"
+    - "target"
+    - "dbt_packages"
+
+vars:
+    raw_marketing_schema: "raw_marketing"
 
 models:
-  nextgen_marketing_ssot:
-    # Phase 3: Modeling Base Tables
-    staging:
-      +materialized: view
-    # Phase 4: Visualization Outputs
-    marts:
-      +materialized: materialized_view
+    nextgen_marketing_ssot:
+        # Phase 3: Modeling Base Tables
+        staging:
+            +materialized: view
+        # Phase 4: Visualization Outputs
+        marts:
+            +materialized: materialized_view

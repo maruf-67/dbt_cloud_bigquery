@@ -1,0 +1,16 @@
+version: 2
+
+seeds:
+    - name: seed_campaign_targets
+      description: Performance targets used for campaign benchmarking.
+      columns:
+          - name: campaign_id
+            tests:
+                - not_null
+                - unique
+          - name: target_cpc
+            tests:
+                - not_null
+          - name: target_ctr
+            tests:
+                - not_null
