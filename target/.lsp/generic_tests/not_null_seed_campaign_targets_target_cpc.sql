@@ -1,1 +1,0 @@
-{{ test_not_null(column_name="target_cpc", model=get_where_subquery(ref('seed_campaign_targets'))) }}

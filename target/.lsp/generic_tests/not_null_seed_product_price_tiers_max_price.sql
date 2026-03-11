@@ -1,1 +1,0 @@
-{{ test_not_null(column_name="max_price", model=get_where_subquery(ref('seed_product_price_tiers'))) }}
