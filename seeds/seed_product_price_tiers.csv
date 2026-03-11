@@ -1,0 +1,10 @@
+category,min_price,max_price,tier_label
+Electronics,0,100,Budget
+Electronics,100,500,Mid-range
+Electronics,500,99999,Premium
+Clothing,0,50,Budget
+Clothing,50,200,Mid-range
+Clothing,200,99999,Premium
+Books,0,20,Budget
+Books,20,60,Mid-range
+Books,60,99999,Premium

@@ -1,4 +1,4 @@
-name: "nextgen_marketing_ssot"
+name: "ecommerce_analytics"
 version: "1.0.0"
 config-version: 2
 
@@ -17,13 +17,11 @@ clean-targets:
     - "dbt_packages"
 
 vars:
-    raw_marketing_schema: "raw_marketing"
+    ecommerce_schema: "dbt_test"
 
 models:
-    nextgen_marketing_ssot:
-        # Phase 3: Modeling Base Tables
+    ecommerce_analytics:
         staging:
             +materialized: view
-        # Phase 4: Visualization Outputs
         marts:
             +materialized: materialized_view

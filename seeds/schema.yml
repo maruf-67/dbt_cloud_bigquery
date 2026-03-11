@@ -1,16 +1,18 @@
 version: 2
 
 seeds:
-    - name: seed_campaign_targets
-      description: Performance targets used for campaign benchmarking.
+    - name: seed_product_price_tiers
+      description: Price tier classification thresholds per product category.
       columns:
-          - name: campaign_id
+          - name: category
             tests:
                 - not_null
-                - unique
-          - name: target_cpc
+          - name: min_price
             tests:
                 - not_null
-          - name: target_ctr
+          - name: max_price
+            tests:
+                - not_null
+          - name: tier_label
             tests:
                 - not_null

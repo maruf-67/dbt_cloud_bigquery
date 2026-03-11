@@ -1,0 +1,19 @@
+version: 2
+
+models:
+    - name: stg_products
+      description: Cleaned and typed product records from source.
+      columns:
+          - name: product_id
+            tests:
+                - not_null
+                - unique
+          - name: product_name
+            tests:
+                - not_null
+          - name: category
+            tests:
+                - not_null
+          - name: price
+            tests:
+                - not_null

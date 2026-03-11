@@ -1,0 +1,1 @@
+{{ test_not_null(column_name="min_price", model=get_where_subquery(ref('seed_product_price_tiers'))) }}
