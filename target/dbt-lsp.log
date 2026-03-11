@@ -2346,3 +2346,822 @@
 04:39:09.261373 [info ]: Started building task graph
 04:39:09.261448 [info ]: Finished building task graph [  0.00s]
 04:39:09.265900 [info ]: Cached model count updated: 7 models (accurate)
+05:11:13.660082 [info ]: Loading ~/.dbt/profiles.yml
+05:11:13.745612 [info ]: Started loading project
+05:11:13.745896 [info ]: Loading ~/.dbt/profiles.yml
+05:11:13.747881 [info ]: Started loading project
+05:11:13.748070 [info ]: Loading ~/.dbt/profiles.yml
+05:11:13.748130 [info ]: Finished loading project [  0.00s]
+05:11:13.754610 [debug]:    Started loading packages
+05:11:13.755399 [debug]:     Loaded [  0.00s] packages
+05:11:13.756159 [info ]: Started parsing
+05:11:13.779218 [info ]: Finished loading project [  0.03s]
+05:11:13.779779 [debug]: Finished parsing models/marts/schema.yml [  0.00s]
+05:11:13.780087 [debug]: Finished parsing models/staging/src_ecommerce.yml [  0.00s]
+05:11:13.780208 [debug]: Finished parsing models/staging/stg_customers.yml [  0.00s]
+05:11:13.780343 [debug]: Finished parsing models/staging/stg_orders.yml [  0.00s]
+05:11:13.780439 [debug]: Finished parsing models/staging/stg_products.yml [  0.00s]
+05:11:13.780531 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+05:11:13.785839 [debug]: Finished parsing target/snapshots/snap_product_prices.sql [  0.00s]
+05:11:13.786934 [debug]: Finished parsing models/marts/dim_customers.sql [  0.00s]
+05:11:13.787339 [debug]: Finished parsing models/marts/dim_products.sql [  0.00s]
+05:11:13.788000 [debug]: Finished parsing models/marts/fct_customer_orders.sql [  0.00s]
+05:11:13.788436 [debug]: Finished parsing models/marts/fct_orders.sql [  0.00s]
+05:11:13.788860 [debug]: Finished parsing models/staging/stg_customers.sql [  0.00s]
+05:11:13.789254 [debug]: Finished parsing models/staging/stg_orders.sql [  0.00s]
+05:11:13.796926 [debug]: Finished parsing models/staging/stg_products.sql [  0.01s]
+05:11:13.797370 [debug]: Finished parsing analyses/customer_ltv_ranking.sql [  0.00s]
+05:11:13.798566 [debug]: Finished parsing analyses/revenue_by_category.sql [  0.00s]
+05:11:13.799337 [debug]: Finished parsing target/generic_tests/relationships_stg_orders_25711d7165ca7dae190829aae03ddf38.sql [  0.00s]
+05:11:13.799406 [debug]: Finished parsing target/generic_tests/not_null_dim_products_product_name.sql [  0.00s]
+05:11:13.799468 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_order_id.sql [  0.00s]
+05:11:13.800189 [debug]: Finished parsing tests/assert_positive_quantity.sql [  0.00s]
+05:11:13.800260 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_customer_id.sql [  0.00s]
+05:11:13.800291 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_products_product_id.sql [  0.00s]
+05:11:13.800326 [debug]: Finished parsing target/generic_tests/not_null_fct_customer_orders_customer_id.sql [  0.00s]
+05:11:13.800335 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_product_id.sql [  0.00s]
+05:11:13.800399 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_orders_order_id.sql [  0.00s]
+05:11:13.801140 [debug]: Finished parsing target/generic_tests/unique_dim_customers_customer_id.sql [  0.00s]
+05:11:13.801187 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_customer_name.sql [  0.00s]
+05:11:13.801196 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_quantity.sql [  0.00s]
+05:11:13.801213 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_quantity.sql [  0.00s]
+05:11:13.801310 [debug]: Finished parsing target/generic_tests/unique_fct_customer_orders_customer_id.sql [  0.00s]
+05:11:13.801321 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_product_name.sql [  0.00s]
+05:11:13.801445 [debug]: Finished parsing target/generic_tests/not_null_stg_products_category.sql [  0.00s]
+05:11:13.802026 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_total_revenue.sql [  0.00s]
+05:11:13.802041 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_category.sql [  0.00s]
+05:11:13.802055 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_customer_name.sql [  0.00s]
+05:11:13.802089 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_customer_id.sql [  0.00s]
+05:11:13.802123 [debug]: Finished parsing target/generic_tests/not_null_stg_products_price.sql [  0.00s]
+05:11:13.802189 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_product_id.sql [  0.00s]
+05:11:13.802204 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_customer_id.sql [  0.00s]
+05:11:13.802223 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_city.sql [  0.00s]
+05:11:13.802351 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_customer_id.sql [  0.00s]
+05:11:13.802914 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_customers_customer_id.sql [  0.00s]
+05:11:13.803666 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_unit_price.sql [  0.00s]
+05:11:13.803687 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_order_date.sql [  0.00s]
+05:11:13.803701 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_max_price.sql [  0.00s]
+05:11:13.803719 [debug]: Finished parsing target/generic_tests/not_null_stg_products_product_id.sql [  0.00s]
+05:11:13.803728 [debug]: Finished parsing target/generic_tests/not_null_dim_products_category.sql [  0.00s]
+05:11:13.803797 [debug]: Finished parsing target/generic_tests/relationships_stg_orders_96411fe0c89b49c3f4da955dfd358ba0.sql [  0.00s]
+05:11:13.804639 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_name.sql [  0.00s]
+05:11:13.804659 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_order_id.sql [  0.00s]
+05:11:13.804681 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_min_price.sql [  0.00s]
+05:11:13.804692 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_quantity.sql [  0.00s]
+05:11:13.804700 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_city.sql [  0.00s]
+05:11:13.804861 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_category.sql [  0.00s]
+05:11:13.804877 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_order_date.sql [  0.00s]
+05:11:13.805308 [debug]: Finished parsing target/generic_tests/unique_fct_orders_order_id.sql [  0.00s]
+05:11:13.805324 [debug]: Finished parsing target/generic_tests/not_null_dim_products_price.sql [  0.00s]
+05:11:13.805335 [debug]: Finished parsing target/generic_tests/unique_stg_products_product_id.sql [  0.00s]
+05:11:13.805508 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_order_id.sql [  0.00s]
+05:11:13.805507 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_customer_id.sql [  0.00s]
+05:11:13.805546 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_price.sql [  0.00s]
+05:11:13.805723 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_tier_label.sql [  0.00s]
+05:11:13.805740 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_customer_id.sql [  0.00s]
+05:11:13.805990 [debug]: Finished parsing target/generic_tests/not_null_dim_products_product_id.sql [  0.00s]
+05:11:13.806075 [debug]: Finished parsing target/generic_tests/unique_stg_orders_order_id.sql [  0.00s]
+05:11:13.806096 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_product_id.sql [  0.00s]
+05:11:13.806418 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_city.sql [  0.00s]
+05:11:13.806525 [debug]: Finished parsing target/generic_tests/unique_stg_customers_customer_id.sql [  0.00s]
+05:11:13.806546 [debug]: Finished parsing target/generic_tests/unique_dim_products_product_id.sql [  0.00s]
+05:11:13.806633 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_product_id.sql [  0.00s]
+05:11:13.806662 [debug]: Finished parsing target/generic_tests/not_null_stg_products_product_name.sql [  0.00s]
+05:11:13.806733 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_order_date.sql [  0.00s]
+05:11:13.824211 [info ]: Finished parsing [  0.07s]
+05:11:13.829619 [info ]: DOWNLOADING deferral manifest
+05:11:14.838569 [warn ]: dbt1203: Failed to request deferral manifest from the dbt platform for project 70471823562719, continuing without deferral. HTTP status 404 Not Found: No deferral environment defined for project with ID 70471823562719
+05:11:14.839173 [info ]: Cached model count updated: 7 models (estimate)
+05:11:14.839231 [info ]: Cached model count updated: 7 models (accurate)
+05:11:14.839783 [info ]: Started scheduling
+05:11:14.840970 [info ]: Finished scheduling [  0.00s]
+05:11:14.841111 [info ]: Started scheduling
+05:11:14.841938 [info ]: Finished scheduling [  0.00s]
+05:11:14.842194 [debug]: Initializing schema store with entry: Selected("snapshot.ecommerce_analytics.snap_product_prices") and interval: None
+05:11:14.842265 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "products" }) and interval: None
+05:11:14.842419 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "customers" }) and interval: None
+05:11:14.842462 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "orders" }) and interval: None
+05:11:14.845501 [info ]: Started deferring state
+05:11:14.845699 [info ]: DOWNLOADING deferral manifest
+05:11:15.961410 [warn ]: dbt1203: Failed to request deferral manifest from the dbt platform for project 70471823562719, continuing without deferral. HTTP status 404 Not Found: No deferral environment defined for project with ID 70471823562719
+05:11:15.961678 [info ]: Finished deferring state [  1.12s]
+05:11:15.963772 [info ]: Started downloading schemas
+05:11:18.373847 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.customers'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_customers', 'test.ecommerce_analytics.source_not_null_ecommerce_customers_city.1088a01e6e' and 3 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.customers: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.customers (or it may not exist)., accessDenied
+05:11:18.374080 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.orders'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_orders', 'test.ecommerce_analytics.source_not_null_ecommerce_orders_customer_id.6e262b0062' and 5 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.orders: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.orders (or it may not exist)., accessDenied
+05:11:18.374281 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.products'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_products', 'test.ecommerce_analytics.source_not_null_ecommerce_products_category.b18efb4a5e' and 4 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.products: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.products (or it may not exist)., accessDenied
+05:11:18.543856 [info ]: Started building task graph
+05:11:18.544018 [info ]: Finished building task graph [  0.00s]
+05:11:18.544136 [info ]: Started rendering (11 nodes)
+05:11:18.544149 [info ]: Started snapshot dbt_test_snapshots.snap_product_prices
+05:11:18.544157 [debug]: Started rendering snapshot dbt_test_snapshots.snap_product_prices
+05:11:18.544176 [info ]: Started seed dbt_test.seed_product_price_tiers
+05:11:18.544181 [debug]: Started rendering seed dbt_test.seed_product_price_tiers
+05:11:18.544189 [info ]: Started model dbt_test.dim_products
+05:11:18.544196 [debug]: Started rendering model dbt_test.dim_products
+05:11:18.544203 [info ]: Started analysis dbt_test.revenue_by_category
+05:11:18.544208 [debug]: Started rendering analysis dbt_test.revenue_by_category
+05:11:18.544211 [info ]: Finished downloading schemas [  2.58s]
+05:11:18.544216 [info ]: Started analysis dbt_test.customer_ltv_ranking
+05:11:18.544221 [debug]: Started rendering analysis dbt_test.customer_ltv_ranking
+05:11:18.544228 [info ]: Started model dbt_test.fct_customer_orders
+05:11:18.544232 [debug]: Started rendering model dbt_test.fct_customer_orders
+05:11:18.544253 [info ]: Started model dbt_test.fct_orders
+05:11:18.544265 [debug]: Started rendering model dbt_test.fct_orders
+05:11:18.544278 [info ]: Started model dbt_test.stg_products
+05:11:18.544285 [debug]: Started rendering model dbt_test.stg_products
+05:11:18.544298 [info ]: Started model dbt_test.stg_orders
+05:11:18.544305 [debug]: Started rendering model dbt_test.stg_orders
+05:11:18.544316 [info ]: Started model dbt_test.dim_customers
+05:11:18.544323 [debug]: Started rendering model dbt_test.dim_customers
+05:11:18.544332 [info ]: Started model dbt_test.stg_customers
+05:11:18.544337 [debug]: Started rendering model dbt_test.stg_customers
+05:11:18.545162 [debug]: Compiled SQL for node model.ecommerce_analytics.fct_customer_orders at target/.lsp/compiled/models/marts/fct_customer_orders.sql
+05:11:18.545180 [debug]: Compiled SQL for node analysis.ecommerce_analytics.customer_ltv_ranking at target/.lsp/compiled/analyses/customer_ltv_ranking.sql
+05:11:18.545224 [info ]:  Succeeded [-------] model dbt_test.fct_customer_orders (table)
+05:11:18.545248 [info ]:  Succeeded [  0.00s] analysis dbt_test.customer_ltv_ranking (analysis)
+05:11:18.545260 [debug]: Finished rendering [  0.00s] analysis dbt_test.customer_ltv_ranking [success]
+05:11:18.545277 [debug]: Finished rendering [  0.00s] model dbt_test.fct_customer_orders [success]
+05:11:18.545290 [debug]: Compiled SQL for node analysis.ecommerce_analytics.revenue_by_category at target/.lsp/compiled/analyses/revenue_by_category.sql
+05:11:18.545308 [debug]: Compiled SQL for node model.ecommerce_analytics.dim_products at target/.lsp/compiled/models/marts/dim_products.sql
+05:11:18.545324 [info ]:  Succeeded [  0.00s] analysis dbt_test.revenue_by_category (analysis)
+05:11:18.545347 [debug]: Finished rendering [  0.00s] analysis dbt_test.revenue_by_category [success]
+05:11:18.545363 [debug]: Compiled SQL for node snapshot.ecommerce_analytics.snap_product_prices at target/.lsp/compiled/snapshots/snap_product_prices.sql
+05:11:18.545364 [info ]:  Succeeded [  0.00s] model dbt_test.dim_products (mat_view)
+05:11:18.545376 [debug]: Finished rendering [  0.00s] model dbt_test.dim_products [success]
+05:11:18.545445 [info ]:  Succeeded [  0.00s] snapshot dbt_test_snapshots.snap_product_prices (table)
+05:11:18.545476 [debug]: Finished rendering [  0.00s] snapshot dbt_test_snapshots.snap_product_prices [success]
+05:11:18.546356 [debug]: Compiled SQL for node model.ecommerce_analytics.fct_orders at target/.lsp/compiled/models/marts/fct_orders.sql
+05:11:18.546441 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_products at target/.lsp/compiled/models/staging/stg_products.sql
+05:11:18.546492 [info ]:  Succeeded [  0.00s] model dbt_test.fct_orders (mat_view)
+05:11:18.546522 [debug]: Finished rendering [  0.00s] model dbt_test.fct_orders [success]
+05:11:18.546597 [info ]:  Succeeded [  0.00s] model dbt_test.stg_products (view)
+05:11:18.546643 [debug]: Finished rendering [  0.00s] model dbt_test.stg_products [success]
+05:11:18.546715 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_orders at target/.lsp/compiled/models/staging/stg_orders.sql
+05:11:18.546816 [info ]:  Succeeded [  0.00s] model dbt_test.stg_orders (view)
+05:11:18.546847 [debug]: Finished rendering [  0.00s] model dbt_test.stg_orders [success]
+05:11:18.546925 [debug]: Compiled SQL for node model.ecommerce_analytics.dim_customers at target/.lsp/compiled/models/marts/dim_customers.sql
+05:11:18.547018 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_customers at target/.lsp/compiled/models/staging/stg_customers.sql
+05:11:18.547066 [info ]:  Succeeded [  0.00s] model dbt_test.dim_customers (mat_view)
+05:11:18.547115 [debug]: Finished rendering [  0.00s] model dbt_test.dim_customers [success]
+05:11:18.547148 [info ]:  Succeeded [  0.00s] model dbt_test.stg_customers (view)
+05:11:18.547174 [debug]: Finished rendering [  0.00s] model dbt_test.stg_customers [success]
+05:11:18.547218 [debug]: Finished rendering [  0.00s] seed dbt_test.seed_product_price_tiers [success]
+05:11:18.547236 [info ]: Finished rendering [  0.00s] (11 nodes, 0 skipped, 0 errors)
+05:11:18.547257 [info ]: Started analyzing (1 nodes)
+05:11:18.547268 [debug]: Started analyzing seed dbt_test.seed_product_price_tiers
+05:11:18.547309 [info ]:  Succeeded [  0.00s] seed  dbt_test.seed_product_price_tiers (table)
+05:11:18.547328 [debug]: Finished analyzing [  0.00s] seed dbt_test.seed_product_price_tiers [success]
+05:11:18.547336 [info ]: Finished analyzing [  0.00s] (1 nodes, 0 skipped, 0 errors)
+05:11:18.555339 [info ]: Cached model count updated: 7 models (accurate)
+05:39:49.446513 [info ]: Loading ~/.dbt/profiles.yml
+05:39:49.528362 [info ]: Started loading project
+05:39:49.528795 [info ]: Loading ~/.dbt/profiles.yml
+05:39:49.530424 [info ]: Started loading project
+05:39:49.530597 [info ]: Loading ~/.dbt/profiles.yml
+05:39:49.530629 [info ]: Finished loading project [  0.00s]
+05:39:49.535933 [debug]:    Started loading packages
+05:39:49.536896 [debug]:     Loaded [  0.00s] packages
+05:39:49.537501 [info ]: Started parsing
+05:39:49.558520 [info ]: Finished loading project [  0.03s]
+05:39:49.559432 [debug]: Finished parsing models/marts/schema.yml [  0.00s]
+05:39:49.560060 [debug]: Finished parsing models/staging/src_ecommerce.yml [  0.00s]
+05:39:49.560233 [debug]: Finished parsing models/staging/stg_customers.yml [  0.00s]
+05:39:49.560438 [debug]: Finished parsing models/staging/stg_orders.yml [  0.00s]
+05:39:49.560586 [debug]: Finished parsing models/staging/stg_products.yml [  0.00s]
+05:39:49.560723 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+05:39:49.566050 [debug]: Finished parsing target/snapshots/snap_product_prices.sql [  0.00s]
+05:39:49.567387 [debug]: Finished parsing models/marts/dim_customers.sql [  0.00s]
+05:39:49.567887 [debug]: Finished parsing models/marts/dim_products.sql [  0.00s]
+05:39:49.568525 [debug]: Finished parsing models/marts/fct_customer_orders.sql [  0.00s]
+05:39:49.569038 [debug]: Finished parsing models/marts/fct_orders.sql [  0.00s]
+05:39:49.569561 [debug]: Finished parsing models/staging/stg_customers.sql [  0.00s]
+05:39:49.570024 [debug]: Finished parsing models/staging/stg_orders.sql [  0.00s]
+05:39:49.580128 [debug]: Finished parsing models/staging/stg_products.sql [  0.01s]
+05:39:49.580879 [debug]: Finished parsing analyses/customer_ltv_ranking.sql [  0.00s]
+05:39:49.582467 [debug]: Finished parsing analyses/revenue_by_category.sql [  0.00s]
+05:39:49.583569 [debug]: Finished parsing tests/assert_positive_quantity.sql [  0.00s]
+05:39:49.584120 [debug]: Finished parsing target/generic_tests/relationships_stg_orders_25711d7165ca7dae190829aae03ddf38.sql [  0.00s]
+05:39:49.584197 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_products_product_id.sql [  0.00s]
+05:39:49.584247 [debug]: Finished parsing target/generic_tests/not_null_dim_products_product_name.sql [  0.00s]
+05:39:49.584262 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_customer_name.sql [  0.00s]
+05:39:49.584279 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_customer_id.sql [  0.00s]
+05:39:49.584750 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_product_id.sql [  0.00s]
+05:39:49.584880 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_city.sql [  0.00s]
+05:39:49.584951 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_quantity.sql [  0.00s]
+05:39:49.585559 [debug]: Finished parsing target/generic_tests/not_null_fct_customer_orders_customer_id.sql [  0.00s]
+05:39:49.585714 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_customer_id.sql [  0.00s]
+05:39:49.585966 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_product_name.sql [  0.00s]
+05:39:49.586328 [debug]: Finished parsing target/generic_tests/unique_fct_customer_orders_customer_id.sql [  0.00s]
+05:39:49.586428 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_customer_id.sql [  0.00s]
+05:39:49.586475 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_quantity.sql [  0.00s]
+05:39:49.586489 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_customers_customer_id.sql [  0.00s]
+05:39:49.587236 [debug]: Finished parsing target/generic_tests/relationships_stg_orders_96411fe0c89b49c3f4da955dfd358ba0.sql [  0.00s]
+05:39:49.587364 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_customer_id.sql [  0.00s]
+05:39:49.587489 [debug]: Finished parsing target/generic_tests/not_null_stg_products_category.sql [  0.00s]
+05:39:49.587634 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_order_id.sql [  0.01s]
+05:39:49.587857 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_total_revenue.sql [  0.00s]
+05:39:49.588433 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_orders_order_id.sql [  0.00s]
+05:39:49.588438 [debug]: Finished parsing target/generic_tests/not_null_stg_products_price.sql [  0.00s]
+05:39:49.588473 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_order_date.sql [  0.00s]
+05:39:49.588548 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_order_date.sql [  0.00s]
+05:39:49.588607 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_category.sql [  0.00s]
+05:39:49.589069 [debug]: Finished parsing target/generic_tests/unique_dim_customers_customer_id.sql [  0.01s]
+05:39:49.589233 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_product_id.sql [  0.00s]
+05:39:49.589706 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_max_price.sql [  0.00s]
+05:39:49.589709 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_order_id.sql [  0.00s]
+05:39:49.590332 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_name.sql [  0.00s]
+05:39:49.590364 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_customer_name.sql [  0.00s]
+05:39:49.590417 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_order_id.sql [  0.00s]
+05:39:49.590573 [debug]: Finished parsing target/generic_tests/not_null_stg_products_product_id.sql [  0.00s]
+05:39:49.591163 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_min_price.sql [  0.00s]
+05:39:49.591191 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_unit_price.sql [  0.00s]
+05:39:49.591275 [debug]: Finished parsing target/generic_tests/unique_stg_products_product_id.sql [  0.00s]
+05:39:49.591670 [debug]: Finished parsing target/generic_tests/unique_fct_orders_order_id.sql [  0.00s]
+05:39:49.591673 [debug]: Finished parsing target/generic_tests/not_null_dim_products_category.sql [  0.00s]
+05:39:49.591799 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_tier_label.sql [  0.00s]
+05:39:49.592270 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_customer_id.sql [  0.00s]
+05:39:49.592508 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_city.sql [  0.00s]
+05:39:49.592883 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_quantity.sql [  0.00s]
+05:39:49.592902 [debug]: Finished parsing target/generic_tests/not_null_stg_products_product_name.sql [  0.00s]
+05:39:49.592949 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_order_date.sql [  0.00s]
+05:39:49.593648 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_category.sql [  0.00s]
+05:39:49.594022 [debug]: Finished parsing target/generic_tests/not_null_dim_products_price.sql [  0.00s]
+05:39:49.594301 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_city.sql [  0.00s]
+05:39:49.595031 [debug]: Finished parsing target/generic_tests/not_null_dim_products_product_id.sql [  0.00s]
+05:39:49.595387 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_price.sql [  0.00s]
+05:39:49.595428 [debug]: Finished parsing target/generic_tests/unique_stg_orders_order_id.sql [  0.01s]
+05:39:49.595671 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_customer_id.sql [  0.00s]
+05:39:49.596188 [debug]: Finished parsing target/generic_tests/unique_dim_products_product_id.sql [  0.00s]
+05:39:49.596206 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_product_id.sql [  0.00s]
+05:39:49.596269 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_product_id.sql [  0.00s]
+05:39:49.596288 [debug]: Finished parsing target/generic_tests/unique_stg_customers_customer_id.sql [  0.00s]
+05:39:49.627306 [info ]: Finished parsing [  0.09s]
+05:39:49.627466 [info ]: Cached model count updated: 7 models (estimate)
+05:39:49.627479 [info ]: Cached model count updated: 7 models (accurate)
+05:39:49.627587 [info ]: Started scheduling
+05:39:49.627862 [info ]: Finished scheduling [  0.00s]
+05:39:49.627893 [info ]: Started scheduling
+05:39:49.628098 [info ]: Finished scheduling [  0.00s]
+05:39:49.628167 [debug]: Initializing schema store with entry: Selected("snapshot.ecommerce_analytics.snap_product_prices") and interval: None
+05:39:49.628187 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "orders" }) and interval: None
+05:39:49.628197 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "products" }) and interval: None
+05:39:49.628206 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "customers" }) and interval: None
+05:39:49.629058 [info ]: Started deferring state
+05:39:49.629088 [info ]: Finished deferring state [  0.00s]
+05:39:49.629888 [info ]: Started downloading schemas
+05:39:51.771831 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.customers'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_customers', 'test.ecommerce_analytics.source_not_null_ecommerce_customers_city.1088a01e6e' and 3 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.customers: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.customers (or it may not exist)., accessDenied
+05:39:51.771878 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.orders'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_orders', 'test.ecommerce_analytics.source_not_null_ecommerce_orders_customer_id.6e262b0062' and 5 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.orders: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.orders (or it may not exist)., accessDenied
+05:39:51.771903 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.products'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_products', 'test.ecommerce_analytics.source_not_null_ecommerce_products_category.b18efb4a5e' and 4 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.products: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.products (or it may not exist)., accessDenied
+05:39:51.902220 [info ]: Started building task graph
+05:39:51.902354 [info ]: Finished building task graph [  0.00s]
+05:39:51.902468 [info ]: Started rendering (11 nodes)
+05:39:51.902481 [info ]: Started snapshot dbt_test_snapshots.snap_product_prices
+05:39:51.902489 [debug]: Started rendering snapshot dbt_test_snapshots.snap_product_prices
+05:39:51.902506 [info ]: Started seed dbt_test.seed_product_price_tiers
+05:39:51.902511 [debug]: Started rendering seed dbt_test.seed_product_price_tiers
+05:39:51.902521 [info ]: Started model dbt_test.dim_products
+05:39:51.902530 [debug]: Started rendering model dbt_test.dim_products
+05:39:51.902545 [info ]: Started analysis dbt_test.revenue_by_category
+05:39:51.902546 [info ]: Finished downloading schemas [  2.27s]
+05:39:51.902555 [debug]: Started rendering analysis dbt_test.revenue_by_category
+05:39:51.902568 [info ]: Started analysis dbt_test.customer_ltv_ranking
+05:39:51.902574 [debug]: Started rendering analysis dbt_test.customer_ltv_ranking
+05:39:51.902585 [info ]: Started model dbt_test.fct_customer_orders
+05:39:51.902591 [debug]: Started rendering model dbt_test.fct_customer_orders
+05:39:51.902600 [info ]: Started model dbt_test.fct_orders
+05:39:51.902606 [debug]: Started rendering model dbt_test.fct_orders
+05:39:51.902615 [info ]: Started model dbt_test.stg_products
+05:39:51.902622 [debug]: Started rendering model dbt_test.stg_products
+05:39:51.902638 [info ]: Started model dbt_test.stg_orders
+05:39:51.902643 [debug]: Started rendering model dbt_test.stg_orders
+05:39:51.902651 [info ]: Started model dbt_test.dim_customers
+05:39:51.902657 [debug]: Started rendering model dbt_test.dim_customers
+05:39:51.902667 [info ]: Started model dbt_test.stg_customers
+05:39:51.902673 [debug]: Started rendering model dbt_test.stg_customers
+05:39:51.903723 [debug]: Compiled SQL for node analysis.ecommerce_analytics.revenue_by_category at target/.lsp/compiled/analyses/revenue_by_category.sql
+05:39:51.903806 [debug]: Finished rendering [  0.00s] seed dbt_test.seed_product_price_tiers [success]
+05:39:51.903828 [debug]: Compiled SQL for node model.ecommerce_analytics.dim_customers at target/.lsp/compiled/models/marts/dim_customers.sql
+05:39:51.903844 [info ]: Started analyzing (1 nodes)
+05:39:51.903854 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_customers at target/.lsp/compiled/models/staging/stg_customers.sql
+05:39:51.903855 [debug]: Started analyzing seed dbt_test.seed_product_price_tiers
+05:39:51.903878 [info ]:  Succeeded [  0.00s] analysis dbt_test.revenue_by_category (analysis)
+05:39:51.903884 [debug]: Compiled SQL for node model.ecommerce_analytics.dim_products at target/.lsp/compiled/models/marts/dim_products.sql
+05:39:51.903894 [debug]: Finished rendering [  0.00s] analysis dbt_test.revenue_by_category [success]
+05:39:51.903896 [debug]: Compiled SQL for node model.ecommerce_analytics.fct_customer_orders at target/.lsp/compiled/models/marts/fct_customer_orders.sql
+05:39:51.903909 [info ]:  Succeeded [  0.00s] model dbt_test.dim_customers (mat_view)
+05:39:51.903919 [debug]: Finished rendering [  0.00s] model dbt_test.dim_customers [success]
+05:39:51.903930 [info ]:  Succeeded [  0.00s] model dbt_test.stg_customers (view)
+05:39:51.903939 [debug]: Finished rendering [  0.00s] model dbt_test.stg_customers [success]
+05:39:51.903950 [info ]:  Succeeded [  0.00s] model dbt_test.dim_products (mat_view)
+05:39:51.903960 [debug]: Finished rendering [  0.00s] model dbt_test.dim_products [success]
+05:39:51.903972 [info ]:  Succeeded [  0.00s] model dbt_test.fct_customer_orders (table)
+05:39:51.903980 [debug]: Finished rendering [  0.00s] model dbt_test.fct_customer_orders [success]
+05:39:51.904011 [info ]:  Succeeded [  0.00s] seed  dbt_test.seed_product_price_tiers (table)
+05:39:51.904021 [debug]: Finished analyzing [  0.00s] seed dbt_test.seed_product_price_tiers [success]
+05:39:51.904020 [debug]: Compiled SQL for node snapshot.ecommerce_analytics.snap_product_prices at target/.lsp/compiled/snapshots/snap_product_prices.sql
+05:39:51.904027 [info ]: Finished analyzing [  0.00s] (1 nodes, 0 skipped, 0 errors)
+05:39:51.904042 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_orders at target/.lsp/compiled/models/staging/stg_orders.sql
+05:39:51.904062 [info ]:  Succeeded [  0.00s] snapshot dbt_test_snapshots.snap_product_prices (table)
+05:39:51.904099 [debug]: Finished rendering [  0.00s] snapshot dbt_test_snapshots.snap_product_prices [success]
+05:39:51.904102 [info ]:  Succeeded [  0.00s] model dbt_test.stg_orders (view)
+05:39:51.904130 [debug]: Finished rendering [  0.00s] model dbt_test.stg_orders [success]
+05:39:51.904257 [debug]: Compiled SQL for node analysis.ecommerce_analytics.customer_ltv_ranking at target/.lsp/compiled/analyses/customer_ltv_ranking.sql
+05:39:51.904297 [info ]:  Succeeded [  0.00s] analysis dbt_test.customer_ltv_ranking (analysis)
+05:39:51.904311 [debug]: Finished rendering [  0.00s] analysis dbt_test.customer_ltv_ranking [success]
+05:39:51.904342 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_products at target/.lsp/compiled/models/staging/stg_products.sql
+05:39:51.904375 [debug]: Compiled SQL for node model.ecommerce_analytics.fct_orders at target/.lsp/compiled/models/marts/fct_orders.sql
+05:39:51.904385 [info ]:  Succeeded [  0.00s] model dbt_test.stg_products (view)
+05:39:51.904397 [debug]: Finished rendering [  0.00s] model dbt_test.stg_products [success]
+05:39:51.904411 [info ]:  Succeeded [  0.00s] model dbt_test.fct_orders (mat_view)
+05:39:51.904423 [debug]: Finished rendering [  0.00s] model dbt_test.fct_orders [success]
+05:39:51.904428 [info ]: Finished rendering [  0.00s] (11 nodes, 0 skipped, 0 errors)
+05:39:51.908829 [info ]: Cached model count updated: 7 models (accurate)
+05:39:53.685776 [info ]: Loading ~/.dbt/profiles.yml
+05:39:53.730419 [info ]: Started loading project
+05:39:53.730650 [info ]: Loading ~/.dbt/profiles.yml
+05:39:53.732428 [info ]: Started loading project
+05:39:53.732661 [info ]: Loading ~/.dbt/profiles.yml
+05:39:53.732697 [info ]: Finished loading project [  0.00s]
+05:39:53.738435 [debug]:    Started loading packages
+05:39:53.739120 [debug]:     Loaded [  0.00s] packages
+05:39:53.739789 [info ]: Started parsing
+05:39:53.759694 [info ]: Finished loading project [  0.03s]
+05:39:53.760206 [debug]: Finished parsing models/marts/schema.yml [  0.00s]
+05:39:53.760475 [debug]: Finished parsing models/staging/src_ecommerce.yml [  0.00s]
+05:39:53.760585 [debug]: Finished parsing models/staging/stg_customers.yml [  0.00s]
+05:39:53.760749 [debug]: Finished parsing models/staging/stg_orders.yml [  0.00s]
+05:39:53.760862 [debug]: Finished parsing models/staging/stg_products.yml [  0.00s]
+05:39:53.760973 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+05:39:53.765672 [debug]: Finished parsing target/snapshots/snap_product_prices.sql [  0.00s]
+05:39:53.766740 [debug]: Finished parsing models/marts/dim_customers.sql [  0.00s]
+05:39:53.767164 [debug]: Finished parsing models/marts/dim_products.sql [  0.00s]
+05:39:53.767826 [debug]: Finished parsing models/marts/fct_customer_orders.sql [  0.00s]
+05:39:53.768386 [debug]: Finished parsing models/marts/fct_orders.sql [  0.00s]
+05:39:53.768837 [debug]: Finished parsing models/staging/stg_customers.sql [  0.00s]
+05:39:53.769220 [debug]: Finished parsing models/staging/stg_orders.sql [  0.00s]
+05:39:53.776253 [debug]: Finished parsing models/staging/stg_products.sql [  0.01s]
+05:39:53.776708 [debug]: Finished parsing analyses/customer_ltv_ranking.sql [  0.00s]
+05:39:53.778569 [debug]: Finished parsing target/generic_tests/not_null_dim_products_product_name.sql [  0.00s]
+05:39:53.778721 [debug]: Finished parsing target/generic_tests/relationships_stg_orders_25711d7165ca7dae190829aae03ddf38.sql [  0.00s]
+05:39:53.778725 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_customer_id.sql [  0.00s]
+05:39:53.778743 [debug]: Finished parsing analyses/revenue_by_category.sql [  0.00s]
+05:39:53.779346 [debug]: Finished parsing tests/assert_positive_quantity.sql [  0.00s]
+05:39:53.779695 [debug]: Finished parsing target/generic_tests/not_null_fct_customer_orders_customer_id.sql [  0.00s]
+05:39:53.779772 [debug]: Finished parsing target/generic_tests/unique_dim_customers_customer_id.sql [  0.00s]
+05:39:53.779859 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_order_id.sql [  0.00s]
+05:39:53.779876 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_products_product_id.sql [  0.00s]
+05:39:53.779907 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_product_id.sql [  0.00s]
+05:39:53.780028 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_customer_name.sql [  0.00s]
+05:39:53.780402 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_quantity.sql [  0.00s]
+05:39:53.780722 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_city.sql [  0.00s]
+05:39:53.780925 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_customer_id.sql [  0.00s]
+05:39:53.781139 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_orders_order_id.sql [  0.00s]
+05:39:53.781356 [debug]: Finished parsing target/generic_tests/unique_fct_customer_orders_customer_id.sql [  0.00s]
+05:39:53.781376 [debug]: Finished parsing target/generic_tests/not_null_stg_products_category.sql [  0.00s]
+05:39:53.781399 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_customer_name.sql [  0.00s]
+05:39:53.781477 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_product_name.sql [  0.00s]
+05:39:53.781689 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_customer_id.sql [  0.00s]
+05:39:53.781698 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_product_id.sql [  0.00s]
+05:39:53.782183 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_quantity.sql [  0.00s]
+05:39:53.782237 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_category.sql [  0.00s]
+05:39:53.782257 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_customers_customer_id.sql [  0.00s]
+05:39:53.782432 [debug]: Finished parsing target/generic_tests/not_null_dim_products_category.sql [  0.00s]
+05:39:53.782534 [debug]: Finished parsing target/generic_tests/not_null_stg_products_price.sql [  0.00s]
+05:39:53.782714 [debug]: Finished parsing target/generic_tests/relationships_stg_orders_96411fe0c89b49c3f4da955dfd358ba0.sql [  0.00s]
+05:39:53.782817 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_max_price.sql [  0.00s]
+05:39:53.782861 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_quantity.sql [  0.00s]
+05:39:53.782980 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_name.sql [  0.00s]
+05:39:53.783698 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_category.sql [  0.00s]
+05:39:53.783754 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_customer_id.sql [  0.00s]
+05:39:53.783830 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_order_date.sql [  0.00s]
+05:39:53.783847 [debug]: Finished parsing target/generic_tests/not_null_dim_products_price.sql [  0.00s]
+05:39:53.784052 [debug]: Finished parsing target/generic_tests/not_null_stg_products_product_id.sql [  0.00s]
+05:39:53.784514 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_tier_label.sql [  0.00s]
+05:39:53.784536 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_min_price.sql [  0.00s]
+05:39:53.784557 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_total_revenue.sql [  0.00s]
+05:39:53.784584 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_customer_id.sql [  0.00s]
+05:39:53.784706 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_price.sql [  0.00s]
+05:39:53.784726 [debug]: Finished parsing target/generic_tests/not_null_dim_products_product_id.sql [  0.00s]
+05:39:53.784812 [debug]: Finished parsing target/generic_tests/unique_stg_products_product_id.sql [  0.00s]
+05:39:53.784887 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_unit_price.sql [  0.00s]
+05:39:53.785072 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_order_id.sql [  0.00s]
+05:39:53.785058 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_order_date.sql [  0.00s]
+05:39:53.785210 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_city.sql [  0.00s]
+05:39:53.785399 [debug]: Finished parsing target/generic_tests/unique_dim_products_product_id.sql [  0.00s]
+05:39:53.785414 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_product_id.sql [  0.00s]
+05:39:53.785447 [debug]: Finished parsing target/generic_tests/not_null_stg_products_product_name.sql [  0.00s]
+05:39:53.785543 [debug]: Finished parsing target/generic_tests/unique_stg_orders_order_id.sql [  0.00s]
+05:39:53.785802 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_order_date.sql [  0.00s]
+05:39:53.786072 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_product_id.sql [  0.00s]
+05:39:53.786184 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_order_id.sql [  0.00s]
+05:39:53.786511 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_city.sql [  0.00s]
+05:39:53.787036 [debug]: Finished parsing target/generic_tests/unique_fct_orders_order_id.sql [  0.00s]
+05:39:53.787141 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_customer_id.sql [  0.00s]
+05:39:53.787651 [debug]: Finished parsing target/generic_tests/unique_stg_customers_customer_id.sql [  0.00s]
+05:39:53.805557 [info ]: Finished parsing [  0.07s]
+05:39:53.805687 [info ]: Cached model count updated: 7 models (estimate)
+05:39:53.805698 [info ]: Cached model count updated: 7 models (accurate)
+05:39:53.805767 [info ]: Started scheduling
+05:39:53.805922 [info ]: Finished scheduling [  0.00s]
+05:39:53.805940 [info ]: Started scheduling
+05:39:53.806063 [info ]: Finished scheduling [  0.00s]
+05:39:53.806111 [debug]: Initializing schema store with entry: Selected("snapshot.ecommerce_analytics.snap_product_prices") and interval: None
+05:39:53.806122 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "products" }) and interval: None
+05:39:53.806127 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "customers" }) and interval: None
+05:39:53.806132 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "orders" }) and interval: None
+05:39:53.806644 [info ]: Started deferring state
+05:39:53.806655 [info ]: Finished deferring state [  0.00s]
+05:39:53.807101 [info ]: Started downloading schemas
+05:39:55.780027 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.customers'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_customers', 'test.ecommerce_analytics.source_not_null_ecommerce_customers_city.1088a01e6e' and 3 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.customers: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.customers (or it may not exist)., accessDenied
+05:39:55.780071 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.orders'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_orders', 'test.ecommerce_analytics.source_not_null_ecommerce_orders_customer_id.6e262b0062' and 5 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.orders: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.orders (or it may not exist)., accessDenied
+05:39:55.780097 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.products'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_products', 'test.ecommerce_analytics.source_not_null_ecommerce_products_category.b18efb4a5e' and 4 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.products: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.products (or it may not exist)., accessDenied
+05:39:55.924189 [info ]: Started building task graph
+05:39:55.924337 [info ]: Finished building task graph [  0.00s]
+05:39:55.924473 [info ]: Started rendering (11 nodes)
+05:39:55.924492 [info ]: Started snapshot dbt_test_snapshots.snap_product_prices
+05:39:55.924504 [debug]: Started rendering snapshot dbt_test_snapshots.snap_product_prices
+05:39:55.924531 [info ]: Started seed dbt_test.seed_product_price_tiers
+05:39:55.924540 [debug]: Started rendering seed dbt_test.seed_product_price_tiers
+05:39:55.924555 [info ]: Started model dbt_test.dim_products
+05:39:55.924564 [debug]: Started rendering model dbt_test.dim_products
+05:39:55.924566 [info ]: Finished downloading schemas [  2.12s]
+05:39:55.924578 [info ]: Started analysis dbt_test.revenue_by_category
+05:39:55.924587 [debug]: Started rendering analysis dbt_test.revenue_by_category
+05:39:55.924600 [info ]: Started analysis dbt_test.customer_ltv_ranking
+05:39:55.924607 [debug]: Started rendering analysis dbt_test.customer_ltv_ranking
+05:39:55.924621 [info ]: Started model dbt_test.fct_customer_orders
+05:39:55.924641 [debug]: Started rendering model dbt_test.fct_customer_orders
+05:39:55.924656 [info ]: Started model dbt_test.fct_orders
+05:39:55.924666 [debug]: Started rendering model dbt_test.fct_orders
+05:39:55.924677 [info ]: Started model dbt_test.stg_products
+05:39:55.924699 [debug]: Started rendering model dbt_test.stg_products
+05:39:55.924711 [info ]: Started model dbt_test.stg_orders
+05:39:55.924718 [debug]: Started rendering model dbt_test.stg_orders
+05:39:55.924730 [info ]: Started model dbt_test.dim_customers
+05:39:55.924737 [debug]: Started rendering model dbt_test.dim_customers
+05:39:55.924755 [info ]: Started model dbt_test.stg_customers
+05:39:55.924764 [debug]: Started rendering model dbt_test.stg_customers
+05:39:55.926113 [debug]: Finished rendering [  0.00s] seed dbt_test.seed_product_price_tiers [success]
+05:39:55.926187 [info ]: Started analyzing (1 nodes)
+05:39:55.926202 [debug]: Started analyzing seed dbt_test.seed_product_price_tiers
+05:39:55.926308 [info ]:  Succeeded [  0.00s] seed  dbt_test.seed_product_price_tiers (table)
+05:39:55.926334 [debug]: Finished analyzing [  0.00s] seed dbt_test.seed_product_price_tiers [success]
+05:39:55.926344 [info ]: Finished analyzing [  0.00s] (1 nodes, 0 skipped, 0 errors)
+05:39:55.926481 [debug]: Compiled SQL for node snapshot.ecommerce_analytics.snap_product_prices at target/.lsp/compiled/snapshots/snap_product_prices.sql
+05:39:55.926563 [info ]:  Succeeded [  0.00s] snapshot dbt_test_snapshots.snap_product_prices (table)
+05:39:55.926599 [debug]: Finished rendering [  0.00s] snapshot dbt_test_snapshots.snap_product_prices [success]
+05:39:55.927465 [debug]: Compiled SQL for node analysis.ecommerce_analytics.customer_ltv_ranking at target/.lsp/compiled/analyses/customer_ltv_ranking.sql
+05:39:55.927534 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_products at target/.lsp/compiled/models/staging/stg_products.sql
+05:39:55.927571 [debug]: Compiled SQL for node model.ecommerce_analytics.fct_orders at target/.lsp/compiled/models/marts/fct_orders.sql
+05:39:55.927582 [info ]:  Succeeded [  0.00s] analysis dbt_test.customer_ltv_ranking (analysis)
+05:39:55.927615 [debug]: Finished rendering [  0.00s] analysis dbt_test.customer_ltv_ranking [success]
+05:39:55.927649 [info ]:  Succeeded [  0.00s] model dbt_test.stg_products (view)
+05:39:55.927669 [debug]: Finished rendering [  0.00s] model dbt_test.stg_products [success]
+05:39:55.927687 [info ]:  Succeeded [  0.00s] model dbt_test.fct_orders (mat_view)
+05:39:55.927703 [debug]: Finished rendering [  0.00s] model dbt_test.fct_orders [success]
+05:39:55.927709 [debug]: Compiled SQL for node model.ecommerce_analytics.fct_customer_orders at target/.lsp/compiled/models/marts/fct_customer_orders.sql
+05:39:55.927797 [info ]:  Succeeded [  0.00s] model dbt_test.fct_customer_orders (table)
+05:39:55.927806 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_customers at target/.lsp/compiled/models/staging/stg_customers.sql
+05:39:55.927845 [info ]:  Succeeded [  0.00s] model dbt_test.stg_customers (view)
+05:39:55.927834 [debug]: Finished rendering [  0.00s] model dbt_test.fct_customer_orders [success]
+05:39:55.927875 [debug]: Finished rendering [  0.00s] model dbt_test.stg_customers [success]
+05:39:55.927892 [debug]: Compiled SQL for node model.ecommerce_analytics.dim_products at target/.lsp/compiled/models/marts/dim_products.sql
+05:39:55.927933 [info ]:  Succeeded [  0.00s] model dbt_test.dim_products (mat_view)
+05:39:55.927942 [debug]: Compiled SQL for node analysis.ecommerce_analytics.revenue_by_category at target/.lsp/compiled/analyses/revenue_by_category.sql
+05:39:55.927960 [debug]: Finished rendering [  0.00s] model dbt_test.dim_products [success]
+05:39:55.927986 [info ]:  Succeeded [  0.00s] analysis dbt_test.revenue_by_category (analysis)
+05:39:55.928002 [debug]: Finished rendering [  0.00s] analysis dbt_test.revenue_by_category [success]
+05:39:55.928100 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_orders at target/.lsp/compiled/models/staging/stg_orders.sql
+05:39:55.928125 [debug]: Compiled SQL for node model.ecommerce_analytics.dim_customers at target/.lsp/compiled/models/marts/dim_customers.sql
+05:39:55.928139 [info ]:  Succeeded [  0.00s] model dbt_test.stg_orders (view)
+05:39:55.928154 [debug]: Finished rendering [  0.00s] model dbt_test.stg_orders [success]
+05:39:55.928185 [info ]:  Succeeded [  0.00s] model dbt_test.dim_customers (mat_view)
+05:39:55.928207 [debug]: Finished rendering [  0.00s] model dbt_test.dim_customers [success]
+05:39:55.928217 [info ]: Finished rendering [  0.00s] (11 nodes, 0 skipped, 0 errors)
+05:39:55.933160 [info ]: Cached model count updated: 7 models (accurate)
+05:40:25.497659 [info ]: Loading ~/.dbt/profiles.yml
+05:40:25.580527 [info ]: Started loading project
+05:40:25.580811 [info ]: Loading ~/.dbt/profiles.yml
+05:40:25.582978 [info ]: Started loading project
+05:40:25.583260 [info ]: Loading ~/.dbt/profiles.yml
+05:40:25.583327 [info ]: Finished loading project [  0.00s]
+05:40:25.589609 [debug]:    Started loading packages
+05:40:25.590354 [debug]:     Loaded [  0.00s] packages
+05:40:25.591076 [info ]: Started parsing
+05:40:25.611628 [info ]: Finished loading project [  0.03s]
+05:40:25.612388 [debug]: Finished parsing models/marts/schema.yml [  0.00s]
+05:40:25.613256 [debug]: Finished parsing models/staging/src_ecommerce.yml [  0.00s]
+05:40:25.613446 [debug]: Finished parsing models/staging/stg_customers.yml [  0.00s]
+05:40:25.613705 [debug]: Finished parsing models/staging/stg_orders.yml [  0.00s]
+05:40:25.613844 [debug]: Finished parsing models/staging/stg_products.yml [  0.00s]
+05:40:25.614000 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+05:40:25.619498 [debug]: Finished parsing target/snapshots/snap_product_prices.sql [  0.00s]
+05:40:25.620991 [debug]: Finished parsing models/marts/dim_customers.sql [  0.00s]
+05:40:25.621466 [debug]: Finished parsing models/marts/dim_products.sql [  0.00s]
+05:40:25.622060 [debug]: Finished parsing models/marts/fct_customer_orders.sql [  0.00s]
+05:40:25.622535 [debug]: Finished parsing models/marts/fct_orders.sql [  0.00s]
+05:40:25.623027 [debug]: Finished parsing models/staging/stg_customers.sql [  0.00s]
+05:40:25.623459 [debug]: Finished parsing models/staging/stg_orders.sql [  0.00s]
+05:40:25.631710 [debug]: Finished parsing models/staging/stg_products.sql [  0.01s]
+05:40:25.632127 [debug]: Finished parsing analyses/customer_ltv_ranking.sql [  0.00s]
+05:40:25.633416 [debug]: Finished parsing analyses/revenue_by_category.sql [  0.00s]
+05:40:25.634402 [debug]: Finished parsing tests/assert_positive_quantity.sql [  0.00s]
+05:40:25.634816 [debug]: Finished parsing target/generic_tests/relationships_stg_orders_25711d7165ca7dae190829aae03ddf38.sql [  0.00s]
+05:40:25.634838 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_product_id.sql [  0.00s]
+05:40:25.634849 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_products_product_id.sql [  0.00s]
+05:40:25.634858 [debug]: Finished parsing target/generic_tests/not_null_dim_products_product_name.sql [  0.00s]
+05:40:25.634877 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_customer_name.sql [  0.00s]
+05:40:25.634975 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_city.sql [  0.00s]
+05:40:25.635634 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_customer_id.sql [  0.00s]
+05:40:25.635650 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_order_id.sql [  0.00s]
+05:40:25.635705 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_customer_id.sql [  0.00s]
+05:40:25.635821 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_product_name.sql [  0.00s]
+05:40:25.636057 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_customer_id.sql [  0.00s]
+05:40:25.636066 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_quantity.sql [  0.00s]
+05:40:25.636573 [debug]: Finished parsing target/generic_tests/relationships_stg_orders_96411fe0c89b49c3f4da955dfd358ba0.sql [  0.00s]
+05:40:25.636820 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_orders_order_id.sql [  0.00s]
+05:40:25.636829 [debug]: Finished parsing target/generic_tests/not_null_stg_products_category.sql [  0.00s]
+05:40:25.636931 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_category.sql [  0.00s]
+05:40:25.636963 [debug]: Finished parsing target/generic_tests/not_null_fct_customer_orders_customer_id.sql [  0.00s]
+05:40:25.636982 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_quantity.sql [  0.00s]
+05:40:25.636995 [debug]: Finished parsing target/generic_tests/unique_dim_customers_customer_id.sql [  0.00s]
+05:40:25.637703 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_product_id.sql [  0.00s]
+05:40:25.637710 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_order_date.sql [  0.00s]
+05:40:25.638239 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_customer_name.sql [  0.00s]
+05:40:25.638244 [debug]: Finished parsing target/generic_tests/unique_fct_customer_orders_customer_id.sql [  0.00s]
+05:40:25.638266 [debug]: Finished parsing target/generic_tests/not_null_stg_products_price.sql [  0.00s]
+05:40:25.638283 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_order_id.sql [  0.00s]
+05:40:25.639062 [debug]: Finished parsing target/generic_tests/not_null_dim_products_category.sql [  0.00s]
+05:40:25.639070 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_total_revenue.sql [  0.00s]
+05:40:25.639092 [debug]: Finished parsing target/generic_tests/unique_stg_orders_order_id.sql [  0.00s]
+05:40:25.639107 [debug]: Finished parsing target/generic_tests/not_null_stg_products_product_id.sql [  0.00s]
+05:40:25.639325 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_max_price.sql [  0.00s]
+05:40:25.639646 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_quantity.sql [  0.00s]
+05:40:25.639734 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_unit_price.sql [  0.00s]
+05:40:25.640346 [debug]: Finished parsing target/generic_tests/not_null_dim_products_price.sql [  0.00s]
+05:40:25.640387 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_customers_customer_id.sql [  0.00s]
+05:40:25.640547 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_category.sql [  0.00s]
+05:40:25.640565 [debug]: Finished parsing target/generic_tests/unique_stg_products_product_id.sql [  0.00s]
+05:40:25.640590 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_customer_id.sql [  0.00s]
+05:40:25.640612 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_name.sql [  0.00s]
+05:40:25.640742 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_product_id.sql [  0.00s]
+05:40:25.640802 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_min_price.sql [  0.00s]
+05:40:25.641329 [debug]: Finished parsing target/generic_tests/not_null_dim_products_product_id.sql [  0.00s]
+05:40:25.641332 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_order_date.sql [  0.00s]
+05:40:25.641344 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_price.sql [  0.00s]
+05:40:25.641414 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_tier_label.sql [  0.00s]
+05:40:25.642042 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_customer_id.sql [  0.00s]
+05:40:25.642064 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_city.sql [  0.00s]
+05:40:25.642262 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_product_id.sql [  0.00s]
+05:40:25.642699 [debug]: Finished parsing target/generic_tests/not_null_stg_products_product_name.sql [  0.00s]
+05:40:25.642743 [debug]: Finished parsing target/generic_tests/unique_dim_products_product_id.sql [  0.00s]
+05:40:25.642815 [debug]: Finished parsing target/generic_tests/unique_stg_customers_customer_id.sql [  0.00s]
+05:40:25.643104 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_customer_id.sql [  0.00s]
+05:40:25.643273 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_city.sql [  0.00s]
+05:40:25.643688 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_order_date.sql [  0.00s]
+05:40:25.644076 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_order_id.sql [  0.00s]
+05:40:25.644448 [debug]: Finished parsing target/generic_tests/unique_fct_orders_order_id.sql [  0.00s]
+05:40:25.662249 [info ]: Finished parsing [  0.07s]
+05:40:25.662358 [info ]: Cached model count updated: 7 models (estimate)
+05:40:25.662367 [info ]: Cached model count updated: 7 models (accurate)
+05:40:25.662439 [info ]: Started scheduling
+05:40:25.662591 [info ]: Finished scheduling [  0.00s]
+05:40:25.662609 [info ]: Started scheduling
+05:40:25.662734 [info ]: Finished scheduling [  0.00s]
+05:40:25.662791 [debug]: Initializing schema store with entry: Selected("snapshot.ecommerce_analytics.snap_product_prices") and interval: None
+05:40:25.662802 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "products" }) and interval: None
+05:40:25.662808 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "orders" }) and interval: None
+05:40:25.662813 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "customers" }) and interval: None
+05:40:25.663346 [info ]: Started deferring state
+05:40:25.663357 [info ]: Finished deferring state [  0.00s]
+05:40:25.663806 [info ]: Started downloading schemas
+05:40:27.768150 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.customers'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_customers', 'test.ecommerce_analytics.source_not_null_ecommerce_customers_city.1088a01e6e' and 3 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.customers: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.customers (or it may not exist)., accessDenied
+05:40:27.768346 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.orders'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_orders', 'test.ecommerce_analytics.source_not_null_ecommerce_orders_customer_id.6e262b0062' and 5 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.orders: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.orders (or it may not exist)., accessDenied
+05:40:27.768498 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.products'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_products', 'test.ecommerce_analytics.source_not_null_ecommerce_products_category.b18efb4a5e' and 4 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.products: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.products (or it may not exist)., accessDenied
+05:40:27.917278 [info ]: Started building task graph
+05:40:27.917427 [info ]: Finished building task graph [  0.00s]
+05:40:27.917558 [info ]: Started rendering (11 nodes)
+05:40:27.917573 [info ]: Started snapshot dbt_test_snapshots.snap_product_prices
+05:40:27.917585 [debug]: Started rendering snapshot dbt_test_snapshots.snap_product_prices
+05:40:27.917609 [info ]: Started seed dbt_test.seed_product_price_tiers
+05:40:27.917618 [debug]: Started rendering seed dbt_test.seed_product_price_tiers
+05:40:27.917640 [info ]: Started model dbt_test.dim_products
+05:40:27.917649 [debug]: Started rendering model dbt_test.dim_products
+05:40:27.917661 [info ]: Started analysis dbt_test.revenue_by_category
+05:40:27.917669 [debug]: Started rendering analysis dbt_test.revenue_by_category
+05:40:27.917681 [info ]: Started analysis dbt_test.customer_ltv_ranking
+05:40:27.917688 [debug]: Started rendering analysis dbt_test.customer_ltv_ranking
+05:40:27.917701 [info ]: Started model dbt_test.fct_customer_orders
+05:40:27.917711 [debug]: Started rendering model dbt_test.fct_customer_orders
+05:40:27.917723 [info ]: Started model dbt_test.fct_orders
+05:40:27.917732 [debug]: Started rendering model dbt_test.fct_orders
+05:40:27.917742 [info ]: Started model dbt_test.stg_products
+05:40:27.917750 [debug]: Started rendering model dbt_test.stg_products
+05:40:27.917792 [info ]: Started model dbt_test.stg_orders
+05:40:27.917806 [debug]: Started rendering model dbt_test.stg_orders
+05:40:27.917839 [info ]: Started model dbt_test.dim_customers
+05:40:27.917848 [debug]: Started rendering model dbt_test.dim_customers
+05:40:27.917861 [info ]: Started model dbt_test.stg_customers
+05:40:27.917872 [debug]: Started rendering model dbt_test.stg_customers
+05:40:27.918502 [debug]: Compiled SQL for node analysis.ecommerce_analytics.revenue_by_category at target/.lsp/compiled/analyses/revenue_by_category.sql
+05:40:27.918548 [info ]:  Succeeded [-------] analysis dbt_test.revenue_by_category (analysis)
+05:40:27.918571 [debug]: Finished rendering [  0.00s] analysis dbt_test.revenue_by_category [success]
+05:40:27.918051 [info ]: Finished downloading schemas [  2.25s]
+05:40:27.918831 [debug]: Finished rendering [  0.00s] seed dbt_test.seed_product_price_tiers [success]
+05:40:27.918884 [info ]: Started analyzing (1 nodes)
+05:40:27.918902 [debug]: Compiled SQL for node model.ecommerce_analytics.fct_customer_orders at target/.lsp/compiled/models/marts/fct_customer_orders.sql
+05:40:27.918925 [debug]: Started analyzing seed dbt_test.seed_product_price_tiers
+05:40:27.918925 [debug]: Compiled SQL for node model.ecommerce_analytics.fct_orders at target/.lsp/compiled/models/marts/fct_orders.sql
+05:40:27.918960 [info ]:  Succeeded [  0.00s] model dbt_test.fct_customer_orders (table)
+05:40:27.918968 [debug]: Compiled SQL for node analysis.ecommerce_analytics.customer_ltv_ranking at target/.lsp/compiled/analyses/customer_ltv_ranking.sql
+05:40:27.918975 [debug]: Finished rendering [  0.00s] model dbt_test.fct_customer_orders [success]
+05:40:27.918999 [info ]:  Succeeded [  0.00s] analysis dbt_test.customer_ltv_ranking (analysis)
+05:40:27.919014 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_products at target/.lsp/compiled/models/staging/stg_products.sql
+05:40:27.919016 [debug]: Finished rendering [  0.00s] analysis dbt_test.customer_ltv_ranking [success]
+05:40:27.919034 [info ]:  Succeeded [  0.00s] seed  dbt_test.seed_product_price_tiers (table)
+05:40:27.919044 [debug]: Finished analyzing [  0.00s] seed dbt_test.seed_product_price_tiers [success]
+05:40:27.919051 [info ]: Finished analyzing [  0.00s] (1 nodes, 0 skipped, 0 errors)
+05:40:27.919064 [info ]:  Succeeded [  0.00s] model dbt_test.stg_products (view)
+05:40:27.919075 [debug]: Finished rendering [  0.00s] model dbt_test.stg_products [success]
+05:40:27.919092 [info ]:  Succeeded [  0.00s] model dbt_test.fct_orders (mat_view)
+05:40:27.919104 [debug]: Finished rendering [  0.00s] model dbt_test.fct_orders [success]
+05:40:27.919126 [debug]: Compiled SQL for node model.ecommerce_analytics.dim_products at target/.lsp/compiled/models/marts/dim_products.sql
+05:40:27.919166 [info ]:  Succeeded [  0.00s] model dbt_test.dim_products (mat_view)
+05:40:27.919188 [debug]: Compiled SQL for node snapshot.ecommerce_analytics.snap_product_prices at target/.lsp/compiled/snapshots/snap_product_prices.sql
+05:40:27.919218 [info ]:  Succeeded [  0.00s] snapshot dbt_test_snapshots.snap_product_prices (table)
+05:40:27.919232 [debug]: Finished rendering [  0.00s] model dbt_test.dim_products [success]
+05:40:27.919250 [debug]: Finished rendering [  0.00s] snapshot dbt_test_snapshots.snap_product_prices [success]
+05:40:27.919339 [debug]: Compiled SQL for node model.ecommerce_analytics.dim_customers at target/.lsp/compiled/models/marts/dim_customers.sql
+05:40:27.919346 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_orders at target/.lsp/compiled/models/staging/stg_orders.sql
+05:40:27.919411 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_customers at target/.lsp/compiled/models/staging/stg_customers.sql
+05:40:27.919532 [info ]:  Succeeded [  0.00s] model dbt_test.stg_customers (view)
+05:40:27.919553 [debug]: Finished rendering [  0.00s] model dbt_test.stg_customers [success]
+05:40:27.919570 [info ]:  Succeeded [  0.00s] model dbt_test.stg_orders (view)
+05:40:27.919583 [debug]: Finished rendering [  0.00s] model dbt_test.stg_orders [success]
+05:40:27.919598 [info ]:  Succeeded [  0.00s] model dbt_test.dim_customers (mat_view)
+05:40:27.919639 [debug]: Finished rendering [  0.00s] model dbt_test.dim_customers [success]
+05:40:27.919648 [info ]: Finished rendering [  0.00s] (11 nodes, 0 skipped, 0 errors)
+05:40:27.924994 [info ]: Cached model count updated: 7 models (accurate)
+05:42:14.747125 [info ]: Loading ~/.dbt/profiles.yml
+05:42:14.795407 [info ]: Started loading project
+05:42:14.795619 [info ]: Loading ~/.dbt/profiles.yml
+05:42:14.797341 [info ]: Started loading project
+05:42:14.797494 [info ]: Loading ~/.dbt/profiles.yml
+05:42:14.797556 [info ]: Finished loading project [  0.00s]
+05:42:14.802813 [debug]:    Started loading packages
+05:42:14.803512 [debug]:     Loaded [  0.00s] packages
+05:42:14.804206 [info ]: Started parsing
+05:42:14.823628 [info ]: Finished loading project [  0.03s]
+05:42:14.824162 [debug]: Finished parsing models/marts/schema.yml [  0.00s]
+05:42:14.824425 [debug]: Finished parsing models/staging/src_ecommerce.yml [  0.00s]
+05:42:14.824526 [debug]: Finished parsing models/staging/stg_customers.yml [  0.00s]
+05:42:14.824673 [debug]: Finished parsing models/staging/stg_orders.yml [  0.00s]
+05:42:14.824775 [debug]: Finished parsing models/staging/stg_products.yml [  0.00s]
+05:42:14.824869 [debug]: Finished parsing seeds/schema.yml [  0.00s]
+05:42:14.829478 [debug]: Finished parsing target/snapshots/snap_product_prices.sql [  0.00s]
+05:42:14.830474 [debug]: Finished parsing models/marts/dim_customers.sql [  0.00s]
+05:42:14.830832 [debug]: Finished parsing models/marts/dim_products.sql [  0.00s]
+05:42:14.831343 [debug]: Finished parsing models/marts/fct_customer_orders.sql [  0.00s]
+05:42:14.831787 [debug]: Finished parsing models/marts/fct_orders.sql [  0.00s]
+05:42:14.832243 [debug]: Finished parsing models/staging/stg_customers.sql [  0.00s]
+05:42:14.832615 [debug]: Finished parsing models/staging/stg_orders.sql [  0.00s]
+05:42:14.841870 [debug]: Finished parsing models/staging/stg_products.sql [  0.01s]
+05:42:14.842378 [debug]: Finished parsing analyses/customer_ltv_ranking.sql [  0.00s]
+05:42:14.843668 [debug]: Finished parsing analyses/revenue_by_category.sql [  0.00s]
+05:42:14.844461 [debug]: Finished parsing tests/assert_positive_quantity.sql [  0.00s]
+05:42:14.844578 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_products_product_id.sql [  0.00s]
+05:42:14.844609 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_customer_name.sql [  0.00s]
+05:42:14.844738 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_customer_id.sql [  0.00s]
+05:42:14.844787 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_order_id.sql [  0.00s]
+05:42:14.845458 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_quantity.sql [  0.00s]
+05:42:14.845594 [debug]: Finished parsing target/generic_tests/not_null_fct_customer_orders_customer_id.sql [  0.00s]
+05:42:14.845611 [debug]: Finished parsing target/generic_tests/not_null_dim_products_product_name.sql [  0.00s]
+05:42:14.845621 [debug]: Finished parsing target/generic_tests/relationships_stg_orders_25711d7165ca7dae190829aae03ddf38.sql [  0.00s]
+05:42:14.845643 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_product_name.sql [  0.00s]
+05:42:14.845652 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_orders_order_id.sql [  0.00s]
+05:42:14.845781 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_customer_id.sql [  0.00s]
+05:42:14.845798 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_product_id.sql [  0.00s]
+05:42:14.845977 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_city.sql [  0.00s]
+05:42:14.845992 [debug]: Finished parsing target/generic_tests/unique_dim_customers_customer_id.sql [  0.00s]
+05:42:14.846181 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_quantity.sql [  0.00s]
+05:42:14.846640 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_customer_id.sql [  0.00s]
+05:42:14.846684 [debug]: Finished parsing target/generic_tests/not_null_stg_products_category.sql [  0.00s]
+05:42:14.846689 [debug]: Finished parsing target/generic_tests/relationships_stg_orders_96411fe0c89b49c3f4da955dfd358ba0.sql [  0.00s]
+05:42:14.846741 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_total_revenue.sql [  0.00s]
+05:42:14.846770 [debug]: Finished parsing target/generic_tests/unique_fct_customer_orders_customer_id.sql [  0.00s]
+05:42:14.847076 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_category.sql [  0.00s]
+05:42:14.847420 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_quantity.sql [  0.00s]
+05:42:14.847439 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_product_id.sql [  0.00s]
+05:42:14.847479 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_order_date.sql [  0.00s]
+05:42:14.847550 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_max_price.sql [  0.00s]
+05:42:14.847570 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_unit_price.sql [  0.00s]
+05:42:14.847718 [debug]: Finished parsing target/generic_tests/not_null_stg_products_price.sql [  0.00s]
+05:42:14.847730 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_customer_name.sql [  0.00s]
+05:42:14.848234 [debug]: Finished parsing target/generic_tests/source_unique_ecommerce_customers_customer_id.sql [  0.00s]
+05:42:14.848272 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_min_price.sql [  0.00s]
+05:42:14.848288 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_order_id.sql [  0.00s]
+05:42:14.848321 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_category.sql [  0.00s]
+05:42:14.848453 [debug]: Finished parsing target/generic_tests/not_null_stg_products_product_id.sql [  0.00s]
+05:42:14.848459 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_customer_id.sql [  0.00s]
+05:42:14.848464 [debug]: Finished parsing target/generic_tests/not_null_dim_products_category.sql [  0.00s]
+05:42:14.848859 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_city.sql [  0.00s]
+05:42:14.849232 [debug]: Finished parsing target/generic_tests/unique_stg_orders_order_id.sql [  0.00s]
+05:42:14.849241 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_customers_name.sql [  0.00s]
+05:42:14.849277 [debug]: Finished parsing target/generic_tests/unique_stg_products_product_id.sql [  0.00s]
+05:42:14.849354 [debug]: Finished parsing target/generic_tests/not_null_stg_customers_customer_id.sql [  0.00s]
+05:42:14.849475 [debug]: Finished parsing target/generic_tests/not_null_dim_products_price.sql [  0.00s]
+05:42:14.850022 [debug]: Finished parsing target/generic_tests/not_null_stg_products_product_name.sql [  0.00s]
+05:42:14.850046 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_price.sql [  0.00s]
+05:42:14.850062 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_order_date.sql [  0.00s]
+05:42:14.850152 [debug]: Finished parsing target/generic_tests/unique_stg_customers_customer_id.sql [  0.00s]
+05:42:14.850203 [debug]: Finished parsing target/generic_tests/not_null_stg_orders_product_id.sql [  0.00s]
+05:42:14.850235 [debug]: Finished parsing target/generic_tests/not_null_seed_product_price_tiers_tier_label.sql [  0.00s]
+05:42:14.850234 [debug]: Finished parsing target/generic_tests/not_null_fct_orders_order_id.sql [  0.00s]
+05:42:14.850251 [debug]: Finished parsing target/generic_tests/not_null_dim_products_product_id.sql [  0.00s]
+05:42:14.850373 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_customer_id.sql [  0.00s]
+05:42:14.850839 [debug]: Finished parsing target/generic_tests/unique_fct_orders_order_id.sql [  0.00s]
+05:42:14.850851 [debug]: Finished parsing target/generic_tests/not_null_dim_customers_city.sql [  0.00s]
+05:42:14.850952 [debug]: Finished parsing target/generic_tests/unique_dim_products_product_id.sql [  0.00s]
+05:42:14.851021 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_orders_order_date.sql [  0.00s]
+05:42:14.851175 [debug]: Finished parsing target/generic_tests/source_not_null_ecommerce_products_product_id.sql [  0.00s]
+05:42:14.867043 [info ]: Finished parsing [  0.06s]
+05:42:14.867178 [info ]: Cached model count updated: 7 models (estimate)
+05:42:14.867188 [info ]: Cached model count updated: 7 models (accurate)
+05:42:14.867257 [info ]: Started scheduling
+05:42:14.867427 [info ]: Finished scheduling [  0.00s]
+05:42:14.867446 [info ]: Started scheduling
+05:42:14.867567 [info ]: Finished scheduling [  0.00s]
+05:42:14.867612 [debug]: Initializing schema store with entry: Selected("snapshot.ecommerce_analytics.snap_product_prices") and interval: None
+05:42:14.867622 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "products" }) and interval: None
+05:42:14.867639 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "orders" }) and interval: None
+05:42:14.867644 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "bigquery-testing-489807", schema: "dbt_test", table: "customers" }) and interval: None
+05:42:14.868129 [info ]: Started deferring state
+05:42:14.868140 [info ]: Finished deferring state [  0.00s]
+05:42:14.868568 [info ]: Started downloading schemas
+05:42:17.077936 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.customers'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_customers', 'test.ecommerce_analytics.source_not_null_ecommerce_customers_city.1088a01e6e' and 3 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.customers: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.customers (or it may not exist)., accessDenied
+05:42:17.078218 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.orders'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_orders', 'test.ecommerce_analytics.source_not_null_ecommerce_orders_customer_id.6e262b0062' and 5 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.orders: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.orders (or it may not exist)., accessDenied
+05:42:17.078404 [warn ]: dbt1014: Failed to download source schema for 'source.ecommerce_analytics.ecommerce.products'. Setting 'static_analysis' to off. Skipping analysis for 'model.ecommerce_analytics.stg_products', 'test.ecommerce_analytics.source_not_null_ecommerce_products_category.b18efb4a5e' and 4 others: [BigQuery] googleapi: Error 403: Access Denied: Table bigquery-testing-489807:dbt_test.products: Permission bigquery.tables.get denied on table bigquery-testing-489807:dbt_test.products (or it may not exist)., accessDenied
+05:42:17.234301 [info ]: Started building task graph
+05:42:17.234450 [info ]: Finished building task graph [  0.00s]
+05:42:17.234571 [info ]: Started rendering (11 nodes)
+05:42:17.234584 [info ]: Started snapshot dbt_test_snapshots.snap_product_prices
+05:42:17.234593 [debug]: Started rendering snapshot dbt_test_snapshots.snap_product_prices
+05:42:17.234614 [info ]: Started seed dbt_test.seed_product_price_tiers
+05:42:17.234619 [debug]: Started rendering seed dbt_test.seed_product_price_tiers
+05:42:17.234639 [info ]: Started model dbt_test.dim_products
+05:42:17.234647 [debug]: Started rendering model dbt_test.dim_products
+05:42:17.234659 [info ]: Started analysis dbt_test.revenue_by_category
+05:42:17.234668 [debug]: Started rendering analysis dbt_test.revenue_by_category
+05:42:17.234689 [info ]: Finished downloading schemas [  2.37s]
+05:42:17.234697 [info ]: Started analysis dbt_test.customer_ltv_ranking
+05:42:17.234705 [debug]: Started rendering analysis dbt_test.customer_ltv_ranking
+05:42:17.234716 [info ]: Started model dbt_test.fct_customer_orders
+05:42:17.234727 [debug]: Started rendering model dbt_test.fct_customer_orders
+05:42:17.234737 [info ]: Started model dbt_test.fct_orders
+05:42:17.234744 [debug]: Started rendering model dbt_test.fct_orders
+05:42:17.234755 [info ]: Started model dbt_test.stg_products
+05:42:17.234762 [debug]: Started rendering model dbt_test.stg_products
+05:42:17.234772 [info ]: Started model dbt_test.stg_orders
+05:42:17.234779 [debug]: Started rendering model dbt_test.stg_orders
+05:42:17.234788 [info ]: Started model dbt_test.dim_customers
+05:42:17.234792 [debug]: Started rendering model dbt_test.dim_customers
+05:42:17.234798 [info ]: Started model dbt_test.stg_customers
+05:42:17.234802 [debug]: Started rendering model dbt_test.stg_customers
+05:42:17.236247 [debug]: Finished rendering [  0.00s] seed dbt_test.seed_product_price_tiers [success]
+05:42:17.236287 [info ]: Started analyzing (1 nodes)
+05:42:17.236304 [debug]: Started analyzing seed dbt_test.seed_product_price_tiers
+05:42:17.236350 [info ]:  Succeeded [  0.00s] seed  dbt_test.seed_product_price_tiers (table)
+05:42:17.236369 [debug]: Finished analyzing [  0.00s] seed dbt_test.seed_product_price_tiers [success]
+05:42:17.236375 [info ]: Finished analyzing [  0.00s] (1 nodes, 0 skipped, 0 errors)
+05:42:17.236795 [debug]: Compiled SQL for node model.ecommerce_analytics.fct_customer_orders at target/.lsp/compiled/models/marts/fct_customer_orders.sql
+05:42:17.236835 [debug]: Compiled SQL for node analysis.ecommerce_analytics.revenue_by_category at target/.lsp/compiled/analyses/revenue_by_category.sql
+05:42:17.236830 [debug]: Compiled SQL for node model.ecommerce_analytics.fct_orders at target/.lsp/compiled/models/marts/fct_orders.sql
+05:42:17.236907 [info ]:  Succeeded [  0.00s] analysis dbt_test.revenue_by_category (analysis)
+05:42:17.236932 [debug]: Finished rendering [  0.00s] analysis dbt_test.revenue_by_category [success]
+05:42:17.236934 [debug]: Compiled SQL for node analysis.ecommerce_analytics.customer_ltv_ranking at target/.lsp/compiled/analyses/customer_ltv_ranking.sql
+05:42:17.236959 [info ]:  Succeeded [  0.00s] model dbt_test.fct_customer_orders (table)
+05:42:17.236974 [debug]: Finished rendering [  0.00s] model dbt_test.fct_customer_orders [success]
+05:42:17.236987 [debug]: Compiled SQL for node model.ecommerce_analytics.dim_customers at target/.lsp/compiled/models/marts/dim_customers.sql
+05:42:17.236980 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_customers at target/.lsp/compiled/models/staging/stg_customers.sql
+05:42:17.236995 [info ]:  Succeeded [  0.00s] model dbt_test.fct_orders (mat_view)
+05:42:17.236999 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_orders at target/.lsp/compiled/models/staging/stg_orders.sql
+05:42:17.237013 [debug]: Finished rendering [  0.00s] model dbt_test.fct_orders [success]
+05:42:17.237027 [info ]:  Succeeded [  0.00s] analysis dbt_test.customer_ltv_ranking (analysis)
+05:42:17.237041 [debug]: Finished rendering [  0.00s] analysis dbt_test.customer_ltv_ranking [success]
+05:42:17.237057 [info ]:  Succeeded [  0.00s] model dbt_test.dim_customers (mat_view)
+05:42:17.237055 [debug]: Compiled SQL for node snapshot.ecommerce_analytics.snap_product_prices at target/.lsp/compiled/snapshots/snap_product_prices.sql
+05:42:17.237072 [info ]:  Succeeded [  0.00s] model dbt_test.stg_customers (view)
+05:42:17.237086 [info ]:  Succeeded [  0.00s] model dbt_test.stg_orders (view)
+05:42:17.237096 [debug]: Compiled SQL for node model.ecommerce_analytics.stg_products at target/.lsp/compiled/models/staging/stg_products.sql
+05:42:17.237100 [info ]:  Succeeded [  0.00s] snapshot dbt_test_snapshots.snap_product_prices (table)
+05:42:17.237106 [debug]: Compiled SQL for node model.ecommerce_analytics.dim_products at target/.lsp/compiled/models/marts/dim_products.sql
+05:42:17.237184 [info ]:  Succeeded [  0.00s] model dbt_test.stg_products (view)
+05:42:17.237225 [info ]:  Succeeded [  0.00s] model dbt_test.dim_products (mat_view)
+05:42:17.237342 [debug]: Finished rendering [  0.00s] model dbt_test.stg_customers [success]
+05:42:17.237364 [debug]: Finished rendering [  0.00s] model dbt_test.stg_orders [success]
+05:42:17.237377 [debug]: Finished rendering [  0.00s] model dbt_test.dim_customers [success]
+05:42:17.237398 [debug]: Finished rendering [  0.00s] snapshot dbt_test_snapshots.snap_product_prices [success]
+05:42:17.237415 [debug]: Finished rendering [  0.00s] model dbt_test.stg_products [success]
+05:42:17.237435 [debug]: Finished rendering [  0.00s] model dbt_test.dim_products [success]
+05:42:17.237443 [info ]: Finished rendering [  0.00s] (11 nodes, 0 skipped, 0 errors)
+05:42:17.242797 [info ]: Cached model count updated: 7 models (accurate)

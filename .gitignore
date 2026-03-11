@@ -1,2 +1,25 @@
-.vscode
+# dbt artifacts
+target/
+dbt_packages/
+dbt_modules/
 dbt_internal_packages/
+logs/
+
+# Editor and IDE files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Local environment files
+.env
+.env.*
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# OS files
+.DS_Store
+Thumbs.db
