@@ -1,0 +1,98 @@
+version: 2
+
+sources:
+  - name: ga4
+    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
+    dataset: analytics_526441677
+    tables:
+      - name: events_*
+        description: "Raw GA4 events"
+
+  - name: supabase
+    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
+    dataset: dbt_supabase
+    tables:
+      - name: survey_submissions
+        description: "Survey data synced from Supabase"
+      - name: leads
+        description: "Leads synced from Supabase"
+
+  - name: hubspot
+    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
+    dataset: dbt_hubspot
+    tables:
+      - name: contacts
+        description: "Synced contacts from HubSpot"
+
+  - name: meta_ads
+    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
+    dataset: dbt_meta_ads
+    tables:
+      - name: ads_performance
+        description: "Raw performance data from Meta Ads"
+
+  - name: linkedin_ads
+    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
+    dataset: dbt_linkedin_ads
+    tables:
+      - name: campaign_performance
+        description: "Raw performance data from LinkedIn Ads"
+
+  - name: salesforce
+    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
+    dataset: dbt_salesforce
+    tables:
+      - name: leads
+        description: "Raw Lead objects from Salesforce"
+      - name: opportunities
+        description: "Raw Opportunity objects from Salesforce"
+
+models:
+  - name: stg_ga4_events
+    description: "Staging model for GA4 events flattening."
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: event_id
+        data_type: string
+        tests:
+          - unique
+          - not_null
+      - name: event_version
+        data_type: string
+        description: "Schema version validation string ('v1', 'v2')."
+        tests:
+          - not_null
+      - name: user_pseudo_id
+        data_type: string
+        description: "GA4 UUID for session-persistent anonymous tracking"
+        tests:
+          - not_null
+      - name: session_id
+        data_type: string
+        description: "Current GA4 session index."
+        tests:
+          - not_null
+      - name: hashed_email
+        data_type: string
+        description: "SHA-256 hashed email to ensure basic PII privacy."
+        tests:
+          - not_null:
+              config:
+                where: "event_name IN ('survey_form_submitted', 'generate_lead')"
+
+  - name: mart_readiness_distribution
+    description: "Distribution of survey results by readiness bucket."
+    columns:
+      - name: score_bucket
+        data_type: string
+        tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - '20-35_data_disadvantaged'
+                  - '36-50_data_aware'
+                  - '51-70_data_capable'
+                  - '71-85_data_advantaged'
+                  - '86-100_data_leadership'
