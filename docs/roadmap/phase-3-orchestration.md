@@ -11,16 +11,18 @@ Automating the feedback loop between CRM, Ads, and Analytics to optimize marketi
 - [ ] Configure sGTM event enrichment using BigQuery/CRM lookups.
 
 ### 2. Lead Scoring & Feedback Loops
-- [ ] Develop simplified lead scoring models in SQL (marts).
+- [x] Develop simplified and predictive lead scoring models (`ml_propensity_model`).
 - [ ] (Future) Integrate conversion feedback back into Google/Meta Ads via CAPI.
-- [ ] Implement "First-Seen" vs "Last-Touch" attribution marts.
+- [x] Implement "First-Touch" vs "Last-Touch" attribution marts.
 
 ### 3. AI & Data Science Foundation
-- [ ] Create specialized marts for AI training sets (e.g. `mart_training_lead_propensity`).
-- [ ] Ensure point-in-time correctness for longitudinal studies (DS readiness).
-- [ ] Integrate LookerML definitions for "Semantic Layer" consistency.
+- [x] Create specialized marts for AI training sets (`mart_ai_training_set`).
+- [x] Ensure point-in-time correctness for longitudinal studies (DS readiness).
+- [x] Integrate LookerML definitions for "Semantic Layer" consistency (Completed via SQL Dashboard Stubs).
 
 ## Success Metrics
-- 99% pipeline uptime.
-- Metadata traceability from Looker dashboard back to raw source event.
-- Training-ready datasets refreshed on a 24-hour cycle.
+- [ ] 99% pipeline uptime (Pending dbt Cloud job scheduling).
+- [ ] Metadata traceability from Looker dashboard back to raw source event, validated on production dashboard lineage.
+- [ ] Training-ready datasets refreshed on a 24-hour cycle via scheduled jobs.
+
+**Current Status:** PARTIAL. Modeling foundations exist, but production orchestration, freshness alerting, and reliability metrics are not yet operational.

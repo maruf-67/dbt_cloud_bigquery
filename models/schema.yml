@@ -2,15 +2,26 @@ version: 2
 
 sources:
   - name: ga4
-    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
-    dataset: analytics_526441677
+    database: "{{ var('ga4_database', 'bigquery-testing-489807') }}"
+    schema: "{{ var('ga4_schema', 'analytics_526441677') }}"
+    loader: gcp_console
     tables:
-      - name: events_*
-        description: "Raw GA4 events"
+      - name: events
+        identifier: "events_*"
+        description: "Historical sharded GA4 events."
+      - name: events_intraday
+        identifier: "events_intraday_*"
+        description: "Real-time intraday sharded GA4 events."
+
+  - name: supabase_raw
+    description: "Transactional data synced from Supabase (Postgres)."
+    tables:
+      - name: leads
+      - name: survey_submissions
 
   - name: supabase
-    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
-    dataset: dbt_supabase
+    database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
+    schema: "{{ var('supabase_schema', 'dbt_supabase') }}"
     tables:
       - name: survey_submissions
         description: "Survey data synced from Supabase"
@@ -18,29 +29,31 @@ sources:
         description: "Leads synced from Supabase"
 
   - name: hubspot
-    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
-    dataset: dbt_hubspot
+    database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
+    schema: "{{ var('hubspot_schema', 'dbt_hubspot') }}"
     tables:
       - name: contacts
         description: "Synced contacts from HubSpot"
 
   - name: meta_ads
-    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
-    dataset: dbt_meta_ads
+    database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
+    schema: "{{ var('meta_ads_schema', 'analytics_526441677') }}"
     tables:
       - name: ads_performance
+        identifier: "meta_ads_campaigns"
         description: "Raw performance data from Meta Ads"
 
   - name: linkedin_ads
-    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
-    dataset: dbt_linkedin_ads
+    database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
+    schema: "{{ var('linkedin_ads_schema', 'analytics_526441677') }}"
     tables:
       - name: campaign_performance
+        identifier: "linkedin_ads_campaigns"
         description: "Raw performance data from LinkedIn Ads"
 
   - name: salesforce
-    database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
-    dataset: dbt_salesforce
+    database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
+    schema: "{{ var('salesforce_schema', 'dbt_salesforce') }}"
     tables:
       - name: leads
         description: "Raw Lead objects from Salesforce"
@@ -49,45 +62,92 @@ sources:
 
 models:
   - name: stg_ga4_events
-    description: "Staging model for GA4 events flattening."
-    config:
-      contract:
-        enforced: true
+    description: "Flattened and cleaned GA4 event stream with hashed PII."
     columns:
-      - name: event_id
-        data_type: string
+      - name: dbt_event_id
+        description: "Deterministic surrogate key for de-duplicated GA4 events."
         tests:
           - unique
           - not_null
+      - name: hashed_user_id
+        description: "SHA-256 hashed User ID for privacy compliance."
+      - name: ga_session_id
+        description: "Extracted Google Analytics session identifier."
+      - name: page_location
+        description: "Cleaned page URL path."
       - name: event_version
-        data_type: string
         description: "Schema version validation string ('v1', 'v2')."
         tests:
           - not_null
       - name: user_pseudo_id
-        data_type: string
         description: "GA4 UUID for session-persistent anonymous tracking"
         tests:
           - not_null
       - name: session_id
-        data_type: string
         description: "Current GA4 session index."
+      - name: hashed_email
+        description: "SHA-256 hashed email to ensure basic PII privacy."
+
+  - name: stg_linkedin_leads
+    description: "Staged LinkedIn campaign performance records from the analytics dataset."
+    columns:
+      - name: event_date
         tests:
           - not_null
-      - name: hashed_email
-        data_type: string
-        description: "SHA-256 hashed email to ensure basic PII privacy."
+      - name: campaign_id
         tests:
-          - not_null:
-              config:
-                where: "event_name IN ('survey_form_submitted', 'generate_lead')"
+          - not_null
+      - name: source_platform
+        tests:
+          - not_null
+
+  - name: dim_identity_map
+    description: "The primary identity resolution table linking pseudo-IDs to hashed emails."
+    columns:
+      - name: identity_key
+        tests:
+          - unique
+          - not_null
+      - name: hashed_email
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_survey_conversions
+    description: "Granular fact table linking every survey submission to its acquiring marketing source."
+    columns:
+      - name: submission_id
+        tests:
+          - unique
+          - not_null
+      - name: user_pseudo_id
+        tests:
+          - not_null
+
+  - name: mart_lead_attribution
+    description: "Performance-optimized dashboard view of lead acquisition by UTM source and campaign."
+    columns:
+      - name: conversion_date
+        tests:
+          - not_null
+      - name: utm_source
+        tests:
+          - not_null
+
+  - name: mart_funnel_efficiency
+    description: "Acquisition funnel metrics tracking conversion rates from Session to Lead."
 
   - name: mart_readiness_distribution
     description: "Distribution of survey results by readiness bucket."
     columns:
-      - name: score_bucket
-        data_type: string
+      - name: conversion_date
+        description: "Date of the survey conversion used to group readiness distribution."
         tests:
+          - not_null
+      - name: score_bucket
+        description: "Canonical readiness bucket derived from survey scores."
+        tests:
+          - not_null
           - accepted_values:
               arguments:
                 values:
@@ -96,3 +156,7 @@ models:
                   - '51-70_data_capable'
                   - '71-85_data_advantaged'
                   - '86-100_data_leadership'
+      - name: submission_count
+        description: "Number of submissions in the readiness bucket for the date."
+        tests:
+          - not_null

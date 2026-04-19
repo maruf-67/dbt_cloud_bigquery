@@ -1,12 +1,12 @@
 /*
-    STAGING MODEL: stg_meta_ads
-    - Source: analytics_526441677.meta_ads_campaigns
-    - Purpose: Normalize campaign performance for attribution and cost analysis.
+    STAGING MODEL: stg_linkedin_leads
+    - Source: analytics_526441677.linkedin_ads_campaigns
+    - Purpose: Normalize LinkedIn campaign performance for attribution joins.
 */
 
 WITH raw_campaigns AS (
     SELECT *
-    FROM {{ source('meta_ads', 'ads_performance') }}
+    FROM {{ source('linkedin_ads', 'campaign_performance') }}
 ),
 
 final AS (
@@ -15,8 +15,8 @@ final AS (
         CAST(platform AS STRING) AS platform,
         CAST(campaign_id AS STRING) AS campaign_id,
         CAST(campaign_name AS STRING) AS campaign_name,
-        CAST(ad_set_id AS STRING) AS ad_set_id,
-        CAST(ad_set_name AS STRING) AS ad_set_name,
+        CAST(ad_group_id AS STRING) AS ad_group_id,
+        CAST(ad_group_name AS STRING) AS ad_group_name,
         CAST(ad_id AS STRING) AS ad_id,
         CAST(ad_name AS STRING) AS ad_name,
         CAST(utm_source AS STRING) AS utm_source,
@@ -30,7 +30,7 @@ final AS (
         CAST(conversions AS INT64) AS conversions,
         CAST(cost_per_conversion AS FLOAT64) AS cost_per_conversion,
         CAST(conversion_rate AS FLOAT64) AS conversion_rate,
-        'meta_ads' AS source_platform
+        'linkedin_ads' AS source_platform
     FROM raw_campaigns
 )
 

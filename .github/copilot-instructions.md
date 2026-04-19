@@ -31,7 +31,8 @@ Use this file as the single practical instruction source for AI-assisted develop
 - **Models**:
     - `models/base`: Source unions and raw views.
     - `models/staging`: Normalization, flattening (UNNEST), and PII hashing.
-    - `models/marts`: denormalized, clustered tables for BI/AI.
+    - `models/marts`: Denormalized, clustered tables for BI/AI.
+    - `models/ml`: BigQuery ML predictive models (e.g., Logistic Regression) managed as dbt post-hooks.
 - **Config**: `dbt_project.yml`, `models/schema.yml` (Source definitions).
 - **Contracts**: `models/data_contracts.yml` (Enforced schema constraints).
 

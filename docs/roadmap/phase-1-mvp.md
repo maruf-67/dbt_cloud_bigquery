@@ -16,9 +16,9 @@ Establish the core infrastructure, secure the production data connection, and bu
 - [x] Create initial Data Contracts for core events.
 
 ### 3. First Model: GA4 Staging
-- [ ] Implement `stg_ga4_events.sql` to flatten and clean raw GA4 production data.
-- [ ] Verify `event_id` uniqueness via dbt tests.
-- [ ] Audit `hashed_email` coverage across `survey_form_submitted` events.
+- [x] Implement `stg_ga4_events.sql` to flatten and clean raw GA4 production data.
+- [x] Verify `event_id` uniqueness via dbt tests.
+- [x] Audit `hashed_email` coverage across `survey_form_submitted` events.
 
-## Current Status: READY
-The baseline environment is configured. Execution of the first GA4 staging model is the next priority.
+## Current Status: COMPLETED
+The baseline environment and first GA4 staging model are implemented. Remaining work is in downstream contracts, operational runbooks, and production orchestration.

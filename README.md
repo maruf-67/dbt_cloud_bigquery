@@ -1,97 +1,111 @@
-# dbt_cloud_bigquery — E-commerce Analytics
+# Marketing Data Orchestration (dbt + BigQuery)
 
-dbt project targeting **BigQuery dataset `dbt_test`** with customers, products, and orders.
-
----
-
-## Data Model DAG
-
-```
-sources (dbt_test)
-  customers ──► stg_customers ──► dim_customers ──┐
-  products  ──► stg_products  ──► dim_products  ──┤──► fct_orders ──► fct_customer_orders
-  orders    ──► stg_orders    ────────────────────┘
-```
+A centralized, privacy-first marketing and CRM data orchestration pipeline built with dbt on Google BigQuery. 
+This project ingests multi-source data (GA4, Supabase, LinkedIn, etc.), normalizes it, enforces strict privacy hashing, resolves identities, and feeds directly into performance dashboards and BigQuery ML predictive models.
 
 ---
 
-## Folder Structure
+## 🏗 Data Architecture & DAG
 
+The pipeline follows a modern layered architecture:
+
+```text
+sources (analytics_526441677)
+  ga4_events      ──► stg_ga4_events       ─────────┐
+  supabase_RPCs   ──► stg_survey_submissions ───────┤
+  linkedin_leads  ──► stg_linkedin_leads   ─────────┼──► dim_identity_map
+                                                    │
+                                                    ▼
+                                            fct_survey_conversions
+                                                    │
+             ┌──────────────────────────────────────┴──────────────────────────────────────┐
+             ▼                                      ▼                                      ▼
+    mart_funnel_efficiency               first_touch_attribution                 mart_ai_training_set
+             │                                      │                                      │
+             ▼                                      ▼                                      ▼
+ (Looker Studio Dashboards)             (Looker Studio / Reports)             ml_propensity_model (BQML)
+                                                                                           │
+                                                                                           ▼
+                                                                             mart_lead_propensity_scores
 ```
+
+---
+
+## 🗂 Folder Structure
+
+```text
 .
-├── analyses/
-│   ├── customer_ltv_ranking.sql
-│   └── revenue_by_category.sql
-├── macros/
-│   └── safe_divide.sql         (safe_divide + calc_revenue helpers)
 ├── models/
-│   ├── marts/
-│   │   ├── dim_customers.sql
-│   │   ├── dim_products.sql
-│   │   ├── fct_orders.sql
-│   │   ├── fct_customer_orders.sql
-│   │   └── schema.yml
-│   └── staging/
-│       ├── src_ecommerce.yml   (source declarations)
-│       ├── stg_customers.sql / stg_customers.yml
-│       ├── stg_products.sql  / stg_products.yml
-│       └── stg_orders.sql    / stg_orders.yml
-├── seeds/
-│   ├── schema.yml
-│   └── seed_product_price_tiers.csv
-├── snapshots/
-│   └── snap_product_prices.sql
-├── tests/
-│   └── assert_positive_quantity.sql
+│   ├── staging/        # Source normalization, flattening (UNNEST), and PII hashing (SHA-256)
+│   ├── dimensions/     # Identity stitching (e.g., dim_identity_map stitching GA4 id to CRM email)
+│   ├── marts/          # Denormalized, clustered tables for BI & AI feature sets
+│   ├── ml/             # BigQuery ML models configured as dbt post-hooks
+│   ├── schema.yml      # Source definitions and expectation tests (dbt_expectations)
+│   └── data_contracts.yml # Enforced schema constraints
+├── docs/               # Technical runbooks, roadmaps, and Looker Studio SQL stubs
+├── .github/
+│   └── copilot-instructions.md # AI pairing guidelines
+├── packages.yml        # dbt packages (dbt_utils, dbt_expectations)
 ├── dbt_project.yml
 └── README.md
 ```
 
 ---
 
-## Source Tables (BigQuery dataset: `dbt_test`)
+## 🚀 Key Features
 
-| Table       | Key columns                                             |
-| ----------- | ------------------------------------------------------- |
-| `customers` | customer_id, name, city                                 |
-| `products`  | product_id, product_name, category, price               |
-| `orders`    | order_id, customer_id, product_id, quantity, order_date |
-
----
-
-## Models
-
-| Layer   | Model                 | Materialization   | Description                                |
-| ------- | --------------------- | ----------------- | ------------------------------------------ |
-| Staging | `stg_customers`       | view              | Type-cast + trimmed customers              |
-| Staging | `stg_products`        | view              | Type-cast + trimmed products               |
-| Staging | `stg_orders`          | view              | Type-cast orders with FK tests             |
-| Marts   | `dim_customers`       | materialized_view | Customer dimension (1 row/customer)        |
-| Marts   | `dim_products`        | materialized_view | Product dimension (1 row/product)          |
-| Marts   | `fct_orders`          | materialized_view | Order fact with revenue = quantity × price |
-| Marts   | `fct_customer_orders` | table             | Lifetime metrics per customer              |
+1. **Identity Spine:** Deterministic matching using `app_event_id` to stitch anonymous web traffic (`user_pseudo_id`) to CRM records (`hashed_email`).
+2. **Privacy First:** Raw PII is hashed immediately at the staging boundary using SHA-256. Modeled tables contain NO raw emails or names.
+3. **Advanced Attribution:** Implements "First-Touch" attribution using window functions to trace the *original* marketing source of a customer's journey.
+4. **Intraday Monitoring:** Unions processed historical data with real-time intraday GA4 streaming data for live dashboarding.
+5. **AI/ML Engine:** Flattens user behavioral data into `mart_ai_training_set` and trains a BigQuery ML Logistic Regression model (`ml_propensity_model`) to predict conversion probabilities for every user.
+6. **Data Quality Automation:** Relies on `dbt_expectations` and `dbt_utils` to enforce data drift anomaly detection, schema contracts, and uniqueness guarantees.
 
 ---
 
-## Run Commands
+## 💻 Developer Commands
+
+Make sure to be authenticated to GCP before running dbt.
 
 ```bash
-dbt deps                          # install packages
-dbt seed                          # load seed_product_price_tiers into BigQuery
-dbt run                           # build all models in DAG order
-dbt test                          # run schema + singular tests
-dbt snapshot                      # track product price history
-dbt run -s stg_customers          # run a single model
-dbt run -s +fct_orders            # run fct_orders + all its ancestors
+dbt deps                          # Install required packages (dbt_utils, dbt_expectations)
+dbt parse                         # Parse and validate the DAG
+dbt run                           # Build all models in DAG order (including the BQML model)
+dbt test                          # Run schema + expectation tests
+dbt build                         # Run and test all resources
 ```
 
 ---
 
-## Overriding the Source Schema
+## ⚙️ Environment Source Overrides
 
-The source schema defaults to `dbt_test` (set in `dbt_project.yml`).  
-Override at runtime if needed:
+Source database and schema routing can be overridden per run without editing project files.
+
+Example: run against alternate GA4 and LinkedIn source schemas.
 
 ```bash
-dbt run --vars '{"ecommerce_schema": "your_dataset"}'
+dbt run --select stg_ga4_events stg_linkedin_leads --vars '{"ga4_schema":"analytics_526441677","linkedin_ads_schema":"dbt_linkedin_ads"}'
+dbt test --fail-fast --vars '{"ga4_schema":"analytics_526441677","linkedin_ads_schema":"dbt_linkedin_ads"}'
 ```
+
+Available override vars (defaults are defined in `dbt_project.yml`):
+- `source_database`
+- `ga4_database`, `ga4_schema`
+- `supabase_schema`, `hubspot_schema`, `meta_ads_schema`, `linkedin_ads_schema`, `salesforce_schema`
+
+Use these overrides to point dev/staging/prod runs to environment-specific datasets while keeping contracts unchanged.
+
+Model output schema is controlled by the active target in `~/.dbt/profiles.yml`.
+
+---
+
+## 📊 BI & Reporting Integration
+
+All reporting marts are materialized as performance-optimized Tables or Views. Ready-to-use SQL snippets for Looker Studio can be found in:
+**`docs/reporting/reporting_sql_stubs.md`** (these stubs should be adapted with production date filters and dashboard-level parameters).
+
+## Current Maturity Note
+
+- Foundation and core models are in place.
+- Several facts/marts are still placeholders and require completion before full production BI rollout.
+- Operational runbooks now exist under `docs/runbooks/` and should be used as the release baseline.

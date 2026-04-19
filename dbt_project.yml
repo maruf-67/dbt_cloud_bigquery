@@ -19,11 +19,18 @@ flags:
     static_analysis: false
 
 vars:
-    ecommerce_schema: "dbt_test"
+    source_database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
+    ga4_database: "bigquery-testing-489807"
+    ga4_schema: "analytics_526441677"
+    supabase_schema: "dbt_supabase"
+    hubspot_schema: "dbt_hubspot"
+    meta_ads_schema: "analytics_526441677"
+    linkedin_ads_schema: "analytics_526441677"
+    salesforce_schema: "dbt_salesforce"
 
 models:
-    ecommerce_analytics:
+    marketing_orchestration:
         staging:
             +materialized: view
         marts:
-            +materialized: materialized_view
+            +materialized: table
