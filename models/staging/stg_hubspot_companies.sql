@@ -1,36 +1,31 @@
 /*
-    STAGING MODEL: stg_hubspot_contacts
-    - Purpose: Normalize HubSpot contacts loaded by cf-bigquery-sync.
-    - Privacy: Uses hashed email only for identity joins.
+    STAGING MODEL: stg_hubspot_companies
+    - Purpose: Normalize HubSpot companies loaded by cf-bigquery-sync.
 */
 
 WITH src AS (
     SELECT
         CAST(event_id AS STRING) AS event_id,
         CAST(crm_id AS STRING) AS crm_id,
-        LOWER(TRIM(CAST(email_sha256 AS STRING))) AS hashed_email,
-        TRIM(CAST(first_name AS STRING)) AS first_name,
-        TRIM(CAST(last_name AS STRING)) AS last_name,
-        TRIM(CAST(company AS STRING)) AS company,
-        LOWER(TRIM(CAST(lifecycle_stage AS STRING))) AS lifecycle_stage,
+        TRIM(CAST(company_name AS STRING)) AS company_name,
+        LOWER(TRIM(CAST(domain AS STRING))) AS domain,
+        LOWER(TRIM(CAST(industry AS STRING))) AS industry,
         TIMESTAMP(created_at) AS created_at,
         TIMESTAMP(updated_at) AS updated_at,
         TIMESTAMP(ingested_at) AS ingested_at,
         CAST(archived AS BOOL) AS archived,
         CAST(run_id AS STRING) AS run_id,
         CAST(payload AS JSON) AS payload
-    FROM {{ source('hubspot', 'contacts') }}
+    FROM {{ source('hubspot', 'companies') }}
 ),
 
 final AS (
     SELECT
         event_id,
         crm_id,
-        hashed_email,
-        first_name,
-        last_name,
-        company,
-        lifecycle_stage,
+        company_name,
+        domain,
+        industry,
         created_at,
         updated_at,
         ingested_at,
@@ -39,8 +34,8 @@ final AS (
         payload
     FROM src
     WHERE crm_id IS NOT NULL
-      AND hashed_email IS NOT NULL
-      AND hashed_email != ''
+      AND company_name IS NOT NULL
+      AND company_name != ''
 )
 
 SELECT *

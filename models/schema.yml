@@ -34,6 +34,10 @@ sources:
     tables:
       - name: contacts
         description: "Synced contacts from HubSpot"
+      - name: companies
+        description: "Synced companies from HubSpot"
+      - name: deals
+        description: "Synced deals from HubSpot"
 
   - name: meta_ads
     database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
@@ -98,6 +102,45 @@ models:
         tests:
           - not_null
       - name: source_platform
+        tests:
+          - not_null
+
+  - name: stg_hubspot_contacts
+    description: "Staged HubSpot contacts with privacy-safe hashed identity fields and normalized profile attributes."
+    columns:
+      - name: crm_id
+        tests:
+          - not_null
+      - name: hashed_email
+        tests:
+          - not_null
+      - name: ingested_at
+        tests:
+          - not_null
+
+  - name: stg_hubspot_companies
+    description: "Staged HubSpot companies normalized for account-level attribution and joins."
+    columns:
+      - name: crm_id
+        tests:
+          - not_null
+      - name: company_name
+        tests:
+          - not_null
+      - name: ingested_at
+        tests:
+          - not_null
+
+  - name: stg_hubspot_deals
+    description: "Staged HubSpot deals normalized for opportunity and pipeline analysis."
+    columns:
+      - name: crm_id
+        tests:
+          - not_null
+      - name: pipeline
+        tests:
+          - not_null
+      - name: ingested_at
         tests:
           - not_null
 

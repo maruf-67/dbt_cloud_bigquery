@@ -1,36 +1,35 @@
 /*
-    STAGING MODEL: stg_hubspot_contacts
-    - Purpose: Normalize HubSpot contacts loaded by cf-bigquery-sync.
-    - Privacy: Uses hashed email only for identity joins.
+    STAGING MODEL: stg_hubspot_deals
+    - Purpose: Normalize HubSpot deals loaded by cf-bigquery-sync.
 */
 
 WITH src AS (
     SELECT
         CAST(event_id AS STRING) AS event_id,
         CAST(crm_id AS STRING) AS crm_id,
-        LOWER(TRIM(CAST(email_sha256 AS STRING))) AS hashed_email,
-        TRIM(CAST(first_name AS STRING)) AS first_name,
-        TRIM(CAST(last_name AS STRING)) AS last_name,
-        TRIM(CAST(company AS STRING)) AS company,
-        LOWER(TRIM(CAST(lifecycle_stage AS STRING))) AS lifecycle_stage,
+        TRIM(CAST(deal_name AS STRING)) AS deal_name,
+        LOWER(TRIM(CAST(deal_stage AS STRING))) AS deal_stage,
+        LOWER(TRIM(CAST(pipeline AS STRING))) AS pipeline,
+        SAFE_CAST(amount AS NUMERIC) AS amount,
+        TIMESTAMP(close_date) AS close_date,
         TIMESTAMP(created_at) AS created_at,
         TIMESTAMP(updated_at) AS updated_at,
         TIMESTAMP(ingested_at) AS ingested_at,
         CAST(archived AS BOOL) AS archived,
         CAST(run_id AS STRING) AS run_id,
         CAST(payload AS JSON) AS payload
-    FROM {{ source('hubspot', 'contacts') }}
+    FROM {{ source('hubspot', 'deals') }}
 ),
 
 final AS (
     SELECT
         event_id,
         crm_id,
-        hashed_email,
-        first_name,
-        last_name,
-        company,
-        lifecycle_stage,
+        deal_name,
+        deal_stage,
+        pipeline,
+        amount,
+        close_date,
         created_at,
         updated_at,
         ingested_at,
@@ -39,8 +38,8 @@ final AS (
         payload
     FROM src
     WHERE crm_id IS NOT NULL
-      AND hashed_email IS NOT NULL
-      AND hashed_email != ''
+      AND pipeline IS NOT NULL
+      AND pipeline != ''
 )
 
 SELECT *
