@@ -10,10 +10,9 @@ This project ingests multi-source data (GA4, Supabase, LinkedIn, etc.), normaliz
 The pipeline follows a modern layered architecture:
 
 ```text
-sources (analytics_526441677)
-  ga4_events      ──► stg_ga4_events       ─────────┐
-  supabase_RPCs   ──► stg_survey_submissions ───────┤
-  linkedin_leads  ──► stg_linkedin_leads   ─────────┼──► dim_identity_map
+sources (sigma-sector-488608-g0)
+        ga4_events (analytics_526441677) ──► stg_ga4_events          ─────────┐
+        crm_raw + analytics_raw          ──► staging/core transforms ─────────┼──► dim_identity_map
                                                     │
                                                     ▼
                                             fct_survey_conversions
@@ -84,14 +83,34 @@ Source database and schema routing can be overridden per run without editing pro
 Example: run against alternate GA4 and LinkedIn source schemas.
 
 ```bash
-dbt run --select stg_ga4_events stg_linkedin_leads --vars '{"ga4_schema":"analytics_526441677","linkedin_ads_schema":"dbt_linkedin_ads"}'
-dbt test --fail-fast --vars '{"ga4_schema":"analytics_526441677","linkedin_ads_schema":"dbt_linkedin_ads"}'
+dbt run --select stg_ga4_events stg_linkedin_leads --vars '{"ga4_database":"sigma-sector-488608-g0","ga4_schema":"analytics_526441677","linkedin_ads_schema":"analytics_raw"}'
+dbt test --fail-fast --vars '{"ga4_database":"sigma-sector-488608-g0","ga4_schema":"analytics_526441677","linkedin_ads_schema":"analytics_raw"}'
 ```
 
 Available override vars (defaults are defined in `dbt_project.yml`):
 - `source_database`
 - `ga4_database`, `ga4_schema`
 - `supabase_schema`, `hubspot_schema`, `meta_ads_schema`, `linkedin_ads_schema`, `salesforce_schema`
+
+Default model output routing:
+- `models/base` + `models/staging` -> `analytics_staging`
+- `models/dimensions` + `models/facts` -> `analytics_core`
+- `models/marts` + `models/ml` -> `analytics_mart`
+
+EU cutover routing contract (active baseline):
+- Project: `sigma-sector-488608-g0`
+- Location: `EU`
+- GA4 source dataset (read-only): `analytics_526441677`
+- CRM raw dataset: `crm_raw`
+- Ads/raw connector dataset: `analytics_raw`
+
+Important: keep `analytics_526441677` source-only. Do not write dbt outputs or connector artifacts into this dataset.
+
+Recommended first smoke-run order after config changes:
+1. `dbt parse`
+2. run/test touched staging + core models
+3. run/test touched marts
+4. verify objects landed in `analytics_staging` / `analytics_core` / `analytics_mart`
 
 Use these overrides to point dev/staging/prod runs to environment-specific datasets while keeping contracts unchanged.
 

@@ -20,17 +20,32 @@ flags:
 
 vars:
     source_database: "{{ env_var('DBT_PROFILE_PROJECT', target.project) }}"
-    ga4_database: "bigquery-testing-489807"
+    ga4_database: "{{ env_var('DBT_GA4_PROJECT', 'sigma-sector-488608-g0') }}"
     ga4_schema: "analytics_526441677"
-    supabase_schema: "dbt_supabase"
-    hubspot_schema: "dbt_hubspot"
-    meta_ads_schema: "analytics_526441677"
-    linkedin_ads_schema: "analytics_526441677"
-    salesforce_schema: "dbt_salesforce"
+    supabase_schema: "crm_raw"
+    hubspot_schema: "crm_raw"
+    meta_ads_schema: "analytics_raw"
+    linkedin_ads_schema: "analytics_raw"
+    salesforce_schema: "crm_raw"
 
 models:
     marketing_orchestration:
+        +persist_docs:
+            relation: true
+            columns: true
+        base:
+            +schema: analytics_staging
         staging:
+            +schema: analytics_staging
             +materialized: view
+        dimensions:
+            +schema: analytics_core
+        facts:
+            +schema: analytics_core
         marts:
+            +schema: analytics_mart
             +materialized: table
+            fct_survey_conversions:
+                +schema: analytics_core
+        ml:
+            +schema: analytics_mart

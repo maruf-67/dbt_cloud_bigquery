@@ -32,7 +32,8 @@
 - Source dataset routing was parameterized using dbt vars in `models/schema.yml` and `dbt_project.yml`.
 - Legacy `ecommerce_*` project/schema naming was removed from active config and docs.
 - BigQuery MCP confirmed active dataset `analytics_526441677` (EU); `dbt_test` is removed.
-- BigQuery MCP confirmed live source tables: GA4 date-sharded events, pseudonymous users shards, plus `linkedin_ads_campaigns` and `meta_ads_campaigns`.
+- BigQuery MCP re-validation confirmed `analytics_526441677` now contains GA4 date-sharded events and pseudonymous user shards only.
+- BigQuery cleanup completed: misrouted curated/ads tables were removed from `analytics_526441677` to preserve source-only boundary.
 - `dbt run --select stg_ga4_events stg_linkedin_leads stg_meta_ads ...` succeeded (3/3).
 - `dbt test --select stg_ga4_events stg_linkedin_leads stg_meta_ads ...` succeeded (7/7).
 - `dbt run --select stg_ga4_events stg_survey_submissions stg_leads dim_identity_map fct_survey_conversions mart_lead_attribution` succeeded (6/6).
@@ -121,10 +122,10 @@
 
 ## Appendix: MCP Queries Used
 - Table inventory:
-  - `SELECT table_name, table_type FROM \`bigquery-testing-489807.analytics_526441677.INFORMATION_SCHEMA.TABLES\` ORDER BY table_name`
+  - `SELECT table_name, table_type FROM \`sigma-sector-488608-g0.analytics_526441677.INFORMATION_SCHEMA.TABLES\` ORDER BY table_name`
 - Fact schema check:
-  - `SELECT column_name, data_type FROM \`bigquery-testing-489807.analytics_526441677.INFORMATION_SCHEMA.COLUMNS\` WHERE table_name = 'fct_survey_conversions' ORDER BY ordinal_position`
+  - `SELECT column_name, data_type FROM \`sigma-sector-488608-g0.analytics_core.INFORMATION_SCHEMA.COLUMNS\` WHERE table_name = 'fct_survey_conversions' ORDER BY ordinal_position`
 - Integration row counts:
-  - `SELECT 'stg_survey_submissions' AS model_name, COUNT(*) AS row_count FROM \`bigquery-testing-489807.analytics_526441677.stg_survey_submissions\` UNION ALL ...`
+  - `SELECT 'stg_survey_submissions' AS model_name, COUNT(*) AS row_count FROM \`sigma-sector-488608-g0.analytics_staging.stg_survey_submissions\` UNION ALL ...`
 - Expanded selector row counts:
-  - `SELECT 'fct_campaign_performance' AS model_name, COUNT(*) AS row_count FROM \`bigquery-testing-489807.analytics_526441677.fct_campaign_performance\` UNION ALL ...`
+  - `SELECT 'fct_campaign_performance' AS model_name, COUNT(*) AS row_count FROM \`sigma-sector-488608-g0.analytics_core.fct_campaign_performance\` UNION ALL ...`

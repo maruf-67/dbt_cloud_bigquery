@@ -1,28 +1,50 @@
 /*
     STAGING MODEL: stg_leads
-    - Source: GA4 staged events (`stg_ga4_events`) as current warehouse fallback.
-    - Privacy: Uses already-hashed identifiers only.
+    - Source: HubSpot contacts (primary) + GA4 events (fallback for unmatched users).
+    - Privacy: Uses email_sha256 from HubSpot; hashed_user_id from GA4. No plain PII.
 */
 
-WITH ga4_identities AS (
+WITH hubspot_contacts AS (
     SELECT
+        TO_HEX(SHA256(CONCAT(crm_id, ':hubspot'))) AS internal_lead_id,
+        crm_id AS submission_id,
+        LOWER(TRIM(CAST(email_sha256 AS STRING))) AS hashed_email,
+        company,
+        'hubspot' AS source_platform,
+        TIMESTAMP(created_at) AS created_at
+    FROM {{ source('hubspot', 'contacts') }}
+    WHERE email_sha256 IS NOT NULL
+        AND email_sha256 != ''
+),
+
+ga4_identities AS (
+    SELECT
+        TO_HEX(SHA256(CONCAT(CAST(app_event_id AS STRING), ':', LOWER(TRIM(CAST(hashed_user_id AS STRING)))))) AS internal_lead_id,
         CAST(app_event_id AS STRING) AS submission_id,
-                LOWER(TRIM(CAST(hashed_user_id AS STRING))) AS hashed_email,
+        LOWER(TRIM(CAST(hashed_user_id AS STRING))) AS hashed_email,
+        CAST(NULL AS STRING) AS company,
+        'ga4_fallback' AS source_platform,
         event_timestamp AS created_at
     FROM {{ ref('stg_ga4_events') }}
     WHERE app_event_id IS NOT NULL
-            AND hashed_user_id IS NOT NULL
+        AND hashed_user_id IS NOT NULL
+),
+
+unioned AS (
+    SELECT * FROM hubspot_contacts
+    UNION ALL
+    SELECT * FROM ga4_identities
 ),
 
 final AS (
     SELECT
-        TO_HEX(SHA256(CONCAT(submission_id, ':', hashed_email))) AS internal_lead_id,
+        internal_lead_id,
         submission_id,
         hashed_email,
-        CAST(NULL AS STRING) AS company,
-        'ga4_fallback' AS source_platform,
+        company,
+        source_platform,
         created_at
-    FROM ga4_identities
+    FROM unioned
 )
 
 SELECT * FROM final

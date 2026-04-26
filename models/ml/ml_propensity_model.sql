@@ -6,8 +6,10 @@
 
 {{ config(
     materialized='view',
+    alias='ml_propensity_placeholder',
+    pre_hook="DROP VIEW IF EXISTS `{{ this.database }}`.`{{ this.schema }}`.`ml_propensity_model`",
     post_hook="
-        CREATE OR REPLACE MODEL {{ this.database }}.{{ this.schema }}.ml_propensity_model
+        CREATE OR REPLACE MODEL `{{ this.database }}`.`{{ this.schema }}`.`ml_propensity_model`
         OPTIONS(
             model_type='logistic_reg',
             input_label_cols=['label_converted_hq'],

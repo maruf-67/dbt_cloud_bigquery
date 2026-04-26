@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: ga4
-    database: "{{ var('ga4_database', 'bigquery-testing-489807') }}"
+    database: "{{ var('ga4_database', 'sigma-sector-488608-g0') }}"
     schema: "{{ var('ga4_schema', 'analytics_526441677') }}"
     loader: gcp_console
     tables:
@@ -15,13 +15,15 @@ sources:
 
   - name: supabase_raw
     description: "Transactional data synced from Supabase (Postgres)."
+    database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
+    schema: "{{ var('supabase_schema', 'crm_raw') }}"
     tables:
       - name: leads
       - name: survey_submissions
 
   - name: supabase
     database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
-    schema: "{{ var('supabase_schema', 'dbt_supabase') }}"
+    schema: "{{ var('supabase_schema', 'crm_raw') }}"
     tables:
       - name: survey_submissions
         description: "Survey data synced from Supabase"
@@ -30,7 +32,7 @@ sources:
 
   - name: hubspot
     database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
-    schema: "{{ var('hubspot_schema', 'dbt_hubspot') }}"
+    schema: "{{ var('hubspot_schema', 'crm_raw') }}"
     tables:
       - name: contacts
         description: "Synced contacts from HubSpot"
@@ -41,7 +43,7 @@ sources:
 
   - name: meta_ads
     database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
-    schema: "{{ var('meta_ads_schema', 'analytics_526441677') }}"
+    schema: "{{ var('meta_ads_schema', 'analytics_raw') }}"
     tables:
       - name: ads_performance
         identifier: "meta_ads_campaigns"
@@ -49,7 +51,7 @@ sources:
 
   - name: linkedin_ads
     database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
-    schema: "{{ var('linkedin_ads_schema', 'analytics_526441677') }}"
+    schema: "{{ var('linkedin_ads_schema', 'analytics_raw') }}"
     tables:
       - name: campaign_performance
         identifier: "linkedin_ads_campaigns"
@@ -57,7 +59,7 @@ sources:
 
   - name: salesforce
     database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
-    schema: "{{ var('salesforce_schema', 'dbt_salesforce') }}"
+    schema: "{{ var('salesforce_schema', 'crm_raw') }}"
     tables:
       - name: leads
         description: "Raw Lead objects from Salesforce"
@@ -73,24 +75,80 @@ models:
         tests:
           - unique
           - not_null
+      - name: app_event_id
+        description: "Application-level UUID captured in GA4 event params for cross-system joins."
+      - name: event_timestamp
+        description: "Event timestamp normalized to TIMESTAMP from GA4 micros precision."
+      - name: event_date
+        description: "Event date used for daily slicing and partition-friendly filtering."
+      - name: user_pseudo_id
+        description: "GA4 anonymous persistent user identifier for behavioral tracking."
+        tests:
+          - not_null
       - name: hashed_user_id
         description: "SHA-256 hashed User ID for privacy compliance."
+      - name: event_name
+        description: "Canonical GA4 event name."
       - name: ga_session_id
         description: "Extracted Google Analytics session identifier."
       - name: page_location
         description: "Cleaned page URL path."
+      - name: page_title
+        description: "Page title captured at event time."
+      - name: page_referrer
+        description: "Referrer URL captured for attribution context."
+      - name: utm_source
+        description: "UTM source parameter extracted from GA4 event params."
+      - name: utm_medium
+        description: "UTM medium parameter extracted from GA4 event params."
+      - name: utm_campaign
+        description: "UTM campaign parameter extracted from GA4 event params."
       - name: event_version
         description: "Schema version validation string ('v1', 'v2')."
         tests:
           - not_null
-      - name: user_pseudo_id
-        description: "GA4 UUID for session-persistent anonymous tracking"
+      - name: device_platform
+        description: "Source platform/device context from GA4 (for example WEB, ANDROID, IOS)."
+
+  - name: stg_survey_submissions
+    description: "Staged survey submissions at one row per submission, bridged to GA4 identity keys."
+    columns:
+      - name: submission_id
+        description: "Unique survey submission identifier used as submission grain key."
         tests:
           - not_null
-      - name: session_id
-        description: "Current GA4 session index."
+      - name: app_event_id
+        description: "Application event UUID linking survey submission to GA4 events."
+      - name: user_pseudo_id
+        description: "Anonymous GA4 user identifier at submission time."
+      - name: ga_session_id
+        description: "GA4 session id associated with the submission event."
+      - name: readiness_level
+        description: "Survey readiness category label when available from source."
+      - name: overall_score
+        description: "Numeric readiness score for the submission when available."
+      - name: score_range
+        description: "Bucketed score range representation used for reporting."
+      - name: created_at
+        description: "Submission creation timestamp used as conversion time anchor."
+
+  - name: stg_leads
+    description: "Staged lead identities mapped to submissions with privacy-safe hashed identifiers."
+    columns:
+      - name: internal_lead_id
+        description: "Deterministic internal lead key generated from submission and hashed identity values."
+        tests:
+          - not_null
+      - name: submission_id
+        description: "Submission id used to link lead identity to survey conversion records."
       - name: hashed_email
-        description: "SHA-256 hashed email to ensure basic PII privacy."
+        description: "SHA-256 hashed email used as primary privacy-safe identity join key."
+      - name: company
+        description: "Company name attribute when available from lead source."
+      - name: source_platform
+        description: "Source system used to build this staged lead row."
+      - name: created_at
+        description: "Lead record creation timestamp in the staging model."
 
   - name: stg_linkedin_leads
     description: "Staged LinkedIn campaign performance records from the analytics dataset."
@@ -148,34 +206,76 @@ models:
     description: "The primary identity resolution table linking pseudo-IDs to hashed emails."
     columns:
       - name: identity_key
+        description: "Deterministic identity surrogate key derived from hashed email."
         tests:
           - unique
           - not_null
       - name: hashed_email
+        description: "Privacy-safe hashed email used as canonical identity key across systems."
         tests:
           - unique
           - not_null
+      - name: user_pseudo_id
+        description: "Mapped GA4 anonymous user identifier for the stitched identity."
+      - name: internal_lead_id
+        description: "Mapped internal lead key from staged lead identity records."
+      - name: identified_at
+        description: "Earliest timestamp when identity linkage was established."
 
   - name: fct_survey_conversions
     description: "Granular fact table linking every survey submission to its acquiring marketing source."
     columns:
       - name: submission_id
+        description: "Primary key at one row per survey conversion submission."
         tests:
           - unique
           - not_null
+      - name: app_event_id
+        description: "Application UUID used to bridge conversion to GA4 session context."
       - name: user_pseudo_id
+        description: "Anonymous GA4 user identifier associated with the conversion."
         tests:
           - not_null
+      - name: ga_session_id
+        description: "GA4 session id captured for the conversion event."
+      - name: readiness_level
+        description: "Survey readiness category at conversion time."
+      - name: overall_score
+        description: "Survey readiness score used for quality and segmentation metrics."
+      - name: score_range
+        description: "Bucketed score band for reporting and semantic grouping."
+      - name: utm_source
+        description: "Attributed marketing source for the conversion."
+      - name: utm_medium
+        description: "Attributed marketing medium for the conversion."
+      - name: utm_campaign
+        description: "Attributed marketing campaign for the conversion."
+      - name: conversion_timestamp
+        description: "Timestamp when the conversion submission occurred."
+      - name: is_high_quality_lead
+        description: "Binary lead-quality flag where 1 indicates score threshold met."
 
   - name: mart_lead_attribution
     description: "Performance-optimized dashboard view of lead acquisition by UTM source and campaign."
     columns:
       - name: conversion_date
+        description: "Daily conversion date used for trend analysis and partition pruning."
         tests:
           - not_null
       - name: utm_source
+        description: "Marketing source dimension used for attribution breakdowns."
         tests:
           - not_null
+      - name: utm_medium
+        description: "Marketing medium dimension used for channel-level reporting."
+      - name: utm_campaign
+        description: "Marketing campaign dimension used for campaign performance views."
+      - name: total_conversions
+        description: "Total number of survey conversions for the grouped dimensions."
+      - name: total_high_quality_leads
+        description: "Count of conversions flagged as high-quality leads."
+      - name: average_readiness_score
+        description: "Average readiness score across grouped conversion records."
 
   - name: mart_funnel_efficiency
     description: "Acquisition funnel metrics tracking conversion rates from Session to Lead."
@@ -203,3 +303,43 @@ models:
         description: "Number of submissions in the readiness bucket for the date."
         tests:
           - not_null
+
+  - name: mart_survey_funnel
+    description: "Daily dashboard-ready survey funnel by channel, from started to converted and high-quality lead outcomes."
+    columns:
+      - name: event_date
+        description: "Event date grain used for all funnel metrics."
+        tests:
+          - not_null
+      - name: utm_source
+        description: "Attributed source dimension normalized for direct and missing values."
+        tests:
+          - not_null
+      - name: utm_medium
+        description: "Attributed medium dimension normalized for none and missing values."
+        tests:
+          - not_null
+      - name: utm_campaign
+        description: "Attributed campaign dimension normalized for not_set and missing values."
+        tests:
+          - not_null
+      - name: started_sessions
+        description: "Distinct GA4 sessions that emitted survey_started events."
+      - name: started_submissions
+        description: "Distinct app_event_id count for survey_started events."
+      - name: form_submitted_submissions
+        description: "Distinct app_event_id count for survey_form_submitted events."
+      - name: completed_submissions
+        description: "Distinct app_event_id count for survey_completed events."
+      - name: converted_submissions
+        description: "Distinct submission_id count from fct_survey_conversions."
+      - name: high_quality_converted_submissions
+        description: "Count of converted submissions flagged as high-quality leads."
+      - name: started_to_form_submit_rate
+        description: "Rate from started submissions to form submitted submissions."
+      - name: started_to_completed_rate
+        description: "Rate from started submissions to completed submissions."
+      - name: completed_to_converted_rate
+        description: "Rate from completed submissions to converted submissions."
+      - name: converted_to_hq_rate
+        description: "Rate from converted submissions to high-quality converted submissions."

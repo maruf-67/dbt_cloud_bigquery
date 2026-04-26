@@ -2,6 +2,8 @@
     DIMENSION MODEL: dim_identity_map
     - Purpose: The central "Identity Graph" that stitches anonymous web IDs to CRM identities.
     - JOIN Spine: hashed_email (SHA-256) and app_event_id (UUID).
+    - Path 1: Survey → Leads (via submission_id) → GA4 (via app_event_id)
+    - Path 2: Direct CRM leads (HubSpot contacts) without a matching survey submission
 */
 
 WITH ga4_conversions AS (
@@ -36,10 +38,8 @@ lead_identities AS (
     FROM {{ ref('stg_leads') }}
 ),
 
-identity_bridge AS (
-    -- Stitching Phase: Link pseudo_id to hashed_email via either:
-    -- 1. Matching app_event_id in BOTH GA4 and Survey
-    -- 2. Matching user_pseudo_id in both systems
+-- Path 1: Stitched via survey submission_id
+survey_stitched AS (
     SELECT
         COALESCE(ga4.user_pseudo_id, srv.user_pseudo_id) AS user_pseudo_id,
         leads.hashed_email,
@@ -48,6 +48,23 @@ identity_bridge AS (
     FROM survey_conversions AS srv
     INNER JOIN lead_identities AS leads ON srv.submission_id = leads.submission_id
     LEFT JOIN ga4_conversions AS ga4 ON srv.app_event_id = ga4.app_event_id
+),
+
+-- Path 2: CRM leads with no matching survey submission (e.g. HubSpot-only contacts)
+crm_only_leads AS (
+    SELECT
+        CAST(NULL AS STRING) AS user_pseudo_id,
+        leads.hashed_email,
+        leads.internal_lead_id,
+        leads.event_timestamp AS first_seen_at
+    FROM lead_identities AS leads
+    WHERE leads.hashed_email NOT IN (SELECT hashed_email FROM survey_stitched)
+),
+
+identity_bridge AS (
+    SELECT * FROM survey_stitched
+    UNION ALL
+    SELECT * FROM crm_only_leads
 ),
 
 final AS (
