@@ -7,7 +7,7 @@ Connect the standardized dbt warehouse to external BI tools (Looker Studio) to p
 
 ### 1. Dashboard Foundations
 - [x] Create connection stubs and query optimization guides (`docs/reporting/reporting_sql_stubs.md`).
-- [ ] Protect BigQuery query costs by enforcing `@DS_START_DATE` and `@DS_END_DATE` partition filters in all production dashboard queries.
+- [x] Protect BigQuery query costs by enforcing `@DS_START_DATE` and `@DS_END_DATE` partition filters in all production dashboard queries.
 
 ### 2. Marketing Analytics
 - [x] Provide standard SQL for "Marketing ROI & Lead Attribution".
@@ -21,4 +21,4 @@ Connect the standardized dbt warehouse to external BI tools (Looker Studio) to p
 - [ ] Business stakeholders have immediate, actionable visibility into standard KPIs without needing ad-hoc engineering support.
 - [ ] Dashboards leverage clustered and partitioned marts for rapid loading (sub-3 seconds).
 
-**Current Status:** IN PROGRESS. SQL stubs are documented, but production dashboard wiring and SLA validation remain open.
+**Current Status:** IN PROGRESS. Production-safe SQL stubs now enforce date-partition filters and the semantic mart contract is documented, but live dashboard wiring and SLA validation remain open.

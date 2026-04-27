@@ -10,6 +10,7 @@ WITH ga4_conversions AS (
     -- Collect GA4 events that match an app transaction (via app_event_id)
     SELECT
         user_pseudo_id,
+        hashed_user_id,
         app_event_id,
         event_timestamp,
         'ga4_conversion' AS detection_method
@@ -50,7 +51,26 @@ survey_stitched AS (
     LEFT JOIN ga4_conversions AS ga4 ON srv.app_event_id = ga4.app_event_id
 ),
 
--- Path 2: CRM leads with no matching survey submission (e.g. HubSpot-only contacts)
+-- Path 2: Direct hashed identity link from GA4 to CRM lead email hash
+ga4_hashed_stitched AS (
+    SELECT
+        ga4.user_pseudo_id,
+        leads.hashed_email,
+        leads.internal_lead_id,
+        LEAST(ga4.event_timestamp, leads.event_timestamp) AS first_seen_at
+    FROM ga4_conversions AS ga4
+    INNER JOIN lead_identities AS leads ON ga4.hashed_user_id = leads.hashed_email
+    WHERE ga4.user_pseudo_id IS NOT NULL
+      AND ga4.hashed_user_id IS NOT NULL
+),
+
+stitched_emails AS (
+    SELECT hashed_email FROM survey_stitched
+    UNION DISTINCT
+    SELECT hashed_email FROM ga4_hashed_stitched
+),
+
+-- Path 3: CRM leads with no matching survey submission or GA4 hashed identity
 crm_only_leads AS (
     SELECT
         CAST(NULL AS STRING) AS user_pseudo_id,
@@ -58,11 +78,17 @@ crm_only_leads AS (
         leads.internal_lead_id,
         leads.event_timestamp AS first_seen_at
     FROM lead_identities AS leads
-    WHERE leads.hashed_email NOT IN (SELECT hashed_email FROM survey_stitched)
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM stitched_emails AS stitched
+        WHERE stitched.hashed_email = leads.hashed_email
+    )
 ),
 
 identity_bridge AS (
     SELECT * FROM survey_stitched
+    UNION ALL
+    SELECT * FROM ga4_hashed_stitched
     UNION ALL
     SELECT * FROM crm_only_leads
 ),

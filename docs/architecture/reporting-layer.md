@@ -7,13 +7,18 @@ The reporting layer provides the business interface to the warehouse data. It is
 
 ### 1. Executive Dashboards (L1)
 - **Objective**: High-level KPIs (Spend, ROAS, Lead Volume, Conversion Rates).
-- **Source**: Directly connected to `MART` tables.
+- **Source**: Directly connected to curated `MART` tables, with `mart_semantic_overview` as the default funnel + conversion semantic source.
 - **Performance**: Uses **Scheduled Extracts** to ensure sub-second report loading times.
 
 ### 2. Operational In-Depth (L2)
 - **Objective**: Campaign-level optimization and journey analysis.
 - **Functionality**: Dynamic filtering by campaign, UTM source, and date range.
-- **Optimization**: All queries are date-partitioned to minimize BigQuery compute costs.
+- **Optimization**: All queries are date-partitioned to minimize BigQuery compute costs and must enforce `@DS_START_DATE` / `@DS_END_DATE` filters in production BI queries.
+
+## Production query policy
+- Executive dashboards should prefer `mart_semantic_overview` over stitching multiple marts in the BI layer.
+- Production dashboard queries must include partition-aligned date predicates.
+- Placeholder marts must not be used as the source for stakeholder-facing dashboards.
 
 ### 3. Data Science & AI Export (L3)
 - **Objective**: Clean, wide tables for ML training and statistical analysis.

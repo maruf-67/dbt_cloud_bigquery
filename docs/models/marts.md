@@ -18,6 +18,11 @@ Marts provide denormalized, query-efficient datasets for BI and ML consumers.
 ### `mart_intraday_leads`
 - Near-real-time monitoring view combining historical and same-day events.
 
+### `mart_semantic_overview`
+- Unified executive/reporting mart at `event_date × utm_source × utm_medium × utm_campaign` grain.
+- Combines funnel volume, conversion volume, readiness score, and pivoted readiness bucket metrics.
+- Intended as the primary production data source for Looker Studio executive dashboards.
+
 ### `mart_lead_propensity_scores`
 - ML predictions and segmentation output.
 
@@ -37,6 +42,7 @@ Marts provide denormalized, query-efficient datasets for BI and ML consumers.
 | --- | --- | --- | --- |
 | Survey session-to-completion rate | `mart_funnel_efficiency` | `stg_ga4_events`, `fct_survey_conversions` | Daily |
 | Lead conversions by channel/campaign | `mart_lead_attribution` | `fct_survey_conversions` | Daily |
+| Executive funnel + readiness overview | `mart_semantic_overview` | `stg_ga4_events`, `fct_survey_conversions` | Daily |
 | Intraday lead flow | `mart_intraday_leads` | `fct_survey_conversions`, `stg_ga4_events` | Hourly or near-real-time |
 | Propensity segment counts | `mart_lead_propensity_scores` | `mart_ai_training_set`, `ml_propensity_model`, `dim_identity_map` | Daily |
 

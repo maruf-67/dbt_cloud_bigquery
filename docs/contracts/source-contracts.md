@@ -30,30 +30,46 @@ This document defines source-level contracts for upstream systems feeding the wa
 ## Supabase (`supabase_raw.survey_submissions`)
 
 ### Required fields
-- `id` (submission id)
+- `record_id` (STRING merge key from Supabase)
 - `event_id` (STRING UUID v4)
 - `user_pseudo_id` (STRING)
 - `session_id` (STRING)
-- `level` (STRING)
-- `overall_score` (NUMERIC/FLOAT)
+- `hashed_email` (STRING 64-char lowercase hex)
+- `readiness_level` (STRING)
+- `readiness_score` (NUMERIC/FLOAT)
 - `score_range` (STRING)
 - `created_at` (TIMESTAMP)
+- `updated_at` (TIMESTAMP)
+- `ingested_at` (TIMESTAMP)
 
 ### Contract notes
+- `record_id` is the raw-table merge key and must remain stable across syncs.
 - `event_id` must be unique per submission.
 - `score_range` must match enum reference.
+
+### Freshness target
+- Warning: data delayed > 18 hours
+- Error: data delayed > 36 hours
 
 ## Supabase (`supabase_raw.leads`)
 
 ### Required fields
-- `id` (lead id)
-- `p_submission_id` (STRING/INT reference to submission)
-- `p_hashed_email` (STRING 64-char lowercase hex)
-- `p_company` (STRING nullable)
+- `record_id` (STRING merge key from Supabase)
+- `submission_id` (STRING/INT reference to submission)
+- `hashed_email` (STRING 64-char lowercase hex)
+- `company` (STRING nullable)
+- `contact_consent` (BOOLEAN)
+- `lead_status` (STRING)
 - `created_at` (TIMESTAMP)
+- `updated_at` (TIMESTAMP)
+- `ingested_at` (TIMESTAMP)
 
 ### Privacy constraint
 - Plain email must never be surfaced in staging/marts.
+
+### Freshness target
+- Warning: data delayed > 18 hours
+- Error: data delayed > 36 hours
 
 ## HubSpot (`hubspot.contacts`)
 
@@ -102,6 +118,7 @@ Use this compact log for any source contract addition, rename, type change, or d
 
 | Version | Date | Scope | Change summary | Migration required | Owner |
 | --- | --- | --- | --- | --- | --- |
+| 1.1.0 | 2026-04-27 | Supabase raw contracts | Updated `supabase_raw.survey_submissions` and `supabase_raw.leads` contracts to match the live BigQuery sync schema (`record_id`, `ingested_at`, readiness fields, consent/status fields) and added freshness expectations. | No | Data Engineering |
 | 1.0.0 | 2026-04-19 | Initial formalization | Baseline source contracts documented for GA4, Supabase, HubSpot, Meta Ads, LinkedIn Ads. | No | Data Engineering |
 
 ### Entry rules

@@ -32,7 +32,11 @@ flattened AS (
         
         -- Identity Boundary
         user_pseudo_id,
-        SHA256(CAST(user_id AS STRING)) AS hashed_user_id,
+        COALESCE(
+            NULLIF((SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'hashed_email'), ''),
+            NULLIF((SELECT value.string_value FROM UNNEST(event_params) WHERE key = 'user_id'), ''),
+            NULLIF(CAST(user_id AS STRING), '')
+        ) AS hashed_user_id,
         
         -- Core Event Properties
         event_name,

@@ -19,7 +19,77 @@ sources:
     schema: "{{ var('supabase_schema', 'crm_raw') }}"
     tables:
       - name: leads
+        description: "Privacy-safe lead records synced from Supabase into BigQuery raw storage."
+        config:
+          loaded_at_field: ingested_at
+          freshness:
+            warn_after: {count: 18, period: hour}
+            error_after: {count: 36, period: hour}
+        columns:
+          - name: record_id
+            description: "Supabase lead row identifier used as the raw-table merge key."
+            tests:
+              - not_null
+              - unique
+          - name: submission_id
+            description: "Linked survey submission identifier from Supabase."
+          - name: hashed_email
+            description: "Privacy-safe SHA-256 email hash propagated from the application boundary."
+            tests:
+              - not_null
+          - name: company
+            description: "Company attribute captured from the survey lead form when provided."
+          - name: contact_consent
+            description: "Boolean consent flag preserved from Supabase lead capture."
+          - name: lead_status
+            description: "Lead pipeline status persisted in Supabase."
+          - name: created_at
+            description: "Original record creation timestamp in Supabase."
+          - name: updated_at
+            description: "Latest record update timestamp in Supabase."
+          - name: ingested_at
+            description: "Warehouse ingestion timestamp emitted by the worker and used for freshness checks."
+            tests:
+              - not_null
       - name: survey_submissions
+        description: "Survey submission records synced from Supabase into BigQuery raw storage."
+        config:
+          loaded_at_field: ingested_at
+          freshness:
+            warn_after: {count: 18, period: hour}
+            error_after: {count: 36, period: hour}
+        columns:
+          - name: record_id
+            description: "Supabase submission row identifier used as the raw-table merge key."
+            tests:
+              - not_null
+              - unique
+          - name: event_id
+            description: "Application event UUID captured at the survey submission boundary."
+            tests:
+              - not_null
+          - name: user_pseudo_id
+            description: "GA4 anonymous user identifier preserved from the survey submission payload."
+          - name: session_id
+            description: "Application/GA4 session identifier captured with the submission."
+          - name: hashed_email
+            description: "Privacy-safe SHA-256 email hash for identity stitching across analytics and CRM systems."
+          - name: readiness_level
+            description: "Survey readiness label persisted in Supabase."
+          - name: readiness_score
+            description: "Numeric survey readiness score persisted in Supabase."
+          - name: score_range
+            description: "Canonical readiness bucket stored with the submission."
+          - name: total_questions
+            description: "Question count used when computing the readiness score."
+          - name: created_at
+            description: "Original record creation timestamp in Supabase."
+          - name: updated_at
+            description: "Latest record update timestamp in Supabase."
+          - name: ingested_at
+            description: "Warehouse ingestion timestamp emitted by the worker and used for freshness checks."
+            tests:
+              - not_null
 
   - name: supabase
     database: "{{ var('source_database', env_var('DBT_PROFILE_PROJECT', target.project)) }}"
@@ -68,7 +138,7 @@ sources:
 
 models:
   - name: stg_ga4_events
-    description: "Flattened and cleaned GA4 event stream with hashed PII."
+    description: "Flattened and cleaned GA4 event stream with privacy-safe identity fields extracted from GA4 top-level and event-param payloads."
     columns:
       - name: dbt_event_id
         description: "Deterministic surrogate key for de-duplicated GA4 events."
@@ -86,7 +156,7 @@ models:
         tests:
           - not_null
       - name: hashed_user_id
-        description: "SHA-256 hashed User ID for privacy compliance."
+        description: "Privacy-safe hashed identity extracted from GA4 event params (`hashed_email`, `user_id`) or top-level GA4 `user_id` without re-hashing."
       - name: event_name
         description: "Canonical GA4 event name."
       - name: ga_session_id
@@ -111,7 +181,7 @@ models:
         description: "Source platform/device context from GA4 (for example WEB, ANDROID, IOS)."
 
   - name: stg_survey_submissions
-    description: "Staged survey submissions at one row per submission, bridged to GA4 identity keys."
+    description: "Staged survey submissions at one row per submission, preferring Supabase raw records and falling back to GA4 app events when warehouse sync is not yet available."
     columns:
       - name: submission_id
         description: "Unique survey submission identifier used as submission grain key."
@@ -133,7 +203,7 @@ models:
         description: "Submission creation timestamp used as conversion time anchor."
 
   - name: stg_leads
-    description: "Staged lead identities mapped to submissions with privacy-safe hashed identifiers."
+    description: "Staged lead identities mapped to submissions with privacy-safe hashed identifiers, preferring Supabase raw leads and falling back to HubSpot and GA4 identity signals."
     columns:
       - name: internal_lead_id
         description: "Deterministic internal lead key generated from submission and hashed identity values."
@@ -203,7 +273,7 @@ models:
           - not_null
 
   - name: dim_identity_map
-    description: "The primary identity resolution table linking pseudo-IDs to hashed emails."
+    description: "The primary identity resolution table linking GA4 pseudo-IDs to hashed emails via app_event_id bridges and direct hashed-identity matches."
     columns:
       - name: identity_key
         description: "Deterministic identity surrogate key derived from hashed email."
@@ -343,3 +413,55 @@ models:
         description: "Rate from completed submissions to converted submissions."
       - name: converted_to_hq_rate
         description: "Rate from converted submissions to high-quality converted submissions."
+
+  - name: mart_semantic_overview
+    description: "Unified Looker-ready semantic mart. Grain: one row per event_date × utm_source × utm_medium × utm_campaign. Combines full funnel steps, conversion outcomes, avg readiness score, and pivoted readiness bucket counts. Use this as the primary BigQuery data source in Looker Studio."
+    columns:
+      - name: event_date
+        description: "Partition date. All funnel and conversion metrics are attributed to this date."
+        tests:
+          - not_null
+      - name: utm_source
+        description: "Normalized UTM source. Blanks replaced with (direct)."
+        tests:
+          - not_null
+      - name: utm_medium
+        description: "Normalized UTM medium. Blanks replaced with (none)."
+        tests:
+          - not_null
+      - name: utm_campaign
+        description: "Normalized UTM campaign. Blanks replaced with (not_set)."
+        tests:
+          - not_null
+      - name: started_sessions
+        description: "Distinct GA4 sessions that fired survey_started."
+      - name: started_count
+        description: "Distinct survey_started app_event_id count (one per survey attempt)."
+      - name: form_submitted_count
+        description: "Distinct survey_form_submitted app_event_id count."
+      - name: completed_count
+        description: "Distinct survey_completed app_event_id count."
+      - name: converted_count
+        description: "Distinct submission_id rows in fct_survey_conversions attributed to this channel."
+      - name: hq_converted_count
+        description: "Converted submissions flagged as high-quality leads (is_high_quality_lead=1)."
+      - name: avg_readiness_score
+        description: "Average overall_score across converted submissions for this channel/date."
+      - name: bucket_data_disadvantaged
+        description: "Count of converted submissions in the 20-35_data_disadvantaged readiness bucket."
+      - name: bucket_data_aware
+        description: "Count of converted submissions in the 36-50_data_aware readiness bucket."
+      - name: bucket_data_capable
+        description: "Count of converted submissions in the 51-70_data_capable readiness bucket."
+      - name: bucket_data_advantaged
+        description: "Count of converted submissions in the 71-85_data_advantaged readiness bucket."
+      - name: bucket_data_leadership
+        description: "Count of converted submissions in the 86-100_data_leadership readiness bucket."
+      - name: form_submit_rate_pct
+        description: "Percentage of started surveys that reached form_submitted step."
+      - name: completion_rate_pct
+        description: "Percentage of started surveys that reached survey_completed step."
+      - name: conversion_rate_pct
+        description: "Percentage of started surveys that resulted in a CRM-recorded conversion."
+      - name: hq_rate_pct
+        description: "Percentage of converted submissions that qualified as high-quality leads."

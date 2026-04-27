@@ -52,6 +52,28 @@ Define downstream-ready contracts for fact and mart models used by BI, analytics
 	- Partition: `conversion_date`
 	- Cluster: `utm_source`, `utm_campaign`
 
+### `mart_semantic_overview`
+- Grain: one row per `event_date + utm_source + utm_medium + utm_campaign`.
+- Required fields:
+	- `event_date` (not null)
+	- `utm_source` (not null)
+	- `utm_medium` (not null)
+	- `utm_campaign` (not null)
+	- `started_sessions`
+	- `started_count`
+	- `form_submitted_count`
+	- `completed_count`
+	- `converted_count`
+	- `hq_converted_count`
+	- `avg_readiness_score`
+	- `form_submit_rate_pct`
+	- `completion_rate_pct`
+	- `conversion_rate_pct`
+	- `hq_rate_pct`
+- Recommended physical design:
+	- Partition: `event_date`
+	- Cluster: `utm_source`, `utm_medium`, `utm_campaign`
+
 ### `mart_readiness_distribution` (planned completion)
 - Grain: one row per score bucket per reporting date.
 - Required fields:
@@ -84,6 +106,7 @@ Use this compact log for mart/fact grain updates, required field changes, SLA up
 
 | Version | Date | Scope | Change summary | Migration required | Owner |
 | --- | --- | --- | --- | --- | --- |
+| 1.1.0 | 2026-04-27 | Reporting semantic mart | Added formal contract for `mart_semantic_overview` as the production semantic mart for executive BI delivery. | No | Data Engineering |
 | 1.0.0 | 2026-04-19 | Initial formalization | Baseline fact and mart contracts documented with grain, required fields, and SLA targets. | No | Data Engineering |
 
 ### Entry rules

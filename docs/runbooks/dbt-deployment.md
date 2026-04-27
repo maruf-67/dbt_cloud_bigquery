@@ -9,6 +9,7 @@ Operational checklist for promoting dbt changes safely from development to produ
 3. Confirm source datasets exist in target project/location (`sigma-sector-488608-g0`, `EU`).
 4. Confirm model contracts and tests in `models/schema.yml` reflect latest fields.
 5. Confirm roadmap/docs were updated for any contract-breaking changes.
+6. Confirm `dbt source freshness --select source:supabase_raw` passes once worker smoke ingest has completed.
 
 ## Final pre-deploy checklist (EU cutover)
 1. Confirm `dbt debug` resolves:
@@ -48,6 +49,7 @@ Operational checklist for promoting dbt changes safely from development to produ
 3. targeted run/test for touched marts
 4. verify dataset placement in `analytics_staging` / `analytics_core` / `analytics_mart`
 5. only then run wider selectors
+6. run `dbt source freshness --select source:supabase_raw` after worker smoke ingest to validate raw-table observability
 
 ## Production schedule baseline
 - Hourly: staging + critical dimensions.
@@ -57,6 +59,7 @@ Operational checklist for promoting dbt changes safely from development to produ
 1. Validate row counts for `stg_ga4_events`, `fct_survey_conversions`, `mart_lead_attribution`.
 2. Validate no duplicate keys in identity and conversion models.
 3. Validate dashboard critical KPIs load successfully.
+4. Validate `supabase_raw` freshness is within the 18h warn / 36h error window.
 
 ## Rollback
 1. Re-run prior known-good job version.
@@ -72,5 +75,6 @@ Operational checklist for promoting dbt changes safely from development to produ
 - Objects materialized in expected datasets only (YES/NO)
 - No model write observed in `analytics_526441677` (YES/NO)
 - Worker smoke ingest wrote only to `crm_raw` (YES/NO)
+- `supabase_raw` freshness check passed (YES/NO)
 - Alerts/monitoring checks are green (YES/NO)
 - Decision: **GO** only if all YES, else **NO-GO**

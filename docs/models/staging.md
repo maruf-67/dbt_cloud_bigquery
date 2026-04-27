@@ -16,14 +16,14 @@ Staging models normalize source-specific schemas into warehouse-safe fields and 
 	- currently sets `event_version` as constant `v1`; downstream contract evolution plan still open.
 
 ### `stg_survey_submissions`
-- Source: `supabase_raw.survey_submissions`.
+- Source: `supabase_raw.survey_submissions` when present, otherwise GA4 staged fallback.
 - Responsibilities:
 	- standardize survey submission identity fields
 	- bridge app event id to analytics flow
 	- dedup by latest `submission_id`.
 
 ### `stg_leads`
-- Source: `supabase_raw.leads`.
+- Source: `supabase_raw.leads` when present, with HubSpot + GA4 fallback coverage.
 - Responsibilities:
 	- preserve `hashed_email`
 	- drop plain email from modeled path

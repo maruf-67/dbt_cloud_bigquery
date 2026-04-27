@@ -1,13 +1,40 @@
 /*
     STAGING MODEL: stg_leads
-    - Source: HubSpot contacts (primary) + GA4 events (fallback for unmatched users).
+    - Source: Supabase raw leads (primary) + HubSpot contacts and GA4 events as fallback.
     - Privacy: Uses email_sha256 from HubSpot; hashed_user_id from GA4. No plain PII.
 */
 
-WITH hubspot_contacts AS (
+{% set supabase_leads_source = source('supabase_raw', 'leads') %}
+{% set has_supabase_leads_source = execute and load_relation(supabase_leads_source) is not none %}
+
+WITH supabase_leads AS (
+    {% if has_supabase_leads_source %}
+    SELECT
+        TO_HEX(SHA256(CONCAT(record_id, ':supabase'))) AS internal_lead_id,
+        CAST(submission_id AS STRING) AS submission_id,
+        LOWER(TRIM(CAST(hashed_email AS STRING))) AS hashed_email,
+        company,
+        'supabase' AS source_platform,
+        TIMESTAMP(created_at) AS created_at
+    FROM {{ supabase_leads_source }}
+    WHERE hashed_email IS NOT NULL
+        AND hashed_email != ''
+    {% else %}
+    SELECT
+        CAST(NULL AS STRING) AS internal_lead_id,
+        CAST(NULL AS STRING) AS submission_id,
+        CAST(NULL AS STRING) AS hashed_email,
+        CAST(NULL AS STRING) AS company,
+        CAST(NULL AS STRING) AS source_platform,
+        CAST(NULL AS TIMESTAMP) AS created_at
+    WHERE 1 = 0
+    {% endif %}
+),
+
+hubspot_contacts AS (
     SELECT
         TO_HEX(SHA256(CONCAT(crm_id, ':hubspot'))) AS internal_lead_id,
-        crm_id AS submission_id,
+        CAST(NULL AS STRING) AS submission_id,
         LOWER(TRIM(CAST(email_sha256 AS STRING))) AS hashed_email,
         company,
         'hubspot' AS source_platform,
@@ -31,9 +58,27 @@ ga4_identities AS (
 ),
 
 unioned AS (
-    SELECT * FROM hubspot_contacts
+    SELECT * FROM supabase_leads
+
     UNION ALL
-    SELECT * FROM ga4_identities
+
+    SELECT *
+    FROM hubspot_contacts
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM supabase_leads AS supabase
+        WHERE supabase.hashed_email = hubspot_contacts.hashed_email
+    )
+
+    UNION ALL
+
+    SELECT *
+    FROM ga4_identities
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM supabase_leads AS supabase
+        WHERE supabase.hashed_email = ga4_identities.hashed_email
+    )
 ),
 
 final AS (
